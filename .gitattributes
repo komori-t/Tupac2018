@@ -1,2 +1,7 @@
 circuit/* binary
+*.png binary
+*.svg binary
+*.pdf binary
+*.jpg binary
+*.tgn binary
 

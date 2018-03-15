@@ -1,0 +1,77 @@
+@startuml
+skinparam defaultFontName SF Mono
+
+class GamepadController {
+    + application: RDTP *
+    + delegate: id<GamepadDelegate>
+    {static} + controller: instancetype
+    + initWithJoyStick:(DDHIDJoystick *): instancetype
+}
+DDHidJoystickDelegate ()--- GamepadController
+
+interface GamepadDelegate {
+    + gamepad:(GamepadController *)updateValue:(int)forStickAxis:(GamepadStickAxis)
+}
+GamepadController *-d-> GamepadDelegate
+
+class WirelessXBoxController
+GamepadController <|-u- WirelessXBoxController
+
+class WiredXBoxController {
+    + smallMotorPower: double
+    + largeMotorPower: double
+}
+GamepadController <|-u- WiredXBoxController
+
+class Transport {
+    + delegate: id<TransportDelegate>
+    + openWithPort:(uint16_t)
+    + sendData:(NSData *)toAddress:(NSData *)
+}
+GCDAsyncUdpSocketDelegate ()-- Transport
+
+interface TransportDelegate {
+    + transport:(Transport *)didReceiveData:(NSData *)fromAddress:(NSData *)
+}
+Transport *-d-> TransportDelegate
+
+class RDTP {
+    - delegate: id<RDTPDelegate>
+    + initWithTransport:(Transport *): instancetype
+}
+TransportDelegate <|.- RDTP
+
+interface RDTPDelegate {
+    + RDTP:(RDTP *)videoFrameAvailable:(NSData *)
+    + RDTPWillSendPacket:(RDTP *): NSData *
+}
+RDTP *-d-> RDTPDelegate
+
+class AppDelegate {
+    - transport: Transport *
+    - app: RDTP *
+    - controller: GamepadController *
+    - converter: StickConverter
+    - packet: RDTPPacket
+    - RDTP:(RDTP *)videoFrameAvailable:(NSData *)
+    - RDTPWillSendPacket:(RDTP *): NSData *
+}
+RDTPDelegate <|.d- AppDelegate
+
+class StickConverter {
+    - limitters: NSArray<ServoLimitter *> *
+    + initWithRDTPPacket:(RDTPPacket *): instancetype
+    + makePacketData: NSData *
+}
+GamepadDelegate <|.- StickConverter
+AppDelegate *-> StickConverter
+
+class ServoLimitter {
+    + initWithServo:(RDTPPacketComponent)packet:(RDTPPacket *): instancetype
+    + updateStep:(int)
+    + update:(BOOL)
+    + preset
+}
+StickConverter *-d-> ServoLimitter
+
+@enduml

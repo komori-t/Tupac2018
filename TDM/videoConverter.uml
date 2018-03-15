@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontName SF Mono
+
+AppDelegate -> VideoConverter: start()
+activate VideoConverter
+VideoConverter -> DisplayBase: Video_Start()
+deactivate VideoConverter
+DisplayBase -> DisplayBase: Hardware\nreading
+DisplayBase -> VideoConverter: vfieldHandler()
+activate VideoConverter
+VideoConverter -> JPEG_Converter: encode()
+deactivate VideoConverter
+JPEG_Converter -> JPEG_Converter: Hardware\nencoding
+JPEG_Converter -> VideoConverter: jcuHandler()
+activate VideoConverter
+VideoConverter -> VideoConverter: Notify completion
+activate VideoConverter
+VideoConverter -> AppDelegate: videoConverter_\nimageAvailable()
+deactivate VideoConverter
+deactivate VideoConverter
+
+@enduml

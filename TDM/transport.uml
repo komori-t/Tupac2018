@@ -1,0 +1,16 @@
+@startuml
+skinparam defaultFontName SF Mono
+
+|EthernetTransport::run|
+start
+repeat
+    :socket.receiveFrom();
+    :EthernetUtil::endPointToHeader();
+    :delegate->transport_didReceivePacket();
+    |RDTPv2::transport_didReceivePacket|
+    :RDTPPacket_initWithBytes();
+    :delegate->application_didReceiveCommand();
+    |AppDelegate::application_didReceiveCommand|
+    :Process Packets...;
+
+@enduml

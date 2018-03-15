@@ -1,0 +1,34 @@
+@startuml
+skinparam defaultFontName SFMono-Regular
+
+title AppDelegate::application_didReceiveCommand
+start
+repeat
+    :switch (RDTPPacket_getReceiveData());
+    if (LeftMotor) then (yes)
+        :leftMotor.forward();
+    elseif (RightMotor) then (yes)
+        :rightMotor.forward();
+    elseif (Servo0 ~ Servo9) then (yes)
+        if (servoStatus) then (true)
+            :servo = angle;
+        endif
+    elseif (EnableServo) then (yes)
+        :servoStatus = true;
+    elseif (DisableServo) then (yes)
+        :servoStatus = false;
+        :servo.relux();
+    elseif (CommandAvailable) then (yes)
+        :switch (RDTPPacket_getReceiveCommand());
+        if (StartVideo) then (yes)
+            :videoDestination = source;
+            :video->start();
+        elseif (StopVideo) then (yes)
+            :video->stop();
+        endif
+        stop
+    elseif (EndOfPacket) then (yes)
+        stop
+    endif
+
+@enduml

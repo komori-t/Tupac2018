@@ -1,0 +1,119 @@
+@startuml
+skinparam defaultFontName SF Mono
+
+class Transport {
+    {abstract} + init()
+    {abstract} + readMyAddress(): Header
+    {abstract} + sendPacket(Packet)
+    + delegate: Delegate *
+}
+
+class Transport::Header {
+    + address: uint32_t
+    + port: uint16_t
+}
+Transport +-l> Transport::Header
+
+class Transport::Packet {
+    + source: Header
+    + destination: Header
+    + protocol: Protocol
+    + content: uint8_t *
+    + contentLength: int
+}
+Transport +-d-> Transport::Packet
+
+class Packet::Protocol {
+    + TCP
+    + UDP
+}
+Transport::Packet +-d-> Packet::Protocol
+
+class EthernetTransport {
+    - interface: EthernetInterface
+    - socket: UDPSocket
+    + init()
+    + readMyAddress(): Header
+    + sendPacket(Packet)
+    + run()
+}
+Transport <|-r- EthernetTransport
+
+class XbeeTransport {
+    + init()
+    + readMyAddress(): Header
+    + sendPacket(Packet)
+}
+Transport <|-r- XbeeTransport
+
+class Transport::Delegate {
+    {abstract} + transport_interfaceReadet(Transport *)
+    {abstract} + transport_didReceivePacket(Transport *, Packet)
+}
+Transport +-d-> Transport::Delegate
+
+class RDTP {
+    - transport_interfaceReady(Transport *)
+    + delegate: Delegate *
+    + greet()
+    - transport: Transport *
+}
+Transport::Delegate <|-d- RDTP
+
+class RDTP::Delegate {
+    {abstract} + application_didReceiveCommand(RDTP *, RDTPPacket *, Transport::Header &&source)
+}
+RDTP +-d-> RDTP::Delegate
+
+class RDTPv2 {
+    - transport_didReceivePacket(Transport *, Packet)
+    + sendDataTo(Transport::Header &, uint8_t *, int);
+}
+RDTP <|-r- RDTPv2
+
+class AppDelegate {
+    - application_didReceiveCommand(RDTP *, RDTPPacket *packet, Transport::Header &&source)
+    - videoConverter_imageAvailable(VideoConverter *, uint8_t *, size_t)
+}
+RDTP::Delegate <|-d- AppDelegate
+
+class VideoConverter {
+    - Jcu: JPEG_Converter
+    - display: DisplayBase
+    - delegate: Delegate *
+    - thread: rtos::Thread
+    - waitVsync(int32_t)
+    - vsyncHandler(DisplayBase::int_type_t)
+    - vfieldHandler(DisplayBase::int_type_t)
+    - jcuHandler(JPEG_Converter::jpeg_conv_error_t)
+    - readAndNotify()
+    {static} + singleton(): VideoConverter *
+    + initWithDelegate(Delegate *)
+    + start()
+    + stop()
+}
+
+class VideoConverter::Delegate {
+    {abstract} + videoConverter_imageAvailable(VideoConverter *, uint8_t *, size_t)
+}
+VideoConverter +-l-> VideoConverter::Delegate
+VideoConverter::Delegate <|-u- AppDelegate
+
+class GCMotor {
+    - digital1: gpio_t
+    - digital2: gpio_t
+    - analog: pwmout_t
+    + forward(int8_t)
+    + hold()
+    + free()
+}
+AppDelegate *-r> GCMotor
+
+class SBRS5314 {
+    - pwm: pwmout_t
+    + operator = (float)
+    + relux()
+}
+AppDelegate *-l-> SBRS5314
+
+@enduml
