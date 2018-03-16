@@ -473,19 +473,19 @@ To solve this issue, we are planning to build a system that feedback many inform
 \subsubsection{Size of Robot}
 In order to clear the Centor Test, the size of the Robot shuld be within \SI{25}{\cm} squares.
 Actually, the Robot can be cleard the Center Test even if the length of Robot is longer than \SI{25}{\cm}.
+
 As reference, the length of our Robot is approximately \SI{30}{\cm}, and it can clear the Center Test without problem line a stuck.
 There is no restriction on the height of the competition field, so you shuld not pay an attention to the Robot's height. But if the height of the ZMP of Robot moves to high position, the stability of the Robot will become worse.
 
-\subsubsection{Licomotion strategy}
-不整地走行を行うロボットに用いられる移動方法は、主に車輪を用いる方法と、履帯を用いる方法がある。
-There are several movement method used for Robot performing rough terrain travel.
-車輪を用いる方法は、ハードウェア開発のリソースが非常に小さく、故にオープンソースとの親和性も非常に高いが、
-ロボットと床との接地面積は履帯と比べて非常に小さいため、斜面などの強いグリップが必要なケースには向かない。
-一方で、履帯はハードウェア開発のコストが非常に高いが、ロボットと床との接地面積は車輪に比べて非常に大きい。
+\subsubsection{Locomotion strategy}
+There are several movement method used for Robot performing rough terrain, mainly using Wheel and using Crawler.
+When using Wheel, resources for hardware development are very small, and affinity with open source will become higher.
+But the ability to drive rough terrain is inferior to Crawler.
+In particular, controllability in sloped rough terrain is significantly lower than Crawler.
+On the other hand, the cost of hardware development of the crawler belt is very high, but the contact area between the robot and the ground is much larger than the wheels.
 
-もしもロボットが不整地の斜面を安定して登る必要があるのであれば、ロボットの移動手段には履帯を使うべきである。
-移動手段に車輪を使った場合は、床との摩擦が足りず、斜面で安定して姿勢を制御することができない。
-また、RMRC競技においては、履帯の方がAlign testを容易にクリア可能である。
+If the robot must climb the sloped rough terrain with stability, you should use Crawler as a locomotion strategy of the robot.
+Also, Crawler can easily clear Align Test in RMRC competition.
 
 \subsubsection{Flipper arm}
 ロボットにFlipper armを搭載する事は、ロボットの車輪の半径(履帯の場合はスプロケットの半径)よりも大きな段差を乗り越えることを可能にする。
