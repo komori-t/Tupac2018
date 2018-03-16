@@ -471,13 +471,14 @@ To solve this issue, we are planning to build a system that feedback many inform
 \section{初心者向け}
 \subsection{メカ}
 \subsubsection{Size of Robot}
-In order to clear the Centor Test, the size of the Robot shuld be within 25cm squares.
+In order to clear the Centor Test, the size of the Robot shuld be within \SI{25}{\cm} squares.
 Actually, the Robot can be cleard the Center Test even if the length of Robot is longer than 25cm.
-As reference, the length of our Robot is approximately 30cm, and it can clear the Center Test without problem line a stuck.
+As reference, the length of our Robot is approximately \SI{30}{\cm}, and it can clear the Center Test without problem line a stuck.
 There is no restriction on the height of the competition field, so you shuld not pay an attention to the Robot's height. But if the height of the ZMP of Robot moves to high position, the stability of the Robot will become worse.
 
 \subsubsection{Licomotion strategy}
 不整地走行を行うロボットに用いられる移動方法は、主に車輪を用いる方法と、履帯を用いる方法がある。
+There are several movement method used for Robot performing rough terrain travel.
 車輪を用いる方法は、ハードウェア開発のリソースが非常に小さく、故にオープンソースとの親和性も非常に高いが、
 ロボットと床との接地面積は履帯と比べて非常に小さいため、斜面などの強いグリップが必要なケースには向かない。
 一方で、履帯はハードウェア開発のコストが非常に高いが、ロボットと床との接地面積は車輪に比べて非常に大きい。
