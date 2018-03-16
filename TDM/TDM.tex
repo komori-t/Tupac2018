@@ -482,21 +482,22 @@ There are several movement method used for Robot performing rough terrain, mainl
 When using Wheel, resources for hardware development are very small, and affinity with open source will become higher.
 But the ability to drive rough terrain is inferior to Crawler.
 In particular, controllability in sloped rough terrain is significantly lower than Crawler.
-On the other hand, the cost of hardware development of the crawler belt is very high, but the contact area between the robot and the ground is much larger than the wheels.
+On the other hand, the cost of hardware development of the crawler belt is very high, but the ability to drive rough terrain is much higher than the wheels.
 
 If the robot must climb the sloped rough terrain with stability, you should use Crawler as a locomotion strategy of the robot.
 Also, Crawler can easily clear Align Test in RMRC competition.
 
 \subsubsection{Flipper arm}
-ロボットにFlipper armを搭載する事は、ロボットの車輪の半径(履帯の場合はスプロケットの半径)よりも大きな段差を乗り越えることを可能にする。
-ロボットの前方のみにFlipper armを取り付けるだけでは、Hurdles testをクリアする事は困難である。
-ロボットの後方にもFlipper armを取り付け、ロボットのボディを持ち上げる機構を実現することで、この問題は解決できる。
+Installing the Flipper arm on the robot makes it possible to overcome a step larger than the radius of the wheel of the robot (the radius of the sprocket of a crawler).
+If you attach the Flipper arm only to the front of the robot, it is difficult to clear the Hurdles test.
+Because, in the Hurdles Test, the flipper arm in front of the robot does not grip and robot can not lift body.
+So we think it is necessary to install a flipper arm on the back side of the robot to clear the Hurdles Test.
 
 \subsubsection{Productivity}
-ロボットのパーツの製造には、積極的に3D Printerを使用するべきである。
-多くの人が真似できるハードウェアは、オープンソースへの貢献度が高い。
-また、なるべくチープな3D Printerでも製造可能なように、パーツの要求精度がそう高くならないような設計をするのも重要である。
-また、配線作業においては、特殊な配線をなるべく必要としない、Connector to Connector結線のみで構成されたシステムが好ましい。
+All participant should actively use 3D Printer to  manufacture the parts of the Robot.
+Hardware that many people can imitate has a high contribution to open source.
+Also, it is important to design so that the required accuracy of parts is not so high that it can be manufactured even with a cheap 3D printer as possible.
+Also, in the wiring work, it is preferable to use a system consisting only of Connector to Connector connection, which does not require special wiring.
 
 \subsection{電気}
 \begin{itemize}
