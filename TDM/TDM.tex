@@ -469,6 +469,33 @@ To solve this issue, we are planning to build a system that feedback many inform
 
 \section{初心者向け}
 \subsection{メカ}
+\subsubsection{Size of Robot}
+In order to clear the Centor Test, the size of the Robot shuld be within 25cm squares.
+Actually, the Robot can be cleard the Center Test even if the length of Robot is longer than 25cm.
+As reference, the length of our Robot is approximately 30cm, and it can clear the Center Test without problem line a stuck.
+There is no restriction on the height of the competition field, so you shuld not pay an attention to the Robot's height. But if the height of the ZMP of Robot moves to high position, the stability of the Robot will become worse.
+
+\subsubsection{Licomotion strategy}
+不整地走行を行うロボットに用いられる移動方法は、主に車輪を用いる方法と、履帯を用いる方法がある。
+車輪を用いる方法は、ハードウェア開発のリソースが非常に小さく、故にオープンソースとの親和性も非常に高いが、
+ロボットと床との接地面積は履帯と比べて非常に小さいため、斜面などの強いグリップが必要なケースには向かない。
+一方で、履帯はハードウェア開発のコストが非常に高いが、ロボットと床との接地面積は車輪に比べて非常に大きい。
+
+もしもロボットが不整地の斜面を安定して登る必要があるのであれば、ロボットの移動手段には履帯を使うべきである。
+移動手段に車輪を使った場合は、床との摩擦が足りず、斜面で安定して姿勢を制御することができない。
+また、RMRC競技においては、履帯の方がAlign testを容易にクリア可能である。
+
+\subsubsection{Flipper arm}
+ロボットにFlipper armを搭載する事は、ロボットの車輪の半径(履帯の場合はスプロケットの半径)よりも大きな段差を乗り越えることを可能にする。
+ロボットの前方のみにFlipper armを取り付けるだけでは、Hurdles testをクリアする事は困難である。
+ロボットの後方にもFlipper armを取り付け、ロボットのボディを持ち上げる機構を実現することで、この問題は解決できる。
+
+\subsubsection{Productivity}
+ロボットのパーツの製造には、積極的に3D Printerを使用するべきである。
+多くの人が真似できるハードウェアは、オープンソースへの貢献度が高い。
+また、なるべくチープな3D Printerでも製造可能なように、パーツの要求精度がそう高くならないような設計をするのも重要である。
+また、配線作業においては、特殊な配線をなるべく必要としない、Connector to Connector結線のみで構成されたシステムが好ましい。
+
 \subsection{電気}
 \subsection{ソフトウェア}
 
