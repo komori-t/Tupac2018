@@ -8,21 +8,22 @@
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}
 \hyphenation{op-tical net-works semi-conduc-tor}
-\newcommand{\TDPvenue}{2017~}
 \DeclareRobustCommand{\TMCIT}{Tokyo Metropolitan College of Industrial Technology}
 \usepackage[whole]{bxcjkjatype}
 
 \begin{document}
 
-\title{RoboCup Rescue \TDPvenue Team Description Material \\
+\title{RoboCup Rescue Team Description Material \\
  TUPAC}
  \author{Yuichi~Kikuchi,
-        Takumi~Komori% <-this % stops a space
+        Takumi~Komori,
+        Tada~Yusuke% <-this % stops a space
 \thanks{Yuichi Kikuchi is with the Department
 of Information Processing, \TMCIT, TMCIT, e-mail: m14054@g.metro-cit.ac.jp}% <-this % stops a space
 \thanks{Takumi Komori is with the same college}%
+\thanks{Tada Yusuke is with the same college}%
 }
-\markboth{RoboCup Rescue \TDPvenue TDP Collection}%
+\markboth{RoboCup Rescue TDP Collection}%
 {Kikuchi \MakeLowercase{\textit{et al.}}: TUPAC}
 \maketitle
 
@@ -31,11 +32,11 @@ of Information Processing, \TMCIT, TMCIT, e-mail: m14054@g.metro-cit.ac.jp}% <-t
 \hspace{10pt} Team Name: \hfill TUPAC\\
 \hspace{10pt} Team Institution: \hfill Tokyo Metropolitan College of\\
 \hfill Industrial Technology\\
-\hspace{10pt} Team Leader: \hfill Yuichi Kikuchi\\
+\hspace{10pt} Team Leader: \hfill Yusuke Tada\\
 \hspace{10pt} Team URL: \hfill % \url{https://moon.edu}
 \\
 \vspace{5pt}
-\hspace{10pt} RoboCup Rescue \TDPvenue TDP collection: \\
+\hspace{10pt} RoboCup Rescue TDP collection: \\
 \hfill \url{http://wiki.robocup.org/Robot_League}
 \end{flushleft}
 
@@ -497,7 +498,36 @@ There is no restriction on the height of the competition field, so you shuld not
 また、配線作業においては、特殊な配線をなるべく必要としない、Connector to Connector結線のみで構成されたシステムが好ましい。
 
 \subsection{電気}
+\begin{itemize}
+    \item We do not recommend beginners to use GR-Peach.
+    You should use more powerful MCU like Raspberry PI.
+    GR-Peach can handle the situation only if it is programmed to use hardware resources effectively.
+    This makes you have to write lots of codes since it is not famous and there is a few resources on the Internet.
+    With more famous boards like Raspberry PI, you can reuse resources and you do not have to worry about latency.
+    \item VNH5019 is not powerful enough to drive motors.
+    Our motor driver was broken on the final day of the competition.
+    It is surface-mounted IC, so replacement was not easy.
+    You should use more powerful and replaceable IC like Pololu 18v25.
+    \item If you use \SI{5}{\V} or \SI{3.3}{\V} devices, you should produce the voltage by DC-DC converters rather than switching regulators.
+    Switching regulator wastes energy to drop voltage.
+    This makes it hotter and limit the amount of current.
+    So you might get some problems like voltage spike.
+    DC-DC converters can produce constant voltage more efficient way.
+    Although DC-DC converters require more components than switching regulators, it is much better to use DC-DC converters.
+\end{itemize}
+
 \subsection{ソフトウェア}
+\begin{itemize}
+    \item Again, you should not use GR-Peach.
+    It is mbed-enabled and you can write a program with mbed library.
+    But it is much easier to use complete programs provided by big community.
+    You can stream video images by connecting a camera and run a built-in program with Raspberry PI for example.
+    You should not waste time to basic activities.
+    You should spent more time to more important tasks like OpenCV.
+    \item I encourage you to use AOP(Aspect Oriented Programming) technique.
+    It makes your code more independent.
+    AOP will give you the new sight of programming.
+\end{itemize}
 
 \appendices
 
