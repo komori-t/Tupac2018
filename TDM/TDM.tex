@@ -9,7 +9,6 @@
 \usepackage[table,xcdraw]{xcolor}
 \hyphenation{op-tical net-works semi-conduc-tor}
 \DeclareRobustCommand{\TMCIT}{Tokyo Metropolitan College of Industrial Technology}
-\usepackage[whole]{bxcjkjatype}
 
 \begin{document}
 
@@ -468,8 +467,8 @@ It is also the first time for us to design an original protocol.
 Our robot is not equipped with any sensors to help an operator except a camera, so it is difficult to see what the situation it is in.
 To solve this issue, we are planning to build a system that feedback many information by creating UI which indicates the situation with software like ROS.
 
-\section{初心者向け}
-\subsection{メカ}
+\section{For Participants}
+\subsection{Mechanic}
 \subsubsection{Size of Robot}
 In order to clear the Centor Test, the size of the Robot shuld be within \SI{25}{\cm} squares.
 Actually, the Robot can be cleard the Center Test even if the length of Robot is longer than \SI{25}{\cm}.
@@ -499,7 +498,7 @@ Hardware that many people can imitate has a high contribution to open source.
 Also, it is important to design so that the required accuracy of parts is not so high that it can be manufactured even with a cheap 3D printer as possible.
 Also, in the wiring work, it is preferable to use a system consisting only of Connector to Connector connection, which does not require special wiring.
 
-\subsection{電気}
+\subsection{Electronic Circuit}
 \begin{itemize}
     \item We do not recommend beginners to use GR-Peach.
     You should use more powerful MCU like Raspberry PI.
@@ -518,7 +517,7 @@ Also, in the wiring work, it is preferable to use a system consisting only of Co
     Although DC-DC converters require more components than switching regulators, it is much better to use DC-DC converters.
 \end{itemize}
 
-\subsection{ソフトウェア}
+\subsection{Software}
 \begin{itemize}
     \item Again, you should not use GR-Peach.
     It is mbed-enabled and you can write a program with mbed library.
