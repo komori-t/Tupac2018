@@ -15,7 +15,7 @@ class Serial {
     int fd;
     termios options;
     std::mutex mutex;
-    size_t __attribute__((const)) copyToIOVector(const iovec *vectors) {
+    size_t __attribute__((const)) copyToIOVector(const iovec __attribute__((unused)) *vectors) {
         return 0;
     }
     template <size_t length, typename ...Arrays>
@@ -43,7 +43,7 @@ class Serial {
             perror("writev");
             return false;
         }
-        return writeLen == fullLength;
+        return static_cast<size_t>(writeLen) == fullLength;
     }
 public:
     enum class Error {

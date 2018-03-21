@@ -64,7 +64,7 @@ public:
     static constexpr uint16_t calc(const std::array<uint8_t, length> array) {
         uint16_t crc_accum = 0;
         uint8_t i = 0;
-        for (int index = 0; index < length; ++index) {
+        for (size_t index = 0; index < length; ++index) {
             /* This loop should be range based for in C++17 */
             i = (crc_accum >> 8) ^ array[index];
             crc_accum = (crc_accum << 8) ^ staticTable[i];
@@ -186,7 +186,7 @@ public:
         writeMemory<116>(position, error);
     }
     void setPosition(double position, Serial::Error *error = nullptr) {
-        writeMemory<116>(static_cast<int32_t>(position * 4096 / 180), error);
+        writeMemory<116>(static_cast<int32_t>(position * 4096 / 360), error);
     }
     double position(Serial::Error *error = nullptr) {
         return readMemory<132, int32_t>(error) * 360 / 4096;
