@@ -7,38 +7,59 @@
 #include <sys/ioctl.h>
 #include <array>
 #include <pthread.h>
+#include <errno.h>
+#include <mutex>
+#include <chrono>
 
 class Serial {
     int fd;
     termios options;
-    pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-    void copyToIOVector(iovec *vectors) {}
+    std::mutex mutex;
+    size_t __attribute__((const)) copyToIOVector(const iovec *vectors) {
+        return 0;
+    }
     template <size_t length, typename ...Arrays>
-    void copyToIOVector(iovec *vectors, const std::array<uint8_t, length> &array, Arrays&... arrays) {
+    size_t copyToIOVector(iovec *vectors, const std::array<uint8_t, length> &array, Arrays&... arrays) {
         vectors->iov_base = const_cast<uint8_t *>(array.data());
         vectors->iov_len = length;
-        copyToIOVector(++vectors, arrays...);
+        return length + copyToIOVector(++vectors, arrays...);
     }
     template <size_t length>
-    ssize_t write(const std::array<uint8_t, length> &array) {
-        return ::write(fd, array.data(), length);
+    bool write(const std::array<uint8_t, length> &array) {
+        ssize_t writeLen = ::write(fd, array.data(), length);
+        if (writeLen < 0) {
+            perror("write");
+            return false;
+        }
+        return writeLen == length;
     }
     
     template <size_t length1, typename T1, typename... T2>
-    ssize_t write(const std::array<uint8_t, length1> &data1, T1 &data2, T2&... datas) {
+    bool write(const std::array<uint8_t, length1> &data1, T1 &data2, T2&... datas) {
         std::array<iovec, 2 + sizeof...(T2)> vectors;
-        copyToIOVector(vectors.data(), data1, data2, datas...);
-        writev(fd, vectors.data(), vectors.size());
-        return 0;
+        size_t fullLength = copyToIOVector(vectors.data(), data1, data2, datas...);
+        ssize_t writeLen = writev(fd, vectors.data(), vectors.size());
+        if (writeLen < 0) {
+            perror("writev");
+            return false;
+        }
+        return writeLen == fullLength;
     }
 public:
-    Serial(const char *dev, speed_t baud);
-    void changeBaud(speed_t baud);
+    enum class Error {
+        NoError,
+        WriteFailed,
+        ReadFailed,
+        ReadTimeout,
+    };
+    
+    Serial(const char *dev, speed_t baud, bool &success);
+    bool changeBaud(speed_t baud);
     ~Serial();
     template <size_t readLength, size_t writeLength1, typename... T>
-    bool transfer(std::array<uint8_t, readLength> &readBuffer,
-                  const std::array<uint8_t, writeLength1> &writeData, const T&... datas) {
-        pthread_mutex_lock(&mutex);
+    Error transfer(std::array<uint8_t, readLength> &readBuffer,
+                   const std::array<uint8_t, writeLength1> &writeData, const T&... datas) {
+        std::lock_guard<std::mutex> lock(mutex);
 #if 0
         int avail;
         ioctl(fd, FIONREAD, &avail);
@@ -47,20 +68,33 @@ public:
             read(fd, dummy, avail);
         }
 #endif
-        write(writeData, datas...);
-        size_t len = readLength;
+        if (! write(writeData, datas...)) {
+            return Error::WriteFailed;
+        }
+        auto limit = std::chrono::system_clock::now() + std::chrono::milliseconds(100);
+        size_t rest = readLength;
+        uint8_t *readP = readBuffer.data();
+        ssize_t readLen;
         do {
-            len -= read(fd, readBuffer.data(), readLength);
-        } while (len) ;
-        pthread_mutex_unlock(&mutex);
-        return true;
+            if (std::chrono::system_clock::now() > limit) {
+                return Error::ReadTimeout;
+            }
+            readLen = read(fd, readP, readLength);
+            if (readLen < 0) {
+                if (errno != EINTR) {
+                    perror("read");
+                    return Error::ReadFailed;
+                }
+            }
+            rest -= readLen;
+            readP += readLen;
+        } while (rest) ;
+        return Error::NoError;
     }
     template <size_t writeLength1, typename... T>
-    bool transfer(const std::array<uint8_t, writeLength1> &writeData, const T&... datas) {
-        pthread_mutex_lock(&mutex);
-        write(writeData, datas...);
-        pthread_mutex_unlock(&mutex);
-        return true;
+    Error transfer(const std::array<uint8_t, writeLength1> &writeData, const T&... datas) {
+        std::lock_guard<std::mutex> lock(mutex);
+        return write(writeData, datas...) ? Error::NoError : Error::WriteFailed;
     }
 };
 

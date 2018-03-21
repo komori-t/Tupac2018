@@ -89,7 +89,7 @@ class Dynamixel : public Servo<id> {
         };
     };
     template <uint16_t address, uint8_t value>
-    void writeMemory(bool *success) {
+    void writeMemory(Serial::Error *error) {
         constexpr std::array<uint8_t, 11> packetForChecksum({
             0xFF, 0xFF, 0xFD, /* Header */
             0x00, /* Reserved */
@@ -106,15 +106,15 @@ class Dynamixel : public Servo<id> {
             static_cast<uint8_t>(checksum & 0xFF), static_cast<uint8_t>(checksum >> 8)
         });
         std::array<uint8_t, 11> response;
-        if (success) {
-            *success = this->serial->transfer(response, packet);
+        if (error) {
+            *error = this->serial->transfer(response, packet);
         } else {
             this->serial->transfer(response, packet);
         }
         /* TODO: check response */
     }
     template <uint16_t address, typename T>
-    void writeMemory(T data, bool *success) {
+    void writeMemory(T data, Serial::Error *error) {
         ByteUnion<T> dat(data);
         constexpr std::array<uint8_t, 10> header({
             0xFF, 0xFF, 0xFD, /* Header */
@@ -129,15 +129,15 @@ class Dynamixel : public Servo<id> {
         ByteUnion<uint16_t> checksum(DynamixelCheckSumCalculator::calc(headerChecksum, dataArray));
         std::array<uint8_t, 11> response;
         auto checksumArray = checksum.arrayObj();
-        if (success) {
-            *success = this->serial->transfer(response, header, dataArray, checksumArray);
+        if (error) {
+            *error = this->serial->transfer(response, header, dataArray, checksumArray);
         } else {
             this->serial->transfer(response, header, dataArray, checksumArray);
         }
         /* TODO: check response */
     }
     template <uint16_t address, typename T>
-    T readMemory(bool *success) {
+    T readMemory(Serial::Error *error) {
         constexpr std::array<uint8_t, 12> packetForChecksum({
             0xFF, 0xFF, 0xFD, /* Header */
             0x00, /* Reserved */
@@ -154,43 +154,45 @@ class Dynamixel : public Servo<id> {
             static_cast<uint8_t>(checksum & 0xFF), static_cast<uint8_t>(checksum >> 8)
         });
         std::array<uint8_t, 11 + sizeof(T)> response;
-        bool ret = this->serial->transfer(response, fullPacket);
+        Serial::Error ret = this->serial->transfer(response, fullPacket);
         StatusPacket<T> status;
         std::copy(response.begin(), response.end(), std::begin(status.raw));
-        /* TODO: check response */
-        if (success) {
-            if (ret) {
+        if (error) {
+            *error = ret;
+#if 0
+            if (ret == Serial::Error::NoError) {
                 std::array<uint8_t, 9 + sizeof(T)> arrayForChecksum;
                 std::copy(response.begin(), response.end() - 2, arrayForChecksum.begin());
                 uint16_t checksum = DynamixelCheckSumCalculator::calc(0, arrayForChecksum);
-                *success = checksum == status.checksum;
-            } else {
-                *success = false;
+                if (checksum != status.checksum) {
+                    *error = Serial::Error::ReadFailed;
+                }
             }
+#endif
         }
         return status.data;
     }
     
 public:
     Dynamixel(Serial *_serial) : Servo<id>(_serial) {};
-    void setTorque(bool enable, bool *success = nullptr) {
+    void setTorque(bool enable, Serial::Error *error = nullptr) {
         if (enable) {
-            writeMemory<64, 1>(success);
+            writeMemory<64, 1>(error);
         } else {
-            writeMemory<64, 0>(success);
+            writeMemory<64, 0>(error);
         }
     }
-    void setPosition(int32_t position, bool *success = nullptr) {
-        writeMemory<116>(position, success);
+    void setPosition(int32_t position, Serial::Error *error = nullptr) {
+        writeMemory<116>(position, error);
     }
-    void setPosition(double position, bool *success = nullptr) {
-        writeMemory<116>(static_cast<int32_t>(position * 4096 / 180), success);
+    void setPosition(double position, Serial::Error *error = nullptr) {
+        writeMemory<116>(static_cast<int32_t>(position * 4096 / 180), error);
     }
-    double position(bool *success = nullptr) {
-        return readMemory<132, int32_t>(success) * 360 / 4096;
+    double position(Serial::Error *error = nullptr) {
+        return readMemory<132, int32_t>(error) * 360 / 4096;
     }
-    int32_t intPosition(bool *success = nullptr) {
-        return readMemory<132, int32_t>(success);
+    int32_t intPosition(Serial::Error *error = nullptr) {
+        return readMemory<132, int32_t>(error);
     }
 };
 

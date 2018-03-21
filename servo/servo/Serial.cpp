@@ -2,27 +2,32 @@
 #include <fcntl.h>
 #include <stddef.h>
 
-Serial::Serial(const char *dev, speed_t baud)
+Serial::Serial(const char *dev, speed_t baud, bool &success)
 {
-    pthread_mutex_init(&mutex, NULL);
+    success = false;
+    if (! dev) {
+        return;
+    }
     
-    int handshake;
-    
-    fd = open(dev, O_RDWR | O_NOCTTY | O_NONBLOCK);
+    fd = open(dev, O_RDWR | O_NOCTTY);
     if (fd == -1) {
         perror("open");
+        return;
     }
     
     if (ioctl(fd, TIOCEXCL) == -1) {
         perror("ioctl");
+        return;
     }
     
     if (fcntl(fd, F_SETFL, 0) == -1) {
         perror("fcntl");
+        return;
     }
     
     if (tcgetattr(fd, &options) == -1) {
         perror("tcgetattr");
+        return;
     }
     
     cfmakeraw(&options);
@@ -38,30 +43,38 @@ Serial::Serial(const char *dev, speed_t baud)
     // Cause the new options to take effect immediately.
     if (tcsetattr(fd, TCSANOW, &options) == -1) {
         perror("tcsetattr");
+        return;
     }
     
     // Set the modem lines depending on the bits set in handshake
-    handshake = TIOCM_DTR | TIOCM_RTS | TIOCM_CTS | TIOCM_DSR;
+    int handshake = TIOCM_DTR | TIOCM_RTS | TIOCM_CTS | TIOCM_DSR;
     if (ioctl(fd, TIOCMSET, &handshake) == -1) {
         perror("ioctl");
+        return;
     }
     
     // Store the state of the modem lines in handshake
     if (ioctl(fd, TIOCMGET, &handshake) == -1) {
         perror("ioctl");
+        return;
     }
+    
+    success = true;
 }
 
-void Serial::changeBaud(speed_t baud)
+bool Serial::changeBaud(speed_t baud)
 {
     cfsetspeed(&options, baud);
     if (tcsetattr(fd, TCSANOW, &options) == -1) {
         perror("tcsetattr");
+        return false;
     }
+    return true;
 }
 
 Serial::~Serial()
 {
-    pthread_mutex_destroy(&mutex);
-    close(fd);
+    if (fd >= 0) {
+        close(fd);
+    }
 }

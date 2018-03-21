@@ -57,8 +57,12 @@
 
 - (IBAction)connect:(NSButton *)sender
 {
+    bool success;
+    serial = new Serial([self.deviceBox.stringValue UTF8String], self.baudField.integerValue, success);
+    if (! success) {
+        return;
+    }
     sender.hidden = YES;
-    serial = new Serial([self.deviceBox.stringValue UTF8String], self.baudField.integerValue);
     if (self.servoSelectButton.selectedTag == 0) {
         servo = new DynamicFutaba(serial, self.idField.integerValue);
     } else {
@@ -66,9 +70,9 @@
     }
     servo->setTorque(true);
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        bool success;
-        double pos = servo->position(&success);
-        if (success) {
+        Serial::Error error;
+        double pos = servo->position(&error);
+        if (error == Serial::Error::NoError) {
             self.positionLabel.doubleValue = pos;
         } else {
             self.positionLabel.stringValue = @"Failed";

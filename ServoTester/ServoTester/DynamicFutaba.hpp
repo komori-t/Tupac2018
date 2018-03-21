@@ -14,7 +14,7 @@ class DynamicFutaba : public DynamicServo {
         return ret;
     }
     template <uint8_t address, uint8_t value>
-    void writeMemory(bool *success) {
+    void writeMemory(Serial::Error *error) {
         const std::array<uint8_t, 6> packetForChecksum({
             id,
             0, /* No return packet */
@@ -27,14 +27,14 @@ class DynamicFutaba : public DynamicServo {
         const std::array<uint8_t, 9> packet({
             0xFA, 0xAF, id, 0, address, 1, 1, value, checksum
         });
-        if (success) {
-            *success = this->serial->transfer(packet);
+        if (error) {
+            *error = this->serial->transfer(packet);
         } else {
             this->serial->transfer(packet);
         }
     }
     template <uint8_t address, typename T>
-    void writeMemory(T data, bool *success) {
+    void writeMemory(T data, Serial::Error *error) {
         constexpr std::array<uint8_t, 2> header({
             0xFA, 0xAF, /* Header */
         });
@@ -52,15 +52,15 @@ class DynamicFutaba : public DynamicServo {
             checksumVar ^= v;
         }
         auto dataArray = dataByte.arrayObj();
-        if (success) {
-            *success = this->serial->transfer(header, packetForChecksum,
-                                              dataArray, std::array<uint8_t, 1>({checksumVar}));
+        if (error) {
+            *error = this->serial->transfer(header, packetForChecksum,
+                                            dataArray, std::array<uint8_t, 1>({checksumVar}));
         } else {
             this->serial->transfer(header, packetForChecksum, dataArray, std::array<uint8_t, 1>({checksumVar}));
         }
     }
     template <uint8_t address, typename T>
-    T readMemory(bool *success) {
+    T readMemory(Serial::Error *error) {
         const std::array<uint8_t, 8> packet({
             0xFA, 0xAF, /* Header */
             id,
@@ -71,7 +71,7 @@ class DynamicFutaba : public DynamicServo {
             static_cast<uint8_t>(id ^ 0x0F ^ address ^ sizeof(T)) /* Checksum */
         });
         std::array<uint8_t, 8 + sizeof(T)> response;
-        bool ret = this->serial->transfer(response, packet);
+        Serial::Error ret = this->serial->transfer(response, packet);
         union ReturnPacket {
             uint8_t raw[8 + sizeof(T)];
             struct __attribute__((packed)) {
@@ -87,8 +87,8 @@ class DynamicFutaba : public DynamicServo {
         };
         ReturnPacket rePacket;
         std::copy(response.begin(), response.end(), std::begin(rePacket.raw));
-        if (success) {
-            *success = ret;
+        if (error) {
+            *error = ret;
         }
         return rePacket.data;
     }
@@ -110,31 +110,31 @@ public:
         });
         this->serial->transfer(rebootPacket);
     }
-    void setTorque(bool enable, bool *success = nullptr) {
+    void setTorque(bool enable, Serial::Error *error = nullptr) {
         if (enable) {
-            writeMemory<0x24, 1>(success);
+            writeMemory<0x24, 1>(error);
         } else {
-            writeMemory<0x24, 0>(success);
+            writeMemory<0x24, 0>(error);
         }
     }
-    void setPosition(double position, bool *success = nullptr) {
-        writeMemory<0x1E>(static_cast<int16_t>(position * 10), success);
+    void setPosition(double position, Serial::Error *error = nullptr) {
+        writeMemory<0x1E>(static_cast<int16_t>(position * 10), error);
     }
-    void setPosition(int16_t position, bool *success = nullptr) {
-        writeMemory<0x1E>(position, success);
+    void setPosition(int16_t position, Serial::Error *error = nullptr) {
+        writeMemory<0x1E>(position, error);
     }
-    int16_t intPosition(bool *success = nullptr) {
-        return readMemory<0x2A, int16_t>(success);
+    int16_t intPosition(Serial::Error *error = nullptr) {
+        return readMemory<0x2A, int16_t>(error);
     }
-    double position(bool *success = nullptr) {
-        return readMemory<0x2A, int16_t>(success) / 10;
+    double position(Serial::Error *error = nullptr) {
+        return readMemory<0x2A, int16_t>(error) / 10;
     }
-    void setID(uint8_t newID, bool *success) {
-        writeMemory<0x04>(newID, success);
+    void setID(uint8_t newID, Serial::Error *error = nullptr) {
+        writeMemory<0x04>(newID, error);
         id = newID;
         flashROM();
     }
-    void setBaud(speed_t baud, bool *sucess) {
+    void setBaud(speed_t baud, Serial::Error *error = nullptr) {
         uint8_t speed = 0;
         switch (baud) {
             case B9600:
@@ -172,7 +172,7 @@ public:
             default:
                 return;
         }
-        writeMemory<0x06>(speed, sucess);
+        writeMemory<0x06>(speed, error);
         flashROM();
         reboot();
         this->serial->changeBaud(baud);

@@ -14,9 +14,9 @@ protected:
     Serial *serial;
     Servo(Serial *_serial) : serial(_serial) {};
 public:
-    virtual void setTorque(bool enable, bool *success = nullptr) = 0;
-    virtual void setPosition(double position, bool *success = nullptr) = 0;
-    virtual double position(bool *success) = 0;
+    virtual void setTorque(bool enable, Serial::Error *error = nullptr) = 0;
+    virtual void setPosition(double position, Serial::Error *error = nullptr) = 0;
+    virtual double position(Serial::Error *error) = 0;
 };
 
 #pragma GCC visibility pop
