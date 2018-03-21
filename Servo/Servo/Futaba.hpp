@@ -9,7 +9,7 @@ class Futaba : public Servo<id> {
     template<size_t length>
     static constexpr uint8_t calcChecksum(const std::array<uint8_t, length> data) {
         uint8_t ret = data[0];
-        for (int i = 1; i < length; ++i) {
+        for (size_t i = 1; i < length; ++i) {
             ret ^= data[i];
         }
         return ret;
