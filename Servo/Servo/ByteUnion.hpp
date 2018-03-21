@@ -6,10 +6,10 @@ union ByteUnion {
     T value;
     uint8_t array[sizeof(T)];
     ByteUnion(T _value) : value(_value) {}
-    std::array<uint8_t, sizeof(T)> &&arrayObj() {
+    const std::array<uint8_t, sizeof(T)> arrayObj() {
         std::array<uint8_t, sizeof(T)> obj;
         std::copy(std::begin(array), std::end(array), obj.begin());
-        return std::move(obj);
+        return obj;
     }
 };
 
