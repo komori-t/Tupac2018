@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name USB2517)(type KiCad)(uri ${KIPRJMOD}/USB2517.pretty)(options "")(descr ""))
+)

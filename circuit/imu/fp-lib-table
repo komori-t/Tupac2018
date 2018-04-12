@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name AQM0802)(type KiCad)(uri ${KIPRJMOD}/AQM0802.pretty)(options "")(descr ""))
+  (lib (name R-78E)(type KiCad)(uri ${KIPRJMOD}/R-78E.pretty)(options "")(descr ""))
+  (lib (name OKL-T_6-W12N-C)(type KiCad)(uri ${KIPRJMOD}/OKL-T_6-W12N-C.pretty)(options "")(descr ""))
+)
