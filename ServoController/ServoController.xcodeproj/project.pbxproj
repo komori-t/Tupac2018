@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE9077C720A83B5300405EF9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9077C620A83B5300405EF9 /* AppDelegate.mm */; };
+		CE9077C920A83B5400405EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9077C820A83B5400405EF9 /* Assets.xcassets */; };
+		CE9077CC20A83B5400405EF9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9077CA20A83B5400405EF9 /* MainMenu.xib */; };
+		CE9077CF20A83B5400405EF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077CE20A83B5400405EF9 /* main.m */; };
+		CE9077FC20A83B7F00405EF9 /* DDHidStandardUsages.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE9077DA20A83B7F00405EF9 /* DDHidStandardUsages.plist */; };
+		CE9077FD20A83B7F00405EF9 /* DDHidEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077DC20A83B7F00405EF9 /* DDHidEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE9077FE20A83B7F00405EF9 /* DDHidAppleRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077DF20A83B7F00405EF9 /* DDHidAppleRemote.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE9077FF20A83B7F00405EF9 /* DDHidJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077E120A83B7F00405EF9 /* DDHidJoystick.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780020A83B7F00405EF9 /* NSXReturnThrowError.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077E520A83B7F00405EF9 /* NSXReturnThrowError.m */; };
+		CE90780120A83B7F00405EF9 /* DDHidMouse.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077E820A83B7F00405EF9 /* DDHidMouse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780220A83B7F00405EF9 /* DDHidKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077E920A83B7F00405EF9 /* DDHidKeyboard.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780320A83B7F00405EF9 /* NSDictionary+DDHidExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077EB20A83B7F00405EF9 /* NSDictionary+DDHidExtras.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780420A83B7F00405EF9 /* DDHidUsageTables.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077ED20A83B7F00405EF9 /* DDHidUsageTables.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780520A83B7F00405EF9 /* DDHidElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F020A83B7F00405EF9 /* DDHidElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780620A83B7F00405EF9 /* DDHidUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F120A83B7F00405EF9 /* DDHidUsage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780720A83B7F00405EF9 /* DDHidDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F220A83B7F00405EF9 /* DDHidDevice.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780820A83B7F00405EF9 /* DDHidAppleMikey.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F420A83B7F00405EF9 /* DDHidAppleMikey.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780920A83B7F00405EF9 /* DDHidKeyboardBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F520A83B7F00405EF9 /* DDHidKeyboardBarcodeScanner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780A20A83B7F00405EF9 /* DDHidQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F620A83B7F00405EF9 /* DDHidQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE90780B20A83B7F00405EF9 /* GamepadController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F720A83B7F00405EF9 /* GamepadController.m */; };
+		CE90780C20A83B7F00405EF9 /* WiredXBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F820A83B7F00405EF9 /* WiredXBoxController.m */; };
+		CE90780D20A83B7F00405EF9 /* WirelessXBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077FB20A83B7F00405EF9 /* WirelessXBoxController.m */; };
+		CE90781020A83F7E00405EF9 /* RDTPPacket.c in Sources */ = {isa = PBXBuildFile; fileRef = CE90780E20A83F7E00405EF9 /* RDTPPacket.c */; };
+		CE90781820A8403B00405EF9 /* DynamicFutaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE90781420A8403B00405EF9 /* DynamicFutaba.cpp */; };
+		CE90781920A8403B00405EF9 /* DynamicServo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE90781520A8403B00405EF9 /* DynamicServo.cpp */; };
+		CE90781A20A8403B00405EF9 /* DynamicDynamixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE90781720A8403B00405EF9 /* DynamicDynamixel.cpp */; };
+		CE90781D20A8404A00405EF9 /* Serial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE90781B20A8404A00405EF9 /* Serial.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE9077C220A83B5300405EF9 /* ServoController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServoController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9077C520A83B5300405EF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE9077C620A83B5300405EF9 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		CE9077C820A83B5400405EF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE9077CB20A83B5400405EF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CE9077CD20A83B5400405EF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE9077CE20A83B5400405EF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE9077D020A83B5400405EF9 /* ServoController.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ServoController.entitlements; sourceTree = "<group>"; };
+		CE9077D720A83B7F00405EF9 /* WirelessXBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessXBoxController.h; sourceTree = "<group>"; };
+		CE9077D920A83B7F00405EF9 /* DDHidMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidMouse.h; sourceTree = "<group>"; };
+		CE9077DA20A83B7F00405EF9 /* DDHidStandardUsages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DDHidStandardUsages.plist; sourceTree = "<group>"; };
+		CE9077DB20A83B7F00405EF9 /* NSDictionary+DDHidExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DDHidExtras.h"; sourceTree = "<group>"; };
+		CE9077DC20A83B7F00405EF9 /* DDHidEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidEvent.m; sourceTree = "<group>"; };
+		CE9077DD20A83B7F00405EF9 /* DDHidKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidKeyboard.h; sourceTree = "<group>"; };
+		CE9077DE20A83B7F00405EF9 /* DDHidElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidElement.h; sourceTree = "<group>"; };
+		CE9077DF20A83B7F00405EF9 /* DDHidAppleRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidAppleRemote.m; sourceTree = "<group>"; };
+		CE9077E020A83B7F00405EF9 /* DDHidUsageTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidUsageTables.h; sourceTree = "<group>"; };
+		CE9077E120A83B7F00405EF9 /* DDHidJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidJoystick.m; sourceTree = "<group>"; };
+		CE9077E220A83B7F00405EF9 /* DDHidQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidQueue.h; sourceTree = "<group>"; };
+		CE9077E320A83B7F00405EF9 /* DDHidAppleMikey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidAppleMikey.h; sourceTree = "<group>"; };
+		CE9077E420A83B7F00405EF9 /* DDHidKeyboardBarcodeScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidKeyboardBarcodeScanner.h; sourceTree = "<group>"; };
+		CE9077E520A83B7F00405EF9 /* NSXReturnThrowError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSXReturnThrowError.m; sourceTree = "<group>"; };
+		CE9077E620A83B7F00405EF9 /* DDHidDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidDevice.h; sourceTree = "<group>"; };
+		CE9077E720A83B7F00405EF9 /* DDHidUsage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidUsage.h; sourceTree = "<group>"; };
+		CE9077E820A83B7F00405EF9 /* DDHidMouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidMouse.m; sourceTree = "<group>"; };
+		CE9077E920A83B7F00405EF9 /* DDHidKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidKeyboard.m; sourceTree = "<group>"; };
+		CE9077EA20A83B7F00405EF9 /* DDHidEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidEvent.h; sourceTree = "<group>"; };
+		CE9077EB20A83B7F00405EF9 /* NSDictionary+DDHidExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DDHidExtras.m"; sourceTree = "<group>"; };
+		CE9077EC20A83B7F00405EF9 /* DDHidJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidJoystick.h; sourceTree = "<group>"; };
+		CE9077ED20A83B7F00405EF9 /* DDHidUsageTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidUsageTables.m; sourceTree = "<group>"; };
+		CE9077EE20A83B7F00405EF9 /* DDHidAppleRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidAppleRemote.h; sourceTree = "<group>"; };
+		CE9077EF20A83B7F00405EF9 /* DDHidLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidLib.h; sourceTree = "<group>"; };
+		CE9077F020A83B7F00405EF9 /* DDHidElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidElement.m; sourceTree = "<group>"; };
+		CE9077F120A83B7F00405EF9 /* DDHidUsage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidUsage.m; sourceTree = "<group>"; };
+		CE9077F220A83B7F00405EF9 /* DDHidDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidDevice.m; sourceTree = "<group>"; };
+		CE9077F320A83B7F00405EF9 /* NSXReturnThrowError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSXReturnThrowError.h; sourceTree = "<group>"; };
+		CE9077F420A83B7F00405EF9 /* DDHidAppleMikey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidAppleMikey.m; sourceTree = "<group>"; };
+		CE9077F520A83B7F00405EF9 /* DDHidKeyboardBarcodeScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidKeyboardBarcodeScanner.m; sourceTree = "<group>"; };
+		CE9077F620A83B7F00405EF9 /* DDHidQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidQueue.m; sourceTree = "<group>"; };
+		CE9077F720A83B7F00405EF9 /* GamepadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamepadController.m; sourceTree = "<group>"; };
+		CE9077F820A83B7F00405EF9 /* WiredXBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiredXBoxController.m; sourceTree = "<group>"; };
+		CE9077F920A83B7F00405EF9 /* WiredXBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiredXBoxController.h; sourceTree = "<group>"; };
+		CE9077FA20A83B7F00405EF9 /* GamepadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamepadController.h; sourceTree = "<group>"; };
+		CE9077FB20A83B7F00405EF9 /* WirelessXBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WirelessXBoxController.m; sourceTree = "<group>"; };
+		CE90780E20A83F7E00405EF9 /* RDTPPacket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RDTPPacket.c; sourceTree = "<group>"; };
+		CE90780F20A83F7E00405EF9 /* RDTPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDTPPacket.h; sourceTree = "<group>"; };
+		CE90781220A8403B00405EF9 /* DynamicDynamixel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicDynamixel.hpp; path = ../../../ServoTester/ServoTester/DynamicDynamixel.hpp; sourceTree = "<group>"; };
+		CE90781320A8403B00405EF9 /* DynamicFutaba.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicFutaba.hpp; path = ../../../ServoTester/ServoTester/DynamicFutaba.hpp; sourceTree = "<group>"; };
+		CE90781420A8403B00405EF9 /* DynamicFutaba.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicFutaba.cpp; path = ../../../ServoTester/ServoTester/DynamicFutaba.cpp; sourceTree = "<group>"; };
+		CE90781520A8403B00405EF9 /* DynamicServo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicServo.cpp; path = ../../../ServoTester/ServoTester/DynamicServo.cpp; sourceTree = "<group>"; };
+		CE90781620A8403B00405EF9 /* DynamicServo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicServo.hpp; path = ../../../ServoTester/ServoTester/DynamicServo.hpp; sourceTree = "<group>"; };
+		CE90781720A8403B00405EF9 /* DynamicDynamixel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicDynamixel.cpp; path = ../../../ServoTester/ServoTester/DynamicDynamixel.cpp; sourceTree = "<group>"; };
+		CE90781B20A8404A00405EF9 /* Serial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Serial.cpp; path = ../../../Servo/Servo/Serial.cpp; sourceTree = "<group>"; };
+		CE90781C20A8404A00405EF9 /* Serial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Serial.hpp; path = ../../../Servo/Servo/Serial.hpp; sourceTree = "<group>"; };
+		CE90781E20A8405800405EF9 /* ByteUnion.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ByteUnion.hpp; path = ../../../Servo/Servo/ByteUnion.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE9077BF20A83B5300405EF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE9077B920A83B5300405EF9 = {
+			isa = PBXGroup;
+			children = (
+				CE9077C420A83B5300405EF9 /* ServoController */,
+				CE9077C320A83B5300405EF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE9077C320A83B5300405EF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE9077C220A83B5300405EF9 /* ServoController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE9077C420A83B5300405EF9 /* ServoController */ = {
+			isa = PBXGroup;
+			children = (
+				CE90781120A8403000405EF9 /* Servo */,
+				CE9077D620A83B7F00405EF9 /* Gamepad */,
+				CE9077C520A83B5300405EF9 /* AppDelegate.h */,
+				CE9077C620A83B5300405EF9 /* AppDelegate.mm */,
+				CE90780F20A83F7E00405EF9 /* RDTPPacket.h */,
+				CE90780E20A83F7E00405EF9 /* RDTPPacket.c */,
+				CE9077C820A83B5400405EF9 /* Assets.xcassets */,
+				CE9077CA20A83B5400405EF9 /* MainMenu.xib */,
+				CE9077CD20A83B5400405EF9 /* Info.plist */,
+				CE9077CE20A83B5400405EF9 /* main.m */,
+				CE9077D020A83B5400405EF9 /* ServoController.entitlements */,
+			);
+			path = ServoController;
+			sourceTree = "<group>";
+		};
+		CE9077D620A83B7F00405EF9 /* Gamepad */ = {
+			isa = PBXGroup;
+			children = (
+				CE9077D720A83B7F00405EF9 /* WirelessXBoxController.h */,
+				CE9077D820A83B7F00405EF9 /* DDHIDLib */,
+				CE9077F720A83B7F00405EF9 /* GamepadController.m */,
+				CE9077F820A83B7F00405EF9 /* WiredXBoxController.m */,
+				CE9077F920A83B7F00405EF9 /* WiredXBoxController.h */,
+				CE9077FA20A83B7F00405EF9 /* GamepadController.h */,
+				CE9077FB20A83B7F00405EF9 /* WirelessXBoxController.m */,
+			);
+			path = Gamepad;
+			sourceTree = "<group>";
+		};
+		CE9077D820A83B7F00405EF9 /* DDHIDLib */ = {
+			isa = PBXGroup;
+			children = (
+				CE9077D920A83B7F00405EF9 /* DDHidMouse.h */,
+				CE9077DA20A83B7F00405EF9 /* DDHidStandardUsages.plist */,
+				CE9077DB20A83B7F00405EF9 /* NSDictionary+DDHidExtras.h */,
+				CE9077DC20A83B7F00405EF9 /* DDHidEvent.m */,
+				CE9077DD20A83B7F00405EF9 /* DDHidKeyboard.h */,
+				CE9077DE20A83B7F00405EF9 /* DDHidElement.h */,
+				CE9077DF20A83B7F00405EF9 /* DDHidAppleRemote.m */,
+				CE9077E020A83B7F00405EF9 /* DDHidUsageTables.h */,
+				CE9077E120A83B7F00405EF9 /* DDHidJoystick.m */,
+				CE9077E220A83B7F00405EF9 /* DDHidQueue.h */,
+				CE9077E320A83B7F00405EF9 /* DDHidAppleMikey.h */,
+				CE9077E420A83B7F00405EF9 /* DDHidKeyboardBarcodeScanner.h */,
+				CE9077E520A83B7F00405EF9 /* NSXReturnThrowError.m */,
+				CE9077E620A83B7F00405EF9 /* DDHidDevice.h */,
+				CE9077E720A83B7F00405EF9 /* DDHidUsage.h */,
+				CE9077E820A83B7F00405EF9 /* DDHidMouse.m */,
+				CE9077E920A83B7F00405EF9 /* DDHidKeyboard.m */,
+				CE9077EA20A83B7F00405EF9 /* DDHidEvent.h */,
+				CE9077EB20A83B7F00405EF9 /* NSDictionary+DDHidExtras.m */,
+				CE9077EC20A83B7F00405EF9 /* DDHidJoystick.h */,
+				CE9077ED20A83B7F00405EF9 /* DDHidUsageTables.m */,
+				CE9077EE20A83B7F00405EF9 /* DDHidAppleRemote.h */,
+				CE9077EF20A83B7F00405EF9 /* DDHidLib.h */,
+				CE9077F020A83B7F00405EF9 /* DDHidElement.m */,
+				CE9077F120A83B7F00405EF9 /* DDHidUsage.m */,
+				CE9077F220A83B7F00405EF9 /* DDHidDevice.m */,
+				CE9077F320A83B7F00405EF9 /* NSXReturnThrowError.h */,
+				CE9077F420A83B7F00405EF9 /* DDHidAppleMikey.m */,
+				CE9077F520A83B7F00405EF9 /* DDHidKeyboardBarcodeScanner.m */,
+				CE9077F620A83B7F00405EF9 /* DDHidQueue.m */,
+			);
+			path = DDHIDLib;
+			sourceTree = "<group>";
+		};
+		CE90781120A8403000405EF9 /* Servo */ = {
+			isa = PBXGroup;
+			children = (
+				CE90781E20A8405800405EF9 /* ByteUnion.hpp */,
+				CE90781B20A8404A00405EF9 /* Serial.cpp */,
+				CE90781C20A8404A00405EF9 /* Serial.hpp */,
+				CE90781720A8403B00405EF9 /* DynamicDynamixel.cpp */,
+				CE90781220A8403B00405EF9 /* DynamicDynamixel.hpp */,
+				CE90781420A8403B00405EF9 /* DynamicFutaba.cpp */,
+				CE90781320A8403B00405EF9 /* DynamicFutaba.hpp */,
+				CE90781520A8403B00405EF9 /* DynamicServo.cpp */,
+				CE90781620A8403B00405EF9 /* DynamicServo.hpp */,
+			);
+			path = Servo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE9077C120A83B5300405EF9 /* ServoController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE9077D320A83B5400405EF9 /* Build configuration list for PBXNativeTarget "ServoController" */;
+			buildPhases = (
+				CE9077BE20A83B5300405EF9 /* Sources */,
+				CE9077BF20A83B5300405EF9 /* Frameworks */,
+				CE9077C020A83B5300405EF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ServoController;
+			productName = ServoController;
+			productReference = CE9077C220A83B5300405EF9 /* ServoController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE9077BA20A83B5300405EF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = mtkrtk;
+				TargetAttributes = {
+					CE9077C120A83B5300405EF9 = {
+						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = CE9077BD20A83B5300405EF9 /* Build configuration list for PBXProject "ServoController" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE9077B920A83B5300405EF9;
+			productRefGroup = CE9077C320A83B5300405EF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE9077C120A83B5300405EF9 /* ServoController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE9077C020A83B5300405EF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9077FC20A83B7F00405EF9 /* DDHidStandardUsages.plist in Resources */,
+				CE9077C920A83B5400405EF9 /* Assets.xcassets in Resources */,
+				CE9077CC20A83B5400405EF9 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE9077BE20A83B5300405EF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE90780220A83B7F00405EF9 /* DDHidKeyboard.m in Sources */,
+				CE90781820A8403B00405EF9 /* DynamicFutaba.cpp in Sources */,
+				CE90780B20A83B7F00405EF9 /* GamepadController.m in Sources */,
+				CE90781D20A8404A00405EF9 /* Serial.cpp in Sources */,
+				CE90780320A83B7F00405EF9 /* NSDictionary+DDHidExtras.m in Sources */,
+				CE90780920A83B7F00405EF9 /* DDHidKeyboardBarcodeScanner.m in Sources */,
+				CE9077FE20A83B7F00405EF9 /* DDHidAppleRemote.m in Sources */,
+				CE90780520A83B7F00405EF9 /* DDHidElement.m in Sources */,
+				CE90781A20A8403B00405EF9 /* DynamicDynamixel.cpp in Sources */,
+				CE90781920A8403B00405EF9 /* DynamicServo.cpp in Sources */,
+				CE9077FD20A83B7F00405EF9 /* DDHidEvent.m in Sources */,
+				CE90780620A83B7F00405EF9 /* DDHidUsage.m in Sources */,
+				CE90780820A83B7F00405EF9 /* DDHidAppleMikey.m in Sources */,
+				CE9077CF20A83B5400405EF9 /* main.m in Sources */,
+				CE90780A20A83B7F00405EF9 /* DDHidQueue.m in Sources */,
+				CE90780D20A83B7F00405EF9 /* WirelessXBoxController.m in Sources */,
+				CE90780120A83B7F00405EF9 /* DDHidMouse.m in Sources */,
+				CE9077FF20A83B7F00405EF9 /* DDHidJoystick.m in Sources */,
+				CE9077C720A83B5300405EF9 /* AppDelegate.mm in Sources */,
+				CE90781020A83F7E00405EF9 /* RDTPPacket.c in Sources */,
+				CE90780C20A83B7F00405EF9 /* WiredXBoxController.m in Sources */,
+				CE90780420A83B7F00405EF9 /* DDHidUsageTables.m in Sources */,
+				CE90780720A83B7F00405EF9 /* DDHidDevice.m in Sources */,
+				CE90780020A83B7F00405EF9 /* NSXReturnThrowError.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE9077CA20A83B5400405EF9 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE9077CB20A83B5400405EF9 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE9077D120A83B5400405EF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CE9077D220A83B5400405EF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CE9077D420A83B5400405EF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ServoController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mtkrtk.ServoController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CE9077D520A83B5400405EF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ServoController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mtkrtk.ServoController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE9077BD20A83B5300405EF9 /* Build configuration list for PBXProject "ServoController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9077D120A83B5400405EF9 /* Debug */,
+				CE9077D220A83B5400405EF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE9077D320A83B5400405EF9 /* Build configuration list for PBXNativeTarget "ServoController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9077D420A83B5400405EF9 /* Debug */,
+				CE9077D520A83B5400405EF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE9077BA20A83B5300405EF9 /* Project object */;
+}
