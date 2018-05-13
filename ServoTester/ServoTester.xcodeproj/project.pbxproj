@@ -11,10 +11,7 @@
 		CEA071212060FE2F005697AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA071202060FE2F005697AC /* Assets.xcassets */; };
 		CEA071242060FE2F005697AC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA071222060FE2F005697AC /* MainMenu.xib */; };
 		CEA071272060FE2F005697AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA071262060FE2F005697AC /* main.m */; };
-		CEA071382060FF05005697AC /* Servo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEA071322060FF05005697AC /* Servo.cpp */; };
 		CEA071392060FF05005697AC /* Serial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEA071332060FF05005697AC /* Serial.cpp */; };
-		CEA0713A2060FF05005697AC /* Dynamixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEA071352060FF05005697AC /* Dynamixel.cpp */; };
-		CEA0713B2060FF05005697AC /* Futaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEA071362060FF05005697AC /* Futaba.cpp */; };
 		CEA0713E20610900005697AC /* DynamicServo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEA0713C20610900005697AC /* DynamicServo.cpp */; };
 		CEA0714420610A28005697AC /* DynamicFutaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEA0714220610A28005697AC /* DynamicFutaba.cpp */; };
 		CEA0714720612502005697AC /* DynamicDynamixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEA0714520612502005697AC /* DynamicDynamixel.cpp */; };
@@ -135,7 +132,7 @@
 		CEA071122060FE2F005697AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = mtkrtk;
 				TargetAttributes = {
 					CEA071192060FE2F005697AC = {
@@ -189,10 +186,7 @@
 				CEA0714420610A28005697AC /* DynamicFutaba.cpp in Sources */,
 				CEA0714720612502005697AC /* DynamicDynamixel.cpp in Sources */,
 				CEA0711F2060FE2F005697AC /* AppDelegate.mm in Sources */,
-				CEA0713B2060FF05005697AC /* Futaba.cpp in Sources */,
-				CEA071382060FF05005697AC /* Servo.cpp in Sources */,
 				CEA071392060FF05005697AC /* Serial.cpp in Sources */,
-				CEA0713A2060FF05005697AC /* Dynamixel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +218,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -231,6 +226,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -279,6 +275,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -286,6 +283,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
