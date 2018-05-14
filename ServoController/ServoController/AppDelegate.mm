@@ -88,6 +88,13 @@ static AppDelegate *sharedInstance;
     gamepad.delegate = self;
 }
 
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    for (int i = 0; i < NumOfServos; ++i) {
+        servo[i]->setTorque(false);
+    }
+}
+
 - (void)gamepad:(GamepadController *)gamepad updateValue:(int)value forStickAxis:(GamepadStickAxis)stick
 {
     switch (stick) {
