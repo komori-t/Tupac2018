@@ -52,7 +52,11 @@
 
 - (IBAction)positionSliderDidChange:(NSSlider *)sender
 {
-    servo->setPosition(sender.doubleValue);
+    Serial::Error error;
+    servo->setPosition(sender.doubleValue, &error);
+    if (error != Serial::Error::NoError) {
+        printf("Error: %d\n", error);
+    }
 }
 
 - (IBAction)connect:(NSButton *)sender
@@ -71,12 +75,14 @@
     servo->setTorque(true);
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
         Serial::Error error;
-        double pos = servo->position(&error);
+        double pos = self->servo->position(&error);
         if (error == Serial::Error::NoError) {
             self.positionLabel.doubleValue = pos;
         } else {
             self.positionLabel.stringValue = @"Failed";
         }
+//        double pos = self->servo->position(nullptr);
+//        self.positionLabel.doubleValue = pos;
     }];
 }
 

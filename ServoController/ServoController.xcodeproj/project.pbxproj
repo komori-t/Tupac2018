@@ -30,10 +30,12 @@
 		CE90780C20A83B7F00405EF9 /* WiredXBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077F820A83B7F00405EF9 /* WiredXBoxController.m */; };
 		CE90780D20A83B7F00405EF9 /* WirelessXBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9077FB20A83B7F00405EF9 /* WirelessXBoxController.m */; };
 		CE90781020A83F7E00405EF9 /* RDTPPacket.c in Sources */ = {isa = PBXBuildFile; fileRef = CE90780E20A83F7E00405EF9 /* RDTPPacket.c */; };
-		CE90781820A8403B00405EF9 /* DynamicFutaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE90781420A8403B00405EF9 /* DynamicFutaba.cpp */; };
-		CE90781920A8403B00405EF9 /* DynamicServo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE90781520A8403B00405EF9 /* DynamicServo.cpp */; };
-		CE90781A20A8403B00405EF9 /* DynamicDynamixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE90781720A8403B00405EF9 /* DynamicDynamixel.cpp */; };
-		CE90781D20A8404A00405EF9 /* Serial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE90781B20A8404A00405EF9 /* Serial.cpp */; };
+		CEDF25C820A96DCE00B01C9E /* Serial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25C520A96DCE00B01C9E /* Serial.cpp */; };
+		CEDF25CF20A96DD800B01C9E /* DynamicDynamixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25C920A96DD700B01C9E /* DynamicDynamixel.cpp */; };
+		CEDF25D020A96DD800B01C9E /* DynamicFutaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25CB20A96DD700B01C9E /* DynamicFutaba.cpp */; };
+		CEDF25D120A96DD800B01C9E /* DynamicServo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25CC20A96DD800B01C9E /* DynamicServo.cpp */; };
+		CEDF25D420A9799D00B01C9E /* ServoLimitter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25D320A9799D00B01C9E /* ServoLimitter.m */; };
+		CEDF25D720A9847400B01C9E /* ServoConverter.c in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25D620A9847400B01C9E /* ServoConverter.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,15 +85,20 @@
 		CE9077FB20A83B7F00405EF9 /* WirelessXBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WirelessXBoxController.m; sourceTree = "<group>"; };
 		CE90780E20A83F7E00405EF9 /* RDTPPacket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RDTPPacket.c; sourceTree = "<group>"; };
 		CE90780F20A83F7E00405EF9 /* RDTPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDTPPacket.h; sourceTree = "<group>"; };
-		CE90781220A8403B00405EF9 /* DynamicDynamixel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicDynamixel.hpp; path = ../../../ServoTester/ServoTester/DynamicDynamixel.hpp; sourceTree = "<group>"; };
-		CE90781320A8403B00405EF9 /* DynamicFutaba.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicFutaba.hpp; path = ../../../ServoTester/ServoTester/DynamicFutaba.hpp; sourceTree = "<group>"; };
-		CE90781420A8403B00405EF9 /* DynamicFutaba.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicFutaba.cpp; path = ../../../ServoTester/ServoTester/DynamicFutaba.cpp; sourceTree = "<group>"; };
-		CE90781520A8403B00405EF9 /* DynamicServo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicServo.cpp; path = ../../../ServoTester/ServoTester/DynamicServo.cpp; sourceTree = "<group>"; };
-		CE90781620A8403B00405EF9 /* DynamicServo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicServo.hpp; path = ../../../ServoTester/ServoTester/DynamicServo.hpp; sourceTree = "<group>"; };
-		CE90781720A8403B00405EF9 /* DynamicDynamixel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicDynamixel.cpp; path = ../../../ServoTester/ServoTester/DynamicDynamixel.cpp; sourceTree = "<group>"; };
-		CE90781B20A8404A00405EF9 /* Serial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Serial.cpp; path = ../../../Servo/Servo/Serial.cpp; sourceTree = "<group>"; };
-		CE90781C20A8404A00405EF9 /* Serial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Serial.hpp; path = ../../../Servo/Servo/Serial.hpp; sourceTree = "<group>"; };
-		CE90781E20A8405800405EF9 /* ByteUnion.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ByteUnion.hpp; path = ../../../Servo/Servo/ByteUnion.hpp; sourceTree = "<group>"; };
+		CEDF25C520A96DCE00B01C9E /* Serial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Serial.cpp; path = ../../../Servo/Servo/Serial.cpp; sourceTree = "<group>"; };
+		CEDF25C620A96DCE00B01C9E /* ByteUnion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ByteUnion.hpp; path = ../../../Servo/Servo/ByteUnion.hpp; sourceTree = "<group>"; };
+		CEDF25C720A96DCE00B01C9E /* Serial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Serial.hpp; path = ../../../Servo/Servo/Serial.hpp; sourceTree = "<group>"; };
+		CEDF25C920A96DD700B01C9E /* DynamicDynamixel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicDynamixel.cpp; path = ../../../ServoTester/ServoTester/DynamicDynamixel.cpp; sourceTree = "<group>"; };
+		CEDF25CA20A96DD700B01C9E /* DynamicFutaba.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicFutaba.hpp; path = ../../../ServoTester/ServoTester/DynamicFutaba.hpp; sourceTree = "<group>"; };
+		CEDF25CB20A96DD700B01C9E /* DynamicFutaba.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicFutaba.cpp; path = ../../../ServoTester/ServoTester/DynamicFutaba.cpp; sourceTree = "<group>"; };
+		CEDF25CC20A96DD800B01C9E /* DynamicServo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicServo.cpp; path = ../../../ServoTester/ServoTester/DynamicServo.cpp; sourceTree = "<group>"; };
+		CEDF25CD20A96DD800B01C9E /* DynamicServo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicServo.hpp; path = ../../../ServoTester/ServoTester/DynamicServo.hpp; sourceTree = "<group>"; };
+		CEDF25CE20A96DD800B01C9E /* DynamicDynamixel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DynamicDynamixel.hpp; path = ../../../ServoTester/ServoTester/DynamicDynamixel.hpp; sourceTree = "<group>"; };
+		CEDF25D220A9799D00B01C9E /* ServoLimitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServoLimitter.h; sourceTree = "<group>"; };
+		CEDF25D320A9799D00B01C9E /* ServoLimitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServoLimitter.m; sourceTree = "<group>"; };
+		CEDF25D520A9847400B01C9E /* ServoConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServoConverter.h; sourceTree = "<group>"; };
+		CEDF25D620A9847400B01C9E /* ServoConverter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ServoConverter.c; sourceTree = "<group>"; };
+		CEDF25D820A9856E00B01C9E /* GamepadConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GamepadConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,10 +131,12 @@
 		CE9077C420A83B5300405EF9 /* ServoController */ = {
 			isa = PBXGroup;
 			children = (
-				CE90781120A8403000405EF9 /* Servo */,
+				CEDF25C420A96DBF00B01C9E /* Servo */,
 				CE9077D620A83B7F00405EF9 /* Gamepad */,
 				CE9077C520A83B5300405EF9 /* AppDelegate.h */,
 				CE9077C620A83B5300405EF9 /* AppDelegate.mm */,
+				CEDF25D220A9799D00B01C9E /* ServoLimitter.h */,
+				CEDF25D320A9799D00B01C9E /* ServoLimitter.m */,
 				CE90780F20A83F7E00405EF9 /* RDTPPacket.h */,
 				CE90780E20A83F7E00405EF9 /* RDTPPacket.c */,
 				CE9077C820A83B5400405EF9 /* Assets.xcassets */,
@@ -135,6 +144,8 @@
 				CE9077CD20A83B5400405EF9 /* Info.plist */,
 				CE9077CE20A83B5400405EF9 /* main.m */,
 				CE9077D020A83B5400405EF9 /* ServoController.entitlements */,
+				CEDF25D520A9847400B01C9E /* ServoConverter.h */,
+				CEDF25D620A9847400B01C9E /* ServoConverter.c */,
 			);
 			path = ServoController;
 			sourceTree = "<group>";
@@ -149,6 +160,7 @@
 				CE9077F920A83B7F00405EF9 /* WiredXBoxController.h */,
 				CE9077FA20A83B7F00405EF9 /* GamepadController.h */,
 				CE9077FB20A83B7F00405EF9 /* WirelessXBoxController.m */,
+				CEDF25D820A9856E00B01C9E /* GamepadConstants.h */,
 			);
 			path = Gamepad;
 			sourceTree = "<group>";
@@ -190,18 +202,18 @@
 			path = DDHIDLib;
 			sourceTree = "<group>";
 		};
-		CE90781120A8403000405EF9 /* Servo */ = {
+		CEDF25C420A96DBF00B01C9E /* Servo */ = {
 			isa = PBXGroup;
 			children = (
-				CE90781E20A8405800405EF9 /* ByteUnion.hpp */,
-				CE90781B20A8404A00405EF9 /* Serial.cpp */,
-				CE90781C20A8404A00405EF9 /* Serial.hpp */,
-				CE90781720A8403B00405EF9 /* DynamicDynamixel.cpp */,
-				CE90781220A8403B00405EF9 /* DynamicDynamixel.hpp */,
-				CE90781420A8403B00405EF9 /* DynamicFutaba.cpp */,
-				CE90781320A8403B00405EF9 /* DynamicFutaba.hpp */,
-				CE90781520A8403B00405EF9 /* DynamicServo.cpp */,
-				CE90781620A8403B00405EF9 /* DynamicServo.hpp */,
+				CEDF25C920A96DD700B01C9E /* DynamicDynamixel.cpp */,
+				CEDF25CE20A96DD800B01C9E /* DynamicDynamixel.hpp */,
+				CEDF25CB20A96DD700B01C9E /* DynamicFutaba.cpp */,
+				CEDF25CA20A96DD700B01C9E /* DynamicFutaba.hpp */,
+				CEDF25CC20A96DD800B01C9E /* DynamicServo.cpp */,
+				CEDF25CD20A96DD800B01C9E /* DynamicServo.hpp */,
+				CEDF25C620A96DCE00B01C9E /* ByteUnion.hpp */,
+				CEDF25C520A96DCE00B01C9E /* Serial.cpp */,
+				CEDF25C720A96DCE00B01C9E /* Serial.hpp */,
 			);
 			path = Servo;
 			sourceTree = "<group>";
@@ -282,17 +294,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE90780220A83B7F00405EF9 /* DDHidKeyboard.m in Sources */,
-				CE90781820A8403B00405EF9 /* DynamicFutaba.cpp in Sources */,
 				CE90780B20A83B7F00405EF9 /* GamepadController.m in Sources */,
-				CE90781D20A8404A00405EF9 /* Serial.cpp in Sources */,
 				CE90780320A83B7F00405EF9 /* NSDictionary+DDHidExtras.m in Sources */,
 				CE90780920A83B7F00405EF9 /* DDHidKeyboardBarcodeScanner.m in Sources */,
 				CE9077FE20A83B7F00405EF9 /* DDHidAppleRemote.m in Sources */,
 				CE90780520A83B7F00405EF9 /* DDHidElement.m in Sources */,
-				CE90781A20A8403B00405EF9 /* DynamicDynamixel.cpp in Sources */,
-				CE90781920A8403B00405EF9 /* DynamicServo.cpp in Sources */,
 				CE9077FD20A83B7F00405EF9 /* DDHidEvent.m in Sources */,
+				CEDF25CF20A96DD800B01C9E /* DynamicDynamixel.cpp in Sources */,
+				CEDF25D020A96DD800B01C9E /* DynamicFutaba.cpp in Sources */,
 				CE90780620A83B7F00405EF9 /* DDHidUsage.m in Sources */,
+				CEDF25D720A9847400B01C9E /* ServoConverter.c in Sources */,
 				CE90780820A83B7F00405EF9 /* DDHidAppleMikey.m in Sources */,
 				CE9077CF20A83B5400405EF9 /* main.m in Sources */,
 				CE90780A20A83B7F00405EF9 /* DDHidQueue.m in Sources */,
@@ -303,6 +314,9 @@
 				CE90781020A83F7E00405EF9 /* RDTPPacket.c in Sources */,
 				CE90780C20A83B7F00405EF9 /* WiredXBoxController.m in Sources */,
 				CE90780420A83B7F00405EF9 /* DDHidUsageTables.m in Sources */,
+				CEDF25C820A96DCE00B01C9E /* Serial.cpp in Sources */,
+				CEDF25D120A96DD800B01C9E /* DynamicServo.cpp in Sources */,
+				CEDF25D420A9799D00B01C9E /* ServoLimitter.m in Sources */,
 				CE90780720A83B7F00405EF9 /* DDHidDevice.m in Sources */,
 				CE90780020A83B7F00405EF9 /* NSXReturnThrowError.m in Sources */,
 			);

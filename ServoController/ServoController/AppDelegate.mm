@@ -2,13 +2,17 @@
 #import "RDTPPacket.h"
 #import "DynamicDynamixel.hpp"
 #import "Serial.hpp"
+#import "ServoLimitter.h"
+#import "ServoConverter.h"
 #import <CoreFoundation/CoreFoundation.h>
 #import <IOKit/IOKitLib.h>
 #import <IOKit/serial/IOSerialKeys.h>
 #import <IOKit/serial/ioss.h>
 #import <IOKit/IOBSD.h>
 
-#define NumOfServos 1
+#define NumOfServos 3
+
+static AppDelegate *sharedInstance;
 
 @interface AppDelegate ()
 @property (weak) IBOutlet NSWindow *window;
@@ -21,6 +25,7 @@
     NSTimer *timer;
     Serial *serial;
     DynamicDynamixel *servo[NumOfServos];
+    ServoLimitter *limitters[NumOfServos];
 }
 
 - (NSArray *)availableDevices
@@ -49,19 +54,29 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    sharedInstance = self;
     RDTPPacket_init(&packet);
     NSArray<NSString *> *devices = [self availableDevices];
     if ([devices count]) {
         bool success;
-        serial = new Serial([devices[0] UTF8String], 9600, success);
+        serial = new Serial([devices[0] UTF8String], B115200, success);
         if (! success) {
             [NSApp terminate:self];
         }
     } else {
         [NSApp terminate:self];
     }
+    Serial::Error error;
     for (int i = 0; i < NumOfServos; ++i) {
         servo[i] = new DynamicDynamixel(serial, i);
+        servo[i]->setTorque(true, &error);
+        if (error != Serial::Error::NoError) printf("Error: %d\n", error);
+        servo[i]->setPosition(180.0, &error);
+        if (error != Serial::Error::NoError) printf("Error: %d\n", error);
+        limitters[i] = [[ServoLimitter alloc] initWithServo:(RDTPPacketComponent)(Servo0 + i) packet:&packet];
+        limitters[i].currentValue = 0;
+        limitters[i].upperLimit = 64;
+        limitters[i].lowerLimit = -64;
     }
     timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self
                                            selector:@selector(controlServo:)
@@ -95,17 +110,29 @@
         default:
             break;
     }
+    ServoConverter_convert(stick, value);
 }
 
 - (void)controlServo:(NSTimer *)timer
 {
     int8_t value;
     RDTPPacketComponent component;
-    while (RDTPPacket_getReceiveData(&packet, &value, &component) == DataAvailable) {
+    for (int i = 0; i < NumOfServos; ++i) {
+        [limitters[i] update];
+    }
+    RDTPPacketBuffer buffer;
+    int length;
+    RDTPPacket_getSendData(&packet, &buffer, &length);
+    if (length == 0) {
+        return;
+    }
+    RDTPPacket receivePacket;
+    RDTPPacket_initWithBytes(&receivePacket, buffer.buffer, length);
+    while (RDTPPacket_getReceiveData(&receivePacket, &value, &component) == DataAvailable) {
         if (Servo0 <= component && component <= Servo9) {
             int index = component - Servo0;
             if (index < NumOfServos) {
-                double angle = 360 * (value + INT8_MIN);
+                double angle = 360 * (value + 128) / 255;
                 Serial::Error error;
                 servo[index]->setPosition(angle, &error);
                 if (error != Serial::Error::NoError) {
@@ -114,6 +141,13 @@
             }
         }
     }
+}
+
+void ServoConverter_setServoSpeed(RDTPPacketComponent servo, int speed)
+{
+    int index = servo - Servo0;
+    if (! (0 <= index && index < NumOfServos)) return;
+    [sharedInstance->limitters[index] updateStep:speed];
 }
 
 @end

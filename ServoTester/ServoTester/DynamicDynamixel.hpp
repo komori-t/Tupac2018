@@ -176,10 +176,10 @@ public:
         writeMemory<116>(position, error);
     }
     void setPosition(double position, Serial::Error *error = nullptr) {
-        writeMemory<116>(static_cast<int32_t>(position * 4096 / 180), error);
+        writeMemory<116>(static_cast<int32_t>(position * 4096 / 360), error);
     }
     double position(Serial::Error *error = nullptr) {
-        return readMemory<132, int32_t>(error) * 360 / 4096;
+        return readMemory<132, int32_t>(error) * 360.0 / 4096;
     }
     int32_t intPosition(Serial::Error *error = nullptr) {
         return readMemory<132, int32_t>(error);
