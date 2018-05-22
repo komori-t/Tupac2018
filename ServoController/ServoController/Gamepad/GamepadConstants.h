@@ -1,6 +1,8 @@
 #ifndef __GamepadStickAxis__
 #define __GamepadStickAxis__
 
+#import "DDHidJoystick.h"
+
 #define GAMEPAD_MAX DDHID_JOYSTICK_VALUE_MAX
 #define GAMEPAD_MIN DDHID_JOYSTICK_VALUE_MIN
 

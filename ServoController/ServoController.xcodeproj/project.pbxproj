@@ -35,7 +35,7 @@
 		CEDF25D020A96DD800B01C9E /* DynamicFutaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25CB20A96DD700B01C9E /* DynamicFutaba.cpp */; };
 		CEDF25D120A96DD800B01C9E /* DynamicServo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25CC20A96DD800B01C9E /* DynamicServo.cpp */; };
 		CEDF25D420A9799D00B01C9E /* ServoLimitter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25D320A9799D00B01C9E /* ServoLimitter.m */; };
-		CEDF25D720A9847400B01C9E /* ServoConverter.c in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25D620A9847400B01C9E /* ServoConverter.c */; };
+		CEDF25D720A9847400B01C9E /* ServoConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF25D620A9847400B01C9E /* ServoConverter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,7 +97,7 @@
 		CEDF25D220A9799D00B01C9E /* ServoLimitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServoLimitter.h; sourceTree = "<group>"; };
 		CEDF25D320A9799D00B01C9E /* ServoLimitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServoLimitter.m; sourceTree = "<group>"; };
 		CEDF25D520A9847400B01C9E /* ServoConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServoConverter.h; sourceTree = "<group>"; };
-		CEDF25D620A9847400B01C9E /* ServoConverter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ServoConverter.c; sourceTree = "<group>"; };
+		CEDF25D620A9847400B01C9E /* ServoConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServoConverter.m; sourceTree = "<group>"; };
 		CEDF25D820A9856E00B01C9E /* GamepadConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GamepadConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,7 +145,7 @@
 				CE9077CE20A83B5400405EF9 /* main.m */,
 				CE9077D020A83B5400405EF9 /* ServoController.entitlements */,
 				CEDF25D520A9847400B01C9E /* ServoConverter.h */,
-				CEDF25D620A9847400B01C9E /* ServoConverter.c */,
+				CEDF25D620A9847400B01C9E /* ServoConverter.m */,
 			);
 			path = ServoController;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 				CEDF25CF20A96DD800B01C9E /* DynamicDynamixel.cpp in Sources */,
 				CEDF25D020A96DD800B01C9E /* DynamicFutaba.cpp in Sources */,
 				CE90780620A83B7F00405EF9 /* DDHidUsage.m in Sources */,
-				CEDF25D720A9847400B01C9E /* ServoConverter.c in Sources */,
+				CEDF25D720A9847400B01C9E /* ServoConverter.m in Sources */,
 				CE90780820A83B7F00405EF9 /* DDHidAppleMikey.m in Sources */,
 				CE9077CF20A83B5400405EF9 /* main.m in Sources */,
 				CE90780A20A83B7F00405EF9 /* DDHidQueue.m in Sources */,
