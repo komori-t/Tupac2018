@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48ED2C476373CD17A322DB34 /* libPods-Controller.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A97CE45328F7E554712250 /* libPods-Controller.a */; };
+		CE1901F320C9FB6200634D11 /* DDHidStandardUsages.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1901D020C9FB6200634D11 /* DDHidStandardUsages.plist */; };
+		CE1901F420C9FB6200634D11 /* DDHidEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901D220C9FB6200634D11 /* DDHidEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901F520C9FB6200634D11 /* DDHidAppleRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901D520C9FB6200634D11 /* DDHidAppleRemote.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901F620C9FB6200634D11 /* DDHidJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901D720C9FB6200634D11 /* DDHidJoystick.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901F720C9FB6200634D11 /* NSXReturnThrowError.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901DB20C9FB6200634D11 /* NSXReturnThrowError.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901F820C9FB6200634D11 /* DDHidMouse.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901DE20C9FB6200634D11 /* DDHidMouse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901F920C9FB6200634D11 /* DDHidKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901DF20C9FB6200634D11 /* DDHidKeyboard.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901FA20C9FB6200634D11 /* NSDictionary+DDHidExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901E120C9FB6200634D11 /* NSDictionary+DDHidExtras.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901FB20C9FB6200634D11 /* DDHidUsageTables.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901E320C9FB6200634D11 /* DDHidUsageTables.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901FC20C9FB6200634D11 /* DDHidElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901E620C9FB6200634D11 /* DDHidElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901FD20C9FB6200634D11 /* DDHidUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901E720C9FB6200634D11 /* DDHidUsage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901FE20C9FB6200634D11 /* DDHidDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901E820C9FB6200634D11 /* DDHidDevice.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE1901FF20C9FB6200634D11 /* DDHidAppleMikey.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901EA20C9FB6200634D11 /* DDHidAppleMikey.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE19020020C9FB6200634D11 /* DDHidKeyboardBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901EB20C9FB6200634D11 /* DDHidKeyboardBarcodeScanner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE19020120C9FB6200634D11 /* DDHidQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901EC20C9FB6200634D11 /* DDHidQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE19020220C9FB6200634D11 /* GamepadController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901ED20C9FB6200634D11 /* GamepadController.m */; };
+		CE19020320C9FB6200634D11 /* WiredXBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901EE20C9FB6200634D11 /* WiredXBoxController.m */; };
+		CE19020420C9FB6200634D11 /* WirelessXBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901F220C9FB6200634D11 /* WirelessXBoxController.m */; };
+		CE19020D20C9FDE200634D11 /* RDTP.m in Sources */ = {isa = PBXBuildFile; fileRef = CE19020520C9FDE100634D11 /* RDTP.m */; };
+		CE19020E20C9FDE200634D11 /* StickConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE19020620C9FDE100634D11 /* StickConverter.m */; };
+		CE19020F20C9FDE200634D11 /* Transport.m in Sources */ = {isa = PBXBuildFile; fileRef = CE19020720C9FDE100634D11 /* Transport.m */; };
+		CE19021320C9FE3000634D11 /* RDTPPacket.c in Sources */ = {isa = PBXBuildFile; fileRef = CE19021120C9FE3000634D11 /* RDTPPacket.c */; };
+		CE19021620CA618B00634D11 /* ServoLimitter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE19021520CA618B00634D11 /* ServoLimitter.m */; };
+		CE7B580E20C9FA5900D75C63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B580D20C9FA5900D75C63 /* AppDelegate.m */; };
+		CE7B581020C9FA5B00D75C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7B580F20C9FA5B00D75C63 /* Assets.xcassets */; };
+		CE7B581320C9FA5B00D75C63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7B581120C9FA5B00D75C63 /* MainMenu.xib */; };
+		CE7B581620C9FA5B00D75C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B581520C9FA5B00D75C63 /* main.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B3B24BDCAF9D032491A9320 /* Pods-Controller.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controller.release.xcconfig"; path = "Pods/Target Support Files/Pods-Controller/Pods-Controller.release.xcconfig"; sourceTree = "<group>"; };
+		CE1901CD20C9FB6200634D11 /* WirelessXBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessXBoxController.h; sourceTree = "<group>"; };
+		CE1901CF20C9FB6200634D11 /* DDHidMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidMouse.h; sourceTree = "<group>"; };
+		CE1901D020C9FB6200634D11 /* DDHidStandardUsages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DDHidStandardUsages.plist; sourceTree = "<group>"; };
+		CE1901D120C9FB6200634D11 /* NSDictionary+DDHidExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DDHidExtras.h"; sourceTree = "<group>"; };
+		CE1901D220C9FB6200634D11 /* DDHidEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidEvent.m; sourceTree = "<group>"; };
+		CE1901D320C9FB6200634D11 /* DDHidKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidKeyboard.h; sourceTree = "<group>"; };
+		CE1901D420C9FB6200634D11 /* DDHidElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidElement.h; sourceTree = "<group>"; };
+		CE1901D520C9FB6200634D11 /* DDHidAppleRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidAppleRemote.m; sourceTree = "<group>"; };
+		CE1901D620C9FB6200634D11 /* DDHidUsageTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidUsageTables.h; sourceTree = "<group>"; };
+		CE1901D720C9FB6200634D11 /* DDHidJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidJoystick.m; sourceTree = "<group>"; };
+		CE1901D820C9FB6200634D11 /* DDHidQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidQueue.h; sourceTree = "<group>"; };
+		CE1901D920C9FB6200634D11 /* DDHidAppleMikey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidAppleMikey.h; sourceTree = "<group>"; };
+		CE1901DA20C9FB6200634D11 /* DDHidKeyboardBarcodeScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidKeyboardBarcodeScanner.h; sourceTree = "<group>"; };
+		CE1901DB20C9FB6200634D11 /* NSXReturnThrowError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSXReturnThrowError.m; sourceTree = "<group>"; };
+		CE1901DC20C9FB6200634D11 /* DDHidDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidDevice.h; sourceTree = "<group>"; };
+		CE1901DD20C9FB6200634D11 /* DDHidUsage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidUsage.h; sourceTree = "<group>"; };
+		CE1901DE20C9FB6200634D11 /* DDHidMouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidMouse.m; sourceTree = "<group>"; };
+		CE1901DF20C9FB6200634D11 /* DDHidKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidKeyboard.m; sourceTree = "<group>"; };
+		CE1901E020C9FB6200634D11 /* DDHidEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidEvent.h; sourceTree = "<group>"; };
+		CE1901E120C9FB6200634D11 /* NSDictionary+DDHidExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DDHidExtras.m"; sourceTree = "<group>"; };
+		CE1901E220C9FB6200634D11 /* DDHidJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidJoystick.h; sourceTree = "<group>"; };
+		CE1901E320C9FB6200634D11 /* DDHidUsageTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidUsageTables.m; sourceTree = "<group>"; };
+		CE1901E420C9FB6200634D11 /* DDHidAppleRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidAppleRemote.h; sourceTree = "<group>"; };
+		CE1901E520C9FB6200634D11 /* DDHidLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidLib.h; sourceTree = "<group>"; };
+		CE1901E620C9FB6200634D11 /* DDHidElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidElement.m; sourceTree = "<group>"; };
+		CE1901E720C9FB6200634D11 /* DDHidUsage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidUsage.m; sourceTree = "<group>"; };
+		CE1901E820C9FB6200634D11 /* DDHidDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidDevice.m; sourceTree = "<group>"; };
+		CE1901E920C9FB6200634D11 /* NSXReturnThrowError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSXReturnThrowError.h; sourceTree = "<group>"; };
+		CE1901EA20C9FB6200634D11 /* DDHidAppleMikey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidAppleMikey.m; sourceTree = "<group>"; };
+		CE1901EB20C9FB6200634D11 /* DDHidKeyboardBarcodeScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidKeyboardBarcodeScanner.m; sourceTree = "<group>"; };
+		CE1901EC20C9FB6200634D11 /* DDHidQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHidQueue.m; sourceTree = "<group>"; };
+		CE1901ED20C9FB6200634D11 /* GamepadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamepadController.m; sourceTree = "<group>"; };
+		CE1901EE20C9FB6200634D11 /* WiredXBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiredXBoxController.m; sourceTree = "<group>"; };
+		CE1901EF20C9FB6200634D11 /* GamepadConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamepadConstants.h; sourceTree = "<group>"; };
+		CE1901F020C9FB6200634D11 /* WiredXBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiredXBoxController.h; sourceTree = "<group>"; };
+		CE1901F120C9FB6200634D11 /* GamepadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamepadController.h; sourceTree = "<group>"; };
+		CE1901F220C9FB6200634D11 /* WirelessXBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WirelessXBoxController.m; sourceTree = "<group>"; };
+		CE19020520C9FDE100634D11 /* RDTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDTP.m; sourceTree = "<group>"; };
+		CE19020620C9FDE100634D11 /* StickConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickConverter.m; sourceTree = "<group>"; };
+		CE19020720C9FDE100634D11 /* Transport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transport.m; sourceTree = "<group>"; };
+		CE19020A20C9FDE100634D11 /* StickConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickConverter.h; sourceTree = "<group>"; };
+		CE19020B20C9FDE100634D11 /* RDTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDTP.h; sourceTree = "<group>"; };
+		CE19020C20C9FDE100634D11 /* Transport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transport.h; sourceTree = "<group>"; };
+		CE19021120C9FE3000634D11 /* RDTPPacket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = RDTPPacket.c; path = ../../Robot/RDTPPacket.c; sourceTree = "<group>"; };
+		CE19021220C9FE3000634D11 /* RDTPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDTPPacket.h; path = ../../Robot/RDTPPacket.h; sourceTree = "<group>"; };
+		CE19021420CA618B00634D11 /* ServoLimitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServoLimitter.h; path = ../../ServoController/ServoController/ServoLimitter.h; sourceTree = "<group>"; };
+		CE19021520CA618B00634D11 /* ServoLimitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServoLimitter.m; path = ../../ServoController/ServoController/ServoLimitter.m; sourceTree = "<group>"; };
+		CE7B580920C9FA5900D75C63 /* Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controller.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7B580C20C9FA5900D75C63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE7B580D20C9FA5900D75C63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE7B580F20C9FA5B00D75C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE7B581220C9FA5B00D75C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CE7B581420C9FA5B00D75C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7B581520C9FA5B00D75C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE7B581720C9FA5B00D75C63 /* Controller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controller.entitlements; sourceTree = "<group>"; };
+		E02FFEDFB7C485CF02DB9249 /* Pods-Controller.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controller.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Controller/Pods-Controller.debug.xcconfig"; sourceTree = "<group>"; };
+		E6A97CE45328F7E554712250 /* libPods-Controller.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Controller.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE7B580620C9FA5900D75C63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48ED2C476373CD17A322DB34 /* libPods-Controller.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0698CBB0A35F3719D9C4A40B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E02FFEDFB7C485CF02DB9249 /* Pods-Controller.debug.xcconfig */,
+				1B3B24BDCAF9D032491A9320 /* Pods-Controller.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE1901CC20C9FB6200634D11 /* Gamepad */ = {
+			isa = PBXGroup;
+			children = (
+				CE1901CD20C9FB6200634D11 /* WirelessXBoxController.h */,
+				CE1901CE20C9FB6200634D11 /* DDHIDLib */,
+				CE1901ED20C9FB6200634D11 /* GamepadController.m */,
+				CE1901EE20C9FB6200634D11 /* WiredXBoxController.m */,
+				CE1901EF20C9FB6200634D11 /* GamepadConstants.h */,
+				CE1901F020C9FB6200634D11 /* WiredXBoxController.h */,
+				CE1901F120C9FB6200634D11 /* GamepadController.h */,
+				CE1901F220C9FB6200634D11 /* WirelessXBoxController.m */,
+			);
+			name = Gamepad;
+			path = ../../ServoController/ServoController/Gamepad;
+			sourceTree = "<group>";
+		};
+		CE1901CE20C9FB6200634D11 /* DDHIDLib */ = {
+			isa = PBXGroup;
+			children = (
+				CE1901CF20C9FB6200634D11 /* DDHidMouse.h */,
+				CE1901D020C9FB6200634D11 /* DDHidStandardUsages.plist */,
+				CE1901D120C9FB6200634D11 /* NSDictionary+DDHidExtras.h */,
+				CE1901D220C9FB6200634D11 /* DDHidEvent.m */,
+				CE1901D320C9FB6200634D11 /* DDHidKeyboard.h */,
+				CE1901D420C9FB6200634D11 /* DDHidElement.h */,
+				CE1901D520C9FB6200634D11 /* DDHidAppleRemote.m */,
+				CE1901D620C9FB6200634D11 /* DDHidUsageTables.h */,
+				CE1901D720C9FB6200634D11 /* DDHidJoystick.m */,
+				CE1901D820C9FB6200634D11 /* DDHidQueue.h */,
+				CE1901D920C9FB6200634D11 /* DDHidAppleMikey.h */,
+				CE1901DA20C9FB6200634D11 /* DDHidKeyboardBarcodeScanner.h */,
+				CE1901DB20C9FB6200634D11 /* NSXReturnThrowError.m */,
+				CE1901DC20C9FB6200634D11 /* DDHidDevice.h */,
+				CE1901DD20C9FB6200634D11 /* DDHidUsage.h */,
+				CE1901DE20C9FB6200634D11 /* DDHidMouse.m */,
+				CE1901DF20C9FB6200634D11 /* DDHidKeyboard.m */,
+				CE1901E020C9FB6200634D11 /* DDHidEvent.h */,
+				CE1901E120C9FB6200634D11 /* NSDictionary+DDHidExtras.m */,
+				CE1901E220C9FB6200634D11 /* DDHidJoystick.h */,
+				CE1901E320C9FB6200634D11 /* DDHidUsageTables.m */,
+				CE1901E420C9FB6200634D11 /* DDHidAppleRemote.h */,
+				CE1901E520C9FB6200634D11 /* DDHidLib.h */,
+				CE1901E620C9FB6200634D11 /* DDHidElement.m */,
+				CE1901E720C9FB6200634D11 /* DDHidUsage.m */,
+				CE1901E820C9FB6200634D11 /* DDHidDevice.m */,
+				CE1901E920C9FB6200634D11 /* NSXReturnThrowError.h */,
+				CE1901EA20C9FB6200634D11 /* DDHidAppleMikey.m */,
+				CE1901EB20C9FB6200634D11 /* DDHidKeyboardBarcodeScanner.m */,
+				CE1901EC20C9FB6200634D11 /* DDHidQueue.m */,
+			);
+			path = DDHIDLib;
+			sourceTree = "<group>";
+		};
+		CE7B580020C9FA5900D75C63 = {
+			isa = PBXGroup;
+			children = (
+				CE7B580B20C9FA5900D75C63 /* Controller */,
+				CE7B580A20C9FA5900D75C63 /* Products */,
+				0698CBB0A35F3719D9C4A40B /* Pods */,
+				F47EB5451EDADFDF636A1494 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CE7B580A20C9FA5900D75C63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE7B580920C9FA5900D75C63 /* Controller.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE7B580B20C9FA5900D75C63 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE1901CC20C9FB6200634D11 /* Gamepad */,
+				CE7B580C20C9FA5900D75C63 /* AppDelegate.h */,
+				CE7B580D20C9FA5900D75C63 /* AppDelegate.m */,
+				CE19020B20C9FDE100634D11 /* RDTP.h */,
+				CE19020520C9FDE100634D11 /* RDTP.m */,
+				CE19020A20C9FDE100634D11 /* StickConverter.h */,
+				CE19020620C9FDE100634D11 /* StickConverter.m */,
+				CE19020C20C9FDE100634D11 /* Transport.h */,
+				CE19020720C9FDE100634D11 /* Transport.m */,
+				CE19021220C9FE3000634D11 /* RDTPPacket.h */,
+				CE19021120C9FE3000634D11 /* RDTPPacket.c */,
+				CE19021420CA618B00634D11 /* ServoLimitter.h */,
+				CE19021520CA618B00634D11 /* ServoLimitter.m */,
+				CE7B580F20C9FA5B00D75C63 /* Assets.xcassets */,
+				CE7B581120C9FA5B00D75C63 /* MainMenu.xib */,
+				CE7B581420C9FA5B00D75C63 /* Info.plist */,
+				CE7B581520C9FA5B00D75C63 /* main.m */,
+				CE7B581720C9FA5B00D75C63 /* Controller.entitlements */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F47EB5451EDADFDF636A1494 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6A97CE45328F7E554712250 /* libPods-Controller.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE7B580820C9FA5900D75C63 /* Controller */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE7B581A20C9FA5B00D75C63 /* Build configuration list for PBXNativeTarget "Controller" */;
+			buildPhases = (
+				7346C7DA1BD42F79D9DECD36 /* [CP] Check Pods Manifest.lock */,
+				CE7B580520C9FA5900D75C63 /* Sources */,
+				CE7B580620C9FA5900D75C63 /* Frameworks */,
+				CE7B580720C9FA5900D75C63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Controller;
+			productName = Controller;
+			productReference = CE7B580920C9FA5900D75C63 /* Controller.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE7B580120C9FA5900D75C63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = USER;
+				TargetAttributes = {
+					CE7B580820C9FA5900D75C63 = {
+						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = CE7B580420C9FA5900D75C63 /* Build configuration list for PBXProject "Controller" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE7B580020C9FA5900D75C63;
+			productRefGroup = CE7B580A20C9FA5900D75C63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE7B580820C9FA5900D75C63 /* Controller */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE7B580720C9FA5900D75C63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1901F320C9FB6200634D11 /* DDHidStandardUsages.plist in Resources */,
+				CE7B581020C9FA5B00D75C63 /* Assets.xcassets in Resources */,
+				CE7B581320C9FA5B00D75C63 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7346C7DA1BD42F79D9DECD36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Controller-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE7B580520C9FA5900D75C63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1901F920C9FB6200634D11 /* DDHidKeyboard.m in Sources */,
+				CE19020220C9FB6200634D11 /* GamepadController.m in Sources */,
+				CE1901FA20C9FB6200634D11 /* NSDictionary+DDHidExtras.m in Sources */,
+				CE19020020C9FB6200634D11 /* DDHidKeyboardBarcodeScanner.m in Sources */,
+				CE1901F520C9FB6200634D11 /* DDHidAppleRemote.m in Sources */,
+				CE1901FC20C9FB6200634D11 /* DDHidElement.m in Sources */,
+				CE1901F420C9FB6200634D11 /* DDHidEvent.m in Sources */,
+				CE1901FD20C9FB6200634D11 /* DDHidUsage.m in Sources */,
+				CE1901FF20C9FB6200634D11 /* DDHidAppleMikey.m in Sources */,
+				CE7B581620C9FA5B00D75C63 /* main.m in Sources */,
+				CE19020120C9FB6200634D11 /* DDHidQueue.m in Sources */,
+				CE19020420C9FB6200634D11 /* WirelessXBoxController.m in Sources */,
+				CE19020E20C9FDE200634D11 /* StickConverter.m in Sources */,
+				CE1901F820C9FB6200634D11 /* DDHidMouse.m in Sources */,
+				CE1901F620C9FB6200634D11 /* DDHidJoystick.m in Sources */,
+				CE19020F20C9FDE200634D11 /* Transport.m in Sources */,
+				CE7B580E20C9FA5900D75C63 /* AppDelegate.m in Sources */,
+				CE19020D20C9FDE200634D11 /* RDTP.m in Sources */,
+				CE19020320C9FB6200634D11 /* WiredXBoxController.m in Sources */,
+				CE19021620CA618B00634D11 /* ServoLimitter.m in Sources */,
+				CE1901FB20C9FB6200634D11 /* DDHidUsageTables.m in Sources */,
+				CE1901FE20C9FB6200634D11 /* DDHidDevice.m in Sources */,
+				CE1901F720C9FB6200634D11 /* NSXReturnThrowError.m in Sources */,
+				CE19021320C9FE3000634D11 /* RDTPPacket.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE7B581120C9FA5B00D75C63 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7B581220C9FA5B00D75C63 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE7B581820C9FA5B00D75C63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CE7B581920C9FA5B00D75C63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CE7B581B20C9FA5B00D75C63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E02FFEDFB7C485CF02DB9249 /* Pods-Controller.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Controller/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mtkrtk.Controller;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CE7B581C20C9FA5B00D75C63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B3B24BDCAF9D032491A9320 /* Pods-Controller.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Controller/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mtkrtk.Controller;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE7B580420C9FA5900D75C63 /* Build configuration list for PBXProject "Controller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7B581820C9FA5B00D75C63 /* Debug */,
+				CE7B581920C9FA5B00D75C63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE7B581A20C9FA5B00D75C63 /* Build configuration list for PBXNativeTarget "Controller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7B581B20C9FA5B00D75C63 /* Debug */,
+				CE7B581C20C9FA5B00D75C63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE7B580120C9FA5900D75C63 /* Project object */;
+}
