@@ -1,4 +1,4 @@
-update=2018年03月13日 火曜日 11:27:13
+update=2018年05月02日 水曜日 18:53:44
 version=1
 last_client=kicad
 [pcbnew]
@@ -61,3 +61,13 @@ LibName29=valves
 LibName30=USB2517/USB2517
 LibName31=NJM2884/NJM2884U1-33
 LibName32=Oscillators
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60

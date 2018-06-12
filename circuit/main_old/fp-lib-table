@@ -1,5 +1,0 @@
-(fp_lib_table
-  (lib (name okl-t_6-w12n-c)(type KiCad)(uri "$(KIPRJMOD)/okl-t_6-w12n-c.pretty")(options "")(descr ""))
-  (lib (name SW_PUSH_SMD)(type KiCad)(uri "$(KIPRJMOD)/SW_PUSH_SMD.pretty")(options "")(descr ""))
-  (lib (name Wire_Pad_5)(type KiCad)(uri "$(KIPRJMOD)/Wire_Pad_5.pretty")(options "")(descr ""))
-)

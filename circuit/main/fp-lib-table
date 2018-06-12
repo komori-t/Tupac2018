@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name M78A)(type KiCad)(uri "$(KIPRJMOD)/M78A.pretty")(options "")(descr ""))
-)
