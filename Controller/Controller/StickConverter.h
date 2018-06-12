@@ -7,6 +7,6 @@
 @property BOOL shouldFlip;
 
 - (instancetype)initWithRDTPPacket:(RDTPPacket *)packet;
-- (NSData *)makePacketData;
+- (void)updatePacket;
 
 @end

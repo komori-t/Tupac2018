@@ -11,9 +11,10 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="foundCheck" destination="dOK-wM-Wwc" id="bAE-W5-4vV"/>
                 <outlet property="imageView" destination="orz-SI-PrS" id="35Q-we-pT1"/>
                 <outlet property="leftMotorSlider" destination="Cuh-SZ-JKu" id="Jxg-Hl-lPa"/>
                 <outlet property="rightMotorSlider" destination="5l5-Um-ReH" id="35X-AS-l8S"/>
@@ -711,6 +712,14 @@
                         <connections>
                             <action selector="flip:" target="Voe-Tx-rLC" id="FaP-L4-KGn"/>
                         </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOK-wM-Wwc">
+                        <rect key="frame" x="55" y="79" width="22" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="OGG-jr-9ML">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
                     </button>
                 </subviews>
             </view>

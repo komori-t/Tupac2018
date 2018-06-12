@@ -6,6 +6,7 @@
 @property (weak) IBOutlet NSSlider *leftMotorSlider;
 @property (weak) IBOutlet NSSlider *rightMotorSlider;
 @property (weak) IBOutlet NSImageView *imageView;
+@property (weak) IBOutlet NSButton *foundCheck;
 
 - (IBAction)flip:(NSButton *)sender;
 - (IBAction)nextCamera:(NSButton *)sender;

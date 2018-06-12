@@ -24,7 +24,6 @@ static const int SmallMaxPower = 38;
         max = 0;
         maxPower = MediumMaxPower;
         packet = aPacket;
-        RDTPPacket_init(packet);
         self.shouldFlip = NO;
         servo = 0;
         
@@ -197,18 +196,10 @@ static const int SmallMaxPower = 38;
     return;
 }
 
-- (NSData *)makePacketData
+- (void)updatePacket
 {
     for (ServoLimitter *limitter in limitters) {
         [limitter update];
-    }
-    RDTPPacketBuffer buf;
-    int length;
-    RDTPPacket_getSendData(packet, &buf, &length);
-    if (length) {
-        return [NSData dataWithBytes:buf.buffer length:length];
-    } else {
-        return nil;
     }
 }
 

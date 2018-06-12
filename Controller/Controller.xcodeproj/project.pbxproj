@@ -28,7 +28,6 @@
 		CE19020420C9FB6200634D11 /* WirelessXBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901F220C9FB6200634D11 /* WirelessXBoxController.m */; };
 		CE19020D20C9FDE200634D11 /* RDTP.m in Sources */ = {isa = PBXBuildFile; fileRef = CE19020520C9FDE100634D11 /* RDTP.m */; };
 		CE19020E20C9FDE200634D11 /* StickConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE19020620C9FDE100634D11 /* StickConverter.m */; };
-		CE19020F20C9FDE200634D11 /* Transport.m in Sources */ = {isa = PBXBuildFile; fileRef = CE19020720C9FDE100634D11 /* Transport.m */; };
 		CE19021320C9FE3000634D11 /* RDTPPacket.c in Sources */ = {isa = PBXBuildFile; fileRef = CE19021120C9FE3000634D11 /* RDTPPacket.c */; };
 		CE19021620CA618B00634D11 /* ServoLimitter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE19021520CA618B00634D11 /* ServoLimitter.m */; };
 		CE7B580E20C9FA5900D75C63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B580D20C9FA5900D75C63 /* AppDelegate.m */; };
@@ -78,10 +77,8 @@
 		CE1901F220C9FB6200634D11 /* WirelessXBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WirelessXBoxController.m; sourceTree = "<group>"; };
 		CE19020520C9FDE100634D11 /* RDTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDTP.m; sourceTree = "<group>"; };
 		CE19020620C9FDE100634D11 /* StickConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickConverter.m; sourceTree = "<group>"; };
-		CE19020720C9FDE100634D11 /* Transport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transport.m; sourceTree = "<group>"; };
 		CE19020A20C9FDE100634D11 /* StickConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickConverter.h; sourceTree = "<group>"; };
 		CE19020B20C9FDE100634D11 /* RDTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDTP.h; sourceTree = "<group>"; };
-		CE19020C20C9FDE100634D11 /* Transport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transport.h; sourceTree = "<group>"; };
 		CE19021120C9FE3000634D11 /* RDTPPacket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = RDTPPacket.c; path = ../../Robot/RDTPPacket.c; sourceTree = "<group>"; };
 		CE19021220C9FE3000634D11 /* RDTPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDTPPacket.h; path = ../../Robot/RDTPPacket.h; sourceTree = "<group>"; };
 		CE19021420CA618B00634D11 /* ServoLimitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServoLimitter.h; path = ../../ServoController/ServoController/ServoLimitter.h; sourceTree = "<group>"; };
@@ -200,8 +197,6 @@
 				CE19020520C9FDE100634D11 /* RDTP.m */,
 				CE19020A20C9FDE100634D11 /* StickConverter.h */,
 				CE19020620C9FDE100634D11 /* StickConverter.m */,
-				CE19020C20C9FDE100634D11 /* Transport.h */,
-				CE19020720C9FDE100634D11 /* Transport.m */,
 				CE19021220C9FE3000634D11 /* RDTPPacket.h */,
 				CE19021120C9FE3000634D11 /* RDTPPacket.c */,
 				CE19021420CA618B00634D11 /* ServoLimitter.h */,
@@ -335,7 +330,6 @@
 				CE19020E20C9FDE200634D11 /* StickConverter.m in Sources */,
 				CE1901F820C9FB6200634D11 /* DDHidMouse.m in Sources */,
 				CE1901F620C9FB6200634D11 /* DDHidJoystick.m in Sources */,
-				CE19020F20C9FDE200634D11 /* Transport.m in Sources */,
 				CE7B580E20C9FA5900D75C63 /* AppDelegate.m in Sources */,
 				CE19020D20C9FDE200634D11 /* RDTP.m in Sources */,
 				CE19020320C9FB6200634D11 /* WiredXBoxController.m in Sources */,

@@ -1,22 +1,26 @@
 #import "RDTP.h"
-#import "StickConverter.h"
 #include <netinet/in.h>
 
 const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNotification";
 
 @implementation RDTP
 {
-    Transport *transport;
+    GCDAsyncUdpSocket *socket;
+    dispatch_queue_t socketDelegateQueue;
+    NSData *greetingData;
+    NSData *discoverResponse;
     NSData *remoteAddress;
     NSTimer *sendTimer;
-    StickConverter *converter;
+    BOOL isSearching;
+    long tag;
+    RDTPPacket packet;
     
     NSData *soi;
     NSData *eoi;
     NSMutableData *frameData;
 }
 
-- (instancetype)initWithTransport:(Transport *)aTransport
+- (instancetype)init
 {
     if (self = [super init]) {
         uint16_t value = 0xD8FF;
@@ -25,54 +29,103 @@ const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNoti
         eoi = [NSData dataWithBytes:&value length:2];
         frameData = nil;
         
-        converter = [[StickConverter alloc] init];
-        transport = aTransport;
-        transport.delegate = self;
-        [transport openWithPort:RDTP_PORT];
+        greetingData = [NSData dataWithBytes:RDTP_SearchingMessage length:strlen(RDTP_SearchingMessage)];
+        discoverResponse = [NSData dataWithBytes:RDTP_DiscoverResponse length:strlen(RDTP_DiscoverResponse)];
+        isSearching = YES;
+        RDTPPacket_init(&packet);
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(robotDidFoundCallback:)
-                                                     name:RDTPRobotDidFoundNotification
-                                                   object:self];
-        sendTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
+        socketDelegateQueue = dispatch_queue_create("TransportSocketDelegateQUeue", DISPATCH_QUEUE_SERIAL);
+        socket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:socketDelegateQueue];
+        tag = 0;
+        
+        NSError *error = nil;
+        [socket bindToPort:RDTP_PORT error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+            return nil;
+        }
+        
+        [socket beginReceiving:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+            return nil;
+        }
+        
+        [socket enableBroadcast:YES error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+            return nil;
+        }
+        
+        sendTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                      target:self
-                                                   selector:@selector(sendData:)
+                                                   selector:@selector(sendGreeting:)
                                                    userInfo:nil
                                                     repeats:YES];
     }
     return self;
 }
 
-- (void)robotDidFoundCallback:(NSNotification *)notification
+- (void)sendGreeting:(NSTimer *)timer
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    sendTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(sendData:)
-                                      userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:sendTimer forMode:NSDefaultRunLoopMode];
+    [socket sendData:greetingData toHost:@"255.255.255.255" port:RDTP_PORT withTimeout:-1 tag:0];
 }
 
 - (void)sendData:(NSTimer *)timer
 {
-    @synchronized (self) {
-        NSData *packet = [self.delegate RDTPWillSendPacket:self];
-//        if (packet && packet.length && remoteAddress) {
-//            [transport sendData:packet toAddress:remoteAddress];
-//        }
-        [transport sendData:packet toAddress:remoteAddress];
+    [self.delegate RDTP:self willSendPacket:&packet];
+    RDTPPacketBuffer buf;
+    int length;
+    RDTPPacket_getSendData(&packet, &buf, &length);
+    NSData *data = [NSData dataWithBytes:buf.buffer length:length];
+    [socket sendData:data toAddress:remoteAddress withTimeout:-1 tag:tag];
+}
+
+- (RDTPPacket *)packet
+{
+    return &packet;
+}
+
+- (void)shutdown
+{
+    if (isSearching) {
+        [[NSApplication sharedApplication] replyToApplicationShouldTerminate:YES];
+    } else {
+        RDTPPacket_setCommand(&packet, Shutdown);
+        tag = 1;
+        [self sendData:sendTimer];
     }
 }
 
-- (void)transport:(Transport *)transport didReceiveData:(NSData *)data fromAddress:(NSData *)addressData
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag
 {
-    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    if ([string isEqualToString:@"This is a robot\n"]) {
-        struct sockaddr_in address;
-        memcpy(&address, [addressData bytes], sizeof(struct sockaddr_in));
-        address.sin_port = htons(RDTP_PORT);
-        
-        remoteAddress = [NSData dataWithBytes:&address length:sizeof(struct sockaddr_in)];
-        [[NSNotificationCenter defaultCenter] postNotificationName:RDTPRobotDidFoundNotification
-                                                            object:self];
+    if (tag) {
+        [[NSApplication sharedApplication] replyToApplicationShouldTerminate:YES];
+    }
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
+      fromAddress:(NSData *)address withFilterContext:(id)filterContext
+{
+    if (isSearching) {
+        if ([data isEqualToData:discoverResponse]) {
+            isSearching = NO;
+            [sendTimer invalidate];
+            NSError *error;
+//            [socket connectToAddress:address error:&error];
+//            if (error) {
+//                NSLog(@"%@", [error localizedDescription]);
+//            }
+            remoteAddress = address;
+            [socket enableBroadcast:NO error:&error];
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            [self.delegate RDTPDidFoundRobot:self];
+            sendTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(sendData:)
+                                              userInfo:nil repeats:YES];
+            [[NSRunLoop mainRunLoop] addTimer:sendTimer forMode:NSDefaultRunLoopMode];
+        }
     } else {
         [self.delegate RDTP:self videoFrameAvailable:data];
 //        if (frameData) {
@@ -105,6 +158,21 @@ const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNoti
 //            }
 //        }
     }
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotConnect:(NSError *)error
+{
+    NSLog(@"didNotConnect: %@", [error localizedDescription]);
+}
+
+- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
+{
+    NSLog(@"didNotSendDataWithTag: %@", [error localizedDescription]);
+}
+
+- (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error
+{
+    NSLog(@"udpSocketDidClose: %@", [error localizedDescription]);
 }
 
 @end

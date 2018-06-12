@@ -9,36 +9,31 @@
 @implementation AppDelegate
 {
     RDTP *rdtp;
-    Transport *transport;
     GamepadController *gamepad;
     StickConverter *converter;
-    RDTPPacket packet;
     int videoIndex;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    videoIndex = 0;
-    transport = [[Transport alloc] init];
+    videoIndex = 1;
     gamepad = [GamepadController controller];
-    converter = [[StickConverter alloc] initWithRDTPPacket:&packet];
+    rdtp = [[RDTP alloc] init];
+    converter = [[StickConverter alloc] initWithRDTPPacket:[rdtp packet]];
     gamepad.delegate = converter;
-    rdtp = [[RDTP alloc] initWithTransport:transport];
     rdtp.delegate = self;
 }
 
-- (void)applicationWillFinishLaunching:(NSNotification *)notification
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {
-    RDTPPacket_setCommand(&packet, Shutdown);
-    NSData *data = [converter makePacketData];
-    [transport sendData:data toAddress:nil];
+    [rdtp shutdown];
+    return NSTerminateLater;
 }
 
-- (NSData *)RDTPWillSendPacket:(RDTP *)app
+- (void)RDTP:(RDTP *)app willSendPacket:(RDTPPacket *)packet
 {
-    NSData *packetData = [converter makePacketData];
-    RDTPPacket dummyPacket;
-    RDTPPacket_initWithBytes(&dummyPacket, (int8_t *)packetData.bytes, (int)packetData.length);
+    [converter updatePacket];
+    RDTPPacket dummyPacket = *packet;
     int8_t value;
     RDTPPacketComponent component;
     BOOL shouldContinue = YES;
@@ -82,13 +77,19 @@
                 break;
         }
     }
-    return packetData;
 }
 
 - (void)RDTP:(RDTP *)app videoFrameAvailable:(NSData *)jpg
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.imageView.image = [[NSImage alloc] initWithData:jpg];
+    });
+}
+
+- (void)RDTPDidFoundRobot:(RDTP *)app
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.foundCheck.state = NSControlStateValueOn;
     });
 }
 
@@ -99,17 +100,17 @@
 - (IBAction)nextCamera:(NSButton *)sender
 {
     if (videoIndex == 0) {
-        RDTPPacket_setCommand(&packet, StartVideo0);
+        RDTPPacket_setCommand([rdtp packet], StartVideo0);
         videoIndex = 1;
     } else {
-        RDTPPacket_setCommand(&packet, StartVideo1);
+        RDTPPacket_setCommand([rdtp packet], StartVideo1);
         videoIndex = 0;
     }
 }
 
 - (IBAction)stopCamera:(NSButton *)sender
 {
-    RDTPPacket_setCommand(&packet, StopVideo);
+    RDTPPacket_setCommand([rdtp packet], StopVideo);
 }
 
 @end

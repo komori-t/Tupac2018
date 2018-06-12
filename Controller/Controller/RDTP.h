@@ -1,8 +1,6 @@
-#import <Foundation/Foundation.h>
-#import "Transport.h"
+#import <Cocoa/Cocoa.h>
+#import "GCDAsyncUDPSocket.h"
 #import "RDTPPacket.h"
-
-extern const NSNotificationName RDTPRobotDidFoundNotification;
 
 @class RDTP;
 
@@ -10,14 +8,15 @@ extern const NSNotificationName RDTPRobotDidFoundNotification;
 
 @required
 - (void)RDTP:(RDTP *)app videoFrameAvailable:(NSData *)jpg;
-- (NSData *)RDTPWillSendPacket:(RDTP *)app;
+- (void)RDTP:(RDTP *)app willSendPacket:(RDTPPacket *)packet;
+- (void)RDTPDidFoundRobot:(RDTP *)app;
 
 @end
 
-@interface RDTP : NSObject <TransportDelegate>
+@interface RDTP : NSObject <GCDAsyncUdpSocketDelegate>
 
 @property NSObject<RDTPDelegate> *delegate;
-
-- (instancetype)initWithTransport:(Transport *)transport;
+- (void)shutdown;
+- (RDTPPacket *)packet;
 
 @end
