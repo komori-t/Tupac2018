@@ -28,12 +28,12 @@ public:
     int read(int address, char *data, int length, bool repeated = false) {
         readMsg.addr = address;
         readMsg.len = length;
-        readMsg.buf = data;
-        struct i2c_rdwr_ioctl_data data;
+        readMsg.buf = reinterpret_cast<uint8_t *>(data);
+        struct i2c_rdwr_ioctl_data ioData;
         struct i2c_msg msgs[2] = {writeMsg, readMsg};
-        data.msgs = msgs;
-        data.nmsgs = 2;
-        if (ioctl(fd, I2C_RDWR, &data) < 0) {
+        ioData.msgs = msgs;
+        ioData.nmsgs = 2;
+        if (ioctl(fd, I2C_RDWR, &ioData) < 0) {
             perror("ioctl");
             return 1;
         }
@@ -42,7 +42,7 @@ public:
     int write(int address, const char *data, int length, bool repeated = false) {
         writeMsg.addr = address;
         writeMsg.len = length;
-        writeMsg.buf = data;
+        writeMsg.buf = const_cast<uint8_t *>(reinterpret_cast<const uint8_t *>(data));
         if (repeated) {
             return 0;
         } else {
