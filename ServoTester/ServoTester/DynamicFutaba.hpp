@@ -97,11 +97,10 @@ public:
     DynamicFutaba(Serial *serial, uint8_t id) : DynamicServo(serial, id) {}
     void flashROM() {
         const std::array<uint8_t, 8> flashPacket({
-            0xFA, 0xAF, id, 0x41, 0xFF, 0, 0,
-            static_cast<uint8_t>(id ^ 0x41 ^ 0xFF)
+            0xFA, 0xAF, id, 0x40, 0xFF, 0, 0,
+            static_cast<uint8_t>(id ^ 0x40 ^ 0xFF)
         });
-        std::array<uint8_t, 1> ack;
-        this->serial->transfer(ack, flashPacket);
+        this->serial->transfer(flashPacket);
     }
     void reboot() {
         std::array<uint8_t, 8> rebootPacket({
@@ -129,10 +128,23 @@ public:
     double position(Serial::Error *error = nullptr) {
         return readMemory<0x2A, int16_t>(error) / 10;
     }
+    void setRightLimit(double limit, Serial::Error *error = nullptr) {
+        if (! (limit > 0 && limit < 150)) return;
+        int16_t value = limit * 10;
+        if (value > 1500) value = 1500;
+        writeMemory<0x08>(value, error);
+    }
+    void setLeftLimit(double limit, Serial::Error *error = nullptr) {
+        if (! (limit < 0 && limit > -150)) return;
+        int16_t value = limit * 10;
+        if (value < -1500) value = -1500;
+        writeMemory<0x0A>(value, error);
+    }
     void setID(uint8_t newID, Serial::Error *error = nullptr) {
         writeMemory<0x04>(newID, error);
         id = newID;
         flashROM();
+        reboot();
     }
     void setBaud(speed_t baud, Serial::Error *error = nullptr) {
         uint8_t speed = 0;

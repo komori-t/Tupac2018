@@ -45,9 +45,17 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    servo = nil;
     NSArray *devices = [self availableDevices];
     [self.deviceBox addItemsWithObjectValues:devices];
     [self.deviceBox selectItemAtIndex:0];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    if (servo) {
+        servo->setTorque(false);
+    }
 }
 
 - (IBAction)positionSliderDidChange:(NSSlider *)sender
@@ -68,7 +76,16 @@
     }
     sender.hidden = YES;
     if (self.servoSelectButton.selectedTag == 0) {
-        servo = new DynamicFutaba(serial, self.idField.integerValue);
+        DynamicFutaba *futaba = new DynamicFutaba(serial, self.idField.integerValue);
+//        Serial::Error error;
+//        futaba->setRightLimit(75, &error);
+//        if (error != Serial::Error::NoError) printf("Error: %d\n", error);
+//        futaba->setLeftLimit(-75, &error);
+//        if (error != Serial::Error::NoError) printf("Error: %d\n", error);
+//        futaba->flashROM();
+//        futaba->reboot();
+//        futaba->setTorque(true);
+        servo = futaba;
     } else {
         servo = new DynamicDynamixel(serial, self.idField.integerValue);
     }
@@ -84,6 +101,17 @@
 //        double pos = self->servo->position(nullptr);
 //        self.positionLabel.doubleValue = pos;
     }];
+}
+
+- (IBAction)changeID:(NSTextField *)sender
+{
+    if (servo) {
+        Serial::Error error;
+        servo->setID(sender.integerValue, &error);
+        if (error != Serial::Error::NoError) {
+            printf("Error: %d\n", error);
+        }
+    }
 }
 
 @end

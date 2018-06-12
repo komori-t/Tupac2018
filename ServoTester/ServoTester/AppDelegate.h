@@ -10,6 +10,7 @@
 
 - (IBAction)positionSliderDidChange:(NSSlider *)sender;
 - (IBAction)connect:(NSButton *)sender;
+- (IBAction)changeID:(NSTextField *)sender;
 
 @end
 

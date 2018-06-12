@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -706,7 +706,7 @@
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dg-I4-YC7">
                         <rect key="frame" x="18" y="114" width="367" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="360" doubleValue="180" tickMarkPosition="above" sliderType="linear" id="oWh-lV-iQS"/>
+                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="-180" maxValue="180" tickMarkPosition="above" sliderType="linear" id="oWh-lV-iQS"/>
                         <connections>
                             <action selector="positionSliderDidChange:" target="Voe-Tx-rLC" id="QA0-ua-LNB"/>
                         </connections>
@@ -743,6 +743,9 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <action selector="changeID:" target="Voe-Tx-rLC" id="zfh-PX-q1f"/>
+                        </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q4X-OT-iLJ">
                         <rect key="frame" x="246" y="89" width="35" height="17"/>
