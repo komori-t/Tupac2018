@@ -15,7 +15,7 @@ typedef struct {
 } udp_server_t;
 
 typedef struct {
-	struct sockaddr address;
+	struct sockaddr_in address;
 	socklen_t addressLength;
 } udp_address_t;
 

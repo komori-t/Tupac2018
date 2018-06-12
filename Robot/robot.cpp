@@ -2,6 +2,7 @@
 #include "RDTPPacket.h"
 #include "Serial.hpp"
 #include "Dynamixel.hpp"
+#include "ByteUnion.hpp"
 #include <signal.h>
 #include <unistd.h>
 #include <string.h>
@@ -12,6 +13,9 @@ int main()
     udp_server_init(&server, RDTP_PORT);
     RDTPPacket packet;
     RDTPPacketBuffer buffer;
+    char gstreamerAddressString[21];
+    char gstreamerPortString[11];
+    snprintf(gstreamerPortString, sizeof(gstreamerPortString), "port=%hu", RDTP_PORT);
     {
         const ssize_t messageLength = strlen(RDTP_SearchingMessage);
         udp_address_t source;
@@ -23,6 +27,10 @@ int main()
                 break;
             }
         }
+        ByteUnion<in_addr_t> address(source.address.s_addr);
+        snprintf(gstreamerAddressString, sizeof(gstreamerAddressString), 
+                 "host=%hhu.%hhu.%hhu.%hhu", address.array[0], address.array[1],
+                 address.array[2], address.array[3]);
     }
     uint8_t motorPower[2] = {0, 0};
     bool success;
@@ -87,7 +95,9 @@ int main()
                             child = fork();
                             if (child == 0) {
                                 /* child */
-                                execl("/usr/bin/gst-launch-1.0", "gst-launch-1.0", "v4l2src", "device=/dev/video0", "!", "videoscale", "!", "video/x-raw, width=320, height=240", "!", "jpegenc", "!", "udpsink", "host=192.168.11.3", "port=49153", (char *)NULL);
+                                execl("/usr/bin/gst-launch-1.0", "gst-launch-1.0", "v4l2src", "device=/dev/video0", 
+                                      "!", "videoscale", "!", "video/x-raw, width=320, height=240", "!", "jpegenc",
+                                      "!", "udpsink", gstreamerAddressString, gstreamerPortString, (char *)NULL);
                                 return 0;
                             }
                             break;
@@ -98,7 +108,9 @@ int main()
                             child = fork();
                             if (child == 0) {
                                 /* child */
-                                execl("/usr/bin/gst-launch-1.0", "gst-launch-1.0", "v4l2src", "device=/dev/video1", "!", "videoscale", "!", "video/x-raw, width=320, height=240", "!", "jpegenc", "!", "udpsink", "host=192.168.11.3", "port=49153", (char *)NULL);
+                                execl("/usr/bin/gst-launch-1.0", "gst-launch-1.0", "v4l2src", "device=/dev/video1",
+                                      "!", "videoscale", "!", "video/x-raw, width=320, height=240", "!", "jpegenc",
+                                      "!", "udpsink", gstreamerAddressString, gstreamerPortString, (char *)NULL);
                                 return 0;
                             }
                             break;

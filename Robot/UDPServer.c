@@ -33,9 +33,9 @@ ssize_t udp_server_read(udp_server_ref server, uint8_t *buf, size_t bufSize)
 
 ssize_t udp_server_readFrom(udp_server_ref server, uint8_t *buf, size_t bufSize, udp_address_t *source)
 {
-	memset(&source->address, 0, sizeof(struct sockaddr));
-	source->addressLength = sizeof(struct sockaddr);
-	return recvfrom(server->socket, buf, bufSize, 0, &source->address, &source->addressLength);
+	memset(&source->address, 0, sizeof(struct sockaddr_in));
+	source->addressLength = sizeof(struct sockaddr_in);
+	return recvfrom(server->socket, buf, bufSize, 0, (struct sockaddr *)&source->address, &source->addressLength);
 }
 
 int udp_server_connect(udp_server_ref server, const udp_address_t *destination)
