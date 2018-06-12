@@ -1,6 +1,8 @@
 #include "RDTPPacket.h"
 #include <string.h>
 
+const char *RDTP_SearchingMessage = "RDTP Search";
+const char *RDTP_DiscoverResponse = "RDTP Response";
 #define COMMAND_AVAILABLE_MAGIC (INT8_MAX)
 
 void RDTPPacket_init(RDTPPacket *packet)

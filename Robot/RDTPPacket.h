@@ -8,6 +8,8 @@ extern "C" {
 #endif
     
 #define RDTP_PORT (49153)
+extern const char *RDTP_SearchingMessage;
+extern const char *RDTP_DiscoverResponse;
 
 typedef struct {
     int count;

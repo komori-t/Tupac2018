@@ -1,11 +1,10 @@
 #include "UDPServer.h"
 #include <stdio.h>
 #include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
 #include <unistd.h>
 #include <errno.h>
 #include <stddef.h>
+#include <string.h>
 
 int udp_server_init(udp_server_ref server, uint16_t port)
 {
@@ -30,6 +29,20 @@ int udp_server_init(udp_server_ref server, uint16_t port)
 ssize_t udp_server_read(udp_server_ref server, uint8_t *buf, size_t bufSize)
 {
 	return recv(server->socket, buf, bufSize, 0);
+}
+
+ssize_t udp_server_readFrom(udp_server_ref server, uint8_t *buf, size_t bufSize, udp_address_t *source)
+{
+	memset(&source->address, 0, sizeof(struct sockaddr));
+	source->addressLength = sizeof(struct sockaddr);
+	return recvfrom(server->socket, buf, bufSize, 0, &source->address, &source->addressLength);
+}
+
+int udp_server_connect(udp_server_ref server, const udp_address_t *destination)
+{
+	int ret = connect(server->socket, &destination->address, destination->addressLength);
+	if (ret < 0) perror("connect");
+	return ret;
 }
 
 ssize_t udp_server_write(udp_server_ref server, const uint8_t *data, size_t length)

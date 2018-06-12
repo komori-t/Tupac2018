@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CEA0710F2060BDCD005697AC /* Futaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEA0710D2060BDCD005697AC /* Futaba.cpp */; };
-		CEA071102060BDCD005697AC /* Futaba.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CEA0710E2060BDCD005697AC /* Futaba.hpp */; };
+		CE9AB71B20CFE84E006B8CF1 /* Futaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9AB71920CFE84E006B8CF1 /* Futaba.cpp */; };
+		CE9AB71C20CFE84E006B8CF1 /* Futaba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9AB71920CFE84E006B8CF1 /* Futaba.cpp */; };
+		CE9AB71D20CFE84E006B8CF1 /* Futaba.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CE9AB71A20CFE84E006B8CF1 /* Futaba.hpp */; };
 		CEAB2FE320607C29009599FC /* Servo.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CEAB2FE220607C29009599FC /* Servo.hpp */; };
 		CEAB2FE720607C29009599FC /* Servo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAB2FE620607C29009599FC /* Servo.cpp */; };
 		CEAB2FEF20607DBC009599FC /* Serial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAB2FED20607DBC009599FC /* Serial.cpp */; };
@@ -33,16 +34,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CEA0710D2060BDCD005697AC /* Futaba.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Futaba.cpp; sourceTree = "<group>"; };
-		CEA0710E2060BDCD005697AC /* Futaba.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Futaba.hpp; sourceTree = "<group>"; };
+		CE9AB71920CFE84E006B8CF1 /* Futaba.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Futaba.cpp; path = ../../Robot/Futaba.cpp; sourceTree = "<group>"; };
+		CE9AB71A20CFE84E006B8CF1 /* Futaba.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Futaba.hpp; path = ../../Robot/Futaba.hpp; sourceTree = "<group>"; };
 		CEAB2FDF20607C29009599FC /* libServo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libServo.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEAB2FE220607C29009599FC /* Servo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Servo.hpp; sourceTree = "<group>"; };
-		CEAB2FE620607C29009599FC /* Servo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Servo.cpp; sourceTree = "<group>"; };
-		CEAB2FED20607DBC009599FC /* Serial.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Serial.cpp; sourceTree = "<group>"; };
-		CEAB2FEE20607DBC009599FC /* Serial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Serial.hpp; sourceTree = "<group>"; };
-		CEAB2FF120607FCE009599FC /* Dynamixel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Dynamixel.cpp; sourceTree = "<group>"; };
-		CEAB2FF220607FCE009599FC /* Dynamixel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Dynamixel.hpp; sourceTree = "<group>"; };
-		CEAB2FF520608CA6009599FC /* ByteUnion.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ByteUnion.hpp; sourceTree = "<group>"; };
+		CEAB2FE220607C29009599FC /* Servo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Servo.hpp; path = ../../Robot/Servo.hpp; sourceTree = "<group>"; };
+		CEAB2FE620607C29009599FC /* Servo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Servo.cpp; path = ../../Robot/Servo.cpp; sourceTree = "<group>"; };
+		CEAB2FED20607DBC009599FC /* Serial.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Serial.cpp; path = ../../Robot/Serial.cpp; sourceTree = "<group>"; };
+		CEAB2FEE20607DBC009599FC /* Serial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Serial.hpp; path = ../../Robot/Serial.hpp; sourceTree = "<group>"; };
+		CEAB2FF120607FCE009599FC /* Dynamixel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Dynamixel.cpp; path = ../../Robot/Dynamixel.cpp; sourceTree = "<group>"; };
+		CEAB2FF220607FCE009599FC /* Dynamixel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Dynamixel.hpp; path = ../../Robot/Dynamixel.hpp; sourceTree = "<group>"; };
+		CEAB2FF520608CA6009599FC /* ByteUnion.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ByteUnion.hpp; path = ../../Robot/ByteUnion.hpp; sourceTree = "<group>"; };
 		CEAB2FFA2060AEFA009599FC /* ServoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ServoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAB2FFC2060AEFA009599FC /* ServoTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ServoTests.mm; sourceTree = "<group>"; };
 		CEAB2FFE2060AEFA009599FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,8 +96,8 @@
 				CEAB2FED20607DBC009599FC /* Serial.cpp */,
 				CEAB2FF220607FCE009599FC /* Dynamixel.hpp */,
 				CEAB2FF120607FCE009599FC /* Dynamixel.cpp */,
-				CEA0710E2060BDCD005697AC /* Futaba.hpp */,
-				CEA0710D2060BDCD005697AC /* Futaba.cpp */,
+				CE9AB71A20CFE84E006B8CF1 /* Futaba.hpp */,
+				CE9AB71920CFE84E006B8CF1 /* Futaba.cpp */,
 			);
 			path = Servo;
 			sourceTree = "<group>";
@@ -120,7 +121,7 @@
 				CEAB2FE320607C29009599FC /* Servo.hpp in Headers */,
 				CEAB2FF020607DBC009599FC /* Serial.hpp in Headers */,
 				CEAB2FF420607FCE009599FC /* Dynamixel.hpp in Headers */,
-				CEA071102060BDCD005697AC /* Futaba.hpp in Headers */,
+				CE9AB71D20CFE84E006B8CF1 /* Futaba.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +217,7 @@
 			files = (
 				CEAB2FF320607FCE009599FC /* Dynamixel.cpp in Sources */,
 				CEAB2FE720607C29009599FC /* Servo.cpp in Sources */,
-				CEA0710F2060BDCD005697AC /* Futaba.cpp in Sources */,
+				CE9AB71B20CFE84E006B8CF1 /* Futaba.cpp in Sources */,
 				CEAB2FEF20607DBC009599FC /* Serial.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +230,7 @@
 				CEAB30072060AF1A009599FC /* Dynamixel.cpp in Sources */,
 				CEAB2FFD2060AEFA009599FC /* ServoTests.mm in Sources */,
 				CEAB30052060AF14009599FC /* Servo.cpp in Sources */,
+				CE9AB71C20CFE84E006B8CF1 /* Futaba.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

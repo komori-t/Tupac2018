@@ -4,6 +4,7 @@
 #include "Dynamixel.hpp"
 #include <signal.h>
 #include <unistd.h>
+#include <string.h>
 
 int main()
 {
@@ -11,13 +12,25 @@ int main()
     udp_server_init(&server, RDTP_PORT);
     RDTPPacket packet;
     RDTPPacketBuffer buffer;
-    uint8_t motorPower[3] = {128, 0, 0};
+    {
+        const ssize_t messageLength = strlen(RDTP_SearchingMessage);
+        udp_address_t source;
+        while (1) {
+            ssize_t length = udp_server_readFrom(&server, (uint8_t *)buffer.buffer, sizeof(buffer), &source);
+            if (length == messageLength && strncmp((char *)buffer.buffer, RDTP_SearchingMessage, messageLength) == 0) {
+                udp_server_connect(&server, &source);
+                udp_server_write(&server, (const uint8_t *)RDTP_DiscoverResponse, strlen(RDTP_DiscoverResponse));
+                break;
+            }
+        }
+    }
+    uint8_t motorPower[2] = {0, 0};
     bool success;
-    Serial serial("/dev/ttyTHS2", B9600, success);
+    Serial serial("/dev/ttyTHS2", B115200, success);
     Serial servoSerial("/dev/ttyUSB0", B115200, success);
-    Dynamixel<1> servo0(&servoSerial);
-    Dynamixel<2> servo1(&servoSerial);
-    Dynamixel<3> servo2(&servoSerial);
+    Futaba<1> servo0(&servoSerial);
+    Futaba<2> servo1(&servoSerial);
+    Futaba<3> servo2(&servoSerial);
     Serial::Error error;
     servo0.setTorque(true, &error);
     servo1.setTorque(true, &error);
@@ -35,10 +48,10 @@ int main()
                 case DataAvailable:
                     switch (component) {
                     case LeftMotor:
-                        motorPower[1] = (uint8_t)value;
+                        motorPower[0] = (uint8_t)value;
                         break;
                     case RightMotor:
-                        motorPower[2] = (uint8_t)value;
+                        motorPower[1] = (uint8_t)value;
                         break;
                     case Servo0:
                     {
@@ -111,7 +124,7 @@ int main()
                     break;
             }
         }
-        std::array<uint8_t, 3> arr({128, motorPower[1], motorPower[2]});
+        std::array<uint8_t, 3> arr({0x80, motorPower[0], motorPower[1]});
         serial.transfer(arr);
     }
     return 0;
