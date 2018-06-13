@@ -194,6 +194,13 @@ public:
     int32_t intPosition(Serial::Error *error = nullptr) {
         return readMemory<132, int32_t>(error);
     }
+    void setLED(bool led, Serial::Error *error = nullptr) {
+        if (led) {
+            writeMemory<65, 1>(error);
+        } else {
+            writeMemory<65, 0>(error);
+        }
+    }
 };
 
 #endif

@@ -1,7 +1,7 @@
 INCLUDE_PATHS = -I.
 LIBRARY_PATHS =
 LIBRARIES =
-OBJECTS = $(shell find -E . -regex '^.*\.c(pp)?$$' | sed -E -e 's/\.c(pp)?$$/.o/g')
+OBJECTS = $(shell find . -regextype gnu-awk -regex '^.*\.c(pp)?$$' | sed -E -e 's/\.c(pp)?$$/.o/g')
 TARGET = robot
 
 CC = gcc

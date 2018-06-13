@@ -40,7 +40,7 @@ ssize_t udp_server_readFrom(udp_server_ref server, uint8_t *buf, size_t bufSize,
 
 int udp_server_connect(udp_server_ref server, const udp_address_t *destination)
 {
-	int ret = connect(server->socket, &destination->address, destination->addressLength);
+	int ret = connect(server->socket, (struct sockaddr *)&destination->address, destination->addressLength);
 	if (ret < 0) perror("connect");
 	return ret;
 }

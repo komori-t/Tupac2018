@@ -2,6 +2,7 @@
 #include "RDTPPacket.h"
 #include "Serial.hpp"
 #include "Dynamixel.hpp"
+#include "Futaba.hpp"
 #include "ByteUnion.hpp"
 #include <signal.h>
 #include <unistd.h>
@@ -9,6 +10,38 @@
 
 int main()
 {
+    bool success;
+    Serial serial("/dev/ttyTHS2", B115200, success);
+    Serial servoSerial("/dev/ttyUSB0", B115200, success);
+    Futaba<1> servo0(&servoSerial);
+    Futaba<2> servo1(&servoSerial);
+    Futaba<3> servo2(&servoSerial);
+    Dynamixel<1> servo3(&servoSerial);
+    Dynamixel<2> servo4(&servoSerial);
+    Dynamixel<3> servo5(&servoSerial);
+    Dynamixel<4> servo6(&servoSerial);
+    Dynamixel<5> servo7(&servoSerial);
+    Dynamixel<6> servo8(&servoSerial);
+    Dynamixel<7> servo9(&servoSerial);
+    Serial::Error error;
+    servo0.setTorque(true, &error);
+    servo1.setTorque(true, &error);
+    servo2.setTorque(true, &error);
+    servo3.setTorque(true, &error);
+    servo4.setTorque(true, &error);
+    servo5.setTorque(true, &error);
+    servo6.setTorque(true, &error);
+    servo7.setTorque(true, &error);
+    servo8.setTorque(true, &error);
+    servo9.setTorque(true, &error);
+    servo3.setLED(true);
+    servo4.setLED(true);
+    servo5.setLED(true);
+    servo6.setLED(true);
+    servo7.setLED(true);
+    servo8.setLED(true);
+    servo9.setLED(true);
+
     udp_server_t server;
     udp_server_init(&server, RDTP_PORT);
     RDTPPacket packet;
@@ -27,22 +60,12 @@ int main()
                 break;
             }
         }
-        ByteUnion<in_addr_t> address(source.address.s_addr);
+        ByteUnion<in_addr_t> address(source.address.sin_addr.s_addr);
         snprintf(gstreamerAddressString, sizeof(gstreamerAddressString), 
                  "host=%hhu.%hhu.%hhu.%hhu", address.array[0], address.array[1],
                  address.array[2], address.array[3]);
     }
     uint8_t motorPower[2] = {0, 0};
-    bool success;
-    Serial serial("/dev/ttyTHS2", B115200, success);
-    Serial servoSerial("/dev/ttyUSB0", B115200, success);
-    Futaba<1> servo0(&servoSerial);
-    Futaba<2> servo1(&servoSerial);
-    Futaba<3> servo2(&servoSerial);
-    Serial::Error error;
-    servo0.setTorque(true, &error);
-    servo1.setTorque(true, &error);
-    servo2.setTorque(true, &error);
     pid_t child = 0;
     if (error != Serial::Error::NoError) return (int)error;
     while (1) {
@@ -77,6 +100,48 @@ int main()
                     {
                         double pos = 360.0 * value / 128;
                         servo2.setPosition(pos, &error);
+                        break;
+                    }
+                    case Servo3:
+                    {
+                        double pos = 360.0 * value / 128;
+                        servo3.setPosition(pos, &error);
+                        break;
+                    }
+                    case Servo4:
+                    {
+                        double pos = 360.0 * value / 128;
+                        servo4.setPosition(pos, &error);
+                        break;
+                    }
+                    case Servo5:
+                    {
+                        double pos = 360.0 * value / 128;
+                        servo5.setPosition(pos, &error);
+                        break;
+                    }
+                    case Servo6:
+                    {
+                        double pos = 360.0 * value / 128;
+                        servo6.setPosition(pos, &error);
+                        break;
+                    }
+                    case Servo7:
+                    {
+                        double pos = 360.0 * value / 128;
+                        servo7.setPosition(pos, &error);
+                        break;
+                    }
+                    case Servo8:
+                    {
+                        double pos = 360.0 * value / 128;
+                        servo8.setPosition(pos, &error);
+                        break;
+                    }
+                    case Servo9:
+                    {
+                        double pos = 360.0 * value / 128;
+                        servo9.setPosition(pos, &error);
                         break;
                     }
                     default:
@@ -126,6 +191,13 @@ int main()
                             servo0.setTorque(false, &error);
                             servo1.setTorque(false, &error);
                             servo2.setTorque(false, &error);
+                            servo3.setTorque(false, &error);
+                            servo4.setTorque(false, &error);
+                            servo5.setTorque(false, &error);
+                            servo6.setTorque(false, &error);
+                            servo7.setTorque(false, &error);
+                            servo8.setTorque(false, &error);
+                            servo9.setTorque(false, &error);
                             return 0;
                         default:
                             break;
