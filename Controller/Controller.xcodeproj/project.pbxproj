@@ -34,6 +34,10 @@
 		CE7B581020C9FA5B00D75C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7B580F20C9FA5B00D75C63 /* Assets.xcassets */; };
 		CE7B581320C9FA5B00D75C63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7B581120C9FA5B00D75C63 /* MainMenu.xib */; };
 		CE7B581620C9FA5B00D75C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B581520C9FA5B00D75C63 /* main.m */; };
+		CEDFB00520D0F0F100E117EB /* body.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDFB00220D0F0F000E117EB /* body.png */; };
+		CEDFB00620D0F0F100E117EB /* body2.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDFB00320D0F0F000E117EB /* body2.png */; };
+		CEDFB00720D0F0F100E117EB /* flipper.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDFB00420D0F0F000E117EB /* flipper.png */; };
+		CEDFB00B20D0F5A800E117EB /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFB00A20D0F5A800E117EB /* Aspects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +95,11 @@
 		CE7B581420C9FA5B00D75C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7B581520C9FA5B00D75C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE7B581720C9FA5B00D75C63 /* Controller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controller.entitlements; sourceTree = "<group>"; };
+		CEDFB00220D0F0F000E117EB /* body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body.png; sourceTree = "<group>"; };
+		CEDFB00320D0F0F000E117EB /* body2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body2.png; sourceTree = "<group>"; };
+		CEDFB00420D0F0F000E117EB /* flipper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipper.png; sourceTree = "<group>"; };
+		CEDFB00920D0F5A800E117EB /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		CEDFB00A20D0F5A800E117EB /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		E02FFEDFB7C485CF02DB9249 /* Pods-Controller.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controller.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Controller/Pods-Controller.debug.xcconfig"; sourceTree = "<group>"; };
 		E6A97CE45328F7E554712250 /* libPods-Controller.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Controller.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -190,6 +199,7 @@
 		CE7B580B20C9FA5900D75C63 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CEDFB00820D0F5A800E117EB /* Aspects */,
 				CE1901CC20C9FB6200634D11 /* Gamepad */,
 				CE7B580C20C9FA5900D75C63 /* AppDelegate.h */,
 				CE7B580D20C9FA5900D75C63 /* AppDelegate.m */,
@@ -205,9 +215,21 @@
 				CE7B581120C9FA5B00D75C63 /* MainMenu.xib */,
 				CE7B581420C9FA5B00D75C63 /* Info.plist */,
 				CE7B581520C9FA5B00D75C63 /* main.m */,
+				CEDFB00220D0F0F000E117EB /* body.png */,
+				CEDFB00320D0F0F000E117EB /* body2.png */,
+				CEDFB00420D0F0F000E117EB /* flipper.png */,
 				CE7B581720C9FA5B00D75C63 /* Controller.entitlements */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEDFB00820D0F5A800E117EB /* Aspects */ = {
+			isa = PBXGroup;
+			children = (
+				CEDFB00920D0F5A800E117EB /* Aspects.h */,
+				CEDFB00A20D0F5A800E117EB /* Aspects.m */,
+			);
+			path = Aspects;
 			sourceTree = "<group>";
 		};
 		F47EB5451EDADFDF636A1494 /* Frameworks */ = {
@@ -282,7 +304,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1901F320C9FB6200634D11 /* DDHidStandardUsages.plist in Resources */,
+				CEDFB00520D0F0F100E117EB /* body.png in Resources */,
+				CEDFB00720D0F0F100E117EB /* flipper.png in Resources */,
 				CE7B581020C9FA5B00D75C63 /* Assets.xcassets in Resources */,
+				CEDFB00620D0F0F100E117EB /* body2.png in Resources */,
 				CE7B581320C9FA5B00D75C63 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +363,7 @@
 				CE1901FE20C9FB6200634D11 /* DDHidDevice.m in Sources */,
 				CE1901F720C9FB6200634D11 /* NSXReturnThrowError.m in Sources */,
 				CE19021320C9FE3000634D11 /* RDTPPacket.c in Sources */,
+				CEDFB00B20D0F5A800E117EB /* Aspects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

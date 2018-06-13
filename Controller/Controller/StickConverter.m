@@ -32,6 +32,11 @@ static const int SmallMaxPower = 38;
             [mutableLimitters addObject:[[ServoLimitter alloc] initWithServo:i packet:packet]];
         }
         limitters = mutableLimitters;
+        [limitters[3] presetToAngle:0.0];
+        [limitters[4] presetToAngle:0.0];
+        [limitters[5] presetToAngle:0.0];
+        [limitters[6] presetToAngle:0.0];
+        [limitters[8] presetToAngle:180.0];
     }
     return self;
 }
@@ -68,20 +73,50 @@ static const int SmallMaxPower = 38;
             
         case BButton:
             if (value) {
-                servo |= 1 << Servo3;
+                servo |= 1 << Servo9;
             } else {
-                servo &= ~(1 << Servo3);
-                [limitters[3] updateStep:0];
+                servo &= ~(1 << Servo9);
+                [limitters[9] updateStep:0];
             }
             return;
+            
+        case Pov:
+            switch (value) {
+                case -1:
+                    servo &= ~((1 << Servo3) | (1 << Servo4) | (1 << Servo5) | (1 << Servo6) | (1 << Servo7) | (1 << Servo8));
+                    break;
+                    
+                case 0:
+                    servo &= ~((1 << Servo5) | (1 << Servo6) | (1 << Servo7) | (1 << Servo8));
+                    servo |= (1 << Servo3) | (1 << Servo4);
+                    break;
+                    
+                case 9000:
+                    servo &= ~((1 << Servo3) | (1 << Servo4) | (1 << Servo7) | (1 << Servo8));
+                    servo |= (1 << Servo5) | (1 << Servo6);
+                    break;
+                    
+                case 18000:
+                    servo &= ~((1 << Servo3) | (1 << Servo4) | (1 << Servo5) | (1 << Servo6) | (1 << Servo8));
+                    servo |= 1 << Servo7;
+                    break;
+                    
+                case 27000:
+                    servo &= ~((1 << Servo3) | (1 << Servo4) | (1 << Servo5) | (1 << Servo6) | (1 << Servo7));
+                    servo |= 1 << Servo8;
+                    break;
+                    
+                default:
+                    break;
+            }
+            break;
             
         case LeftStickY:
         {
             int8_t angle = scale(value, GAMEPAD_MAX, INT8_MAX);
-            const RDTPPacketComponent servos[] = {Servo0, Servo1, Servo2, Servo3};
-            for (int i = 0; i < sizeof(servos) / sizeof(servos[0]); ++i) {
-                if (servo & (1 << servos[i])) {
-                    [limitters[servos[i] - Servo0] updateStep:angle];
+            for (int i = Servo0; i <= Servo9; ++i) {
+                if (servo & (1 << i)) {
+                    [limitters[i - Servo0] updateStep:angle];
                 }
             }
             return;
