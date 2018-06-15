@@ -17,7 +17,7 @@ static const int SmallMaxPower = 38;
     RDTPPacketComponent servo;
 }
 
-- (instancetype)initWithRDTPPacket:(RDTPPacket *)aPacket
+- (instancetype)initWithRDTPPacket:(RDTPPacket *)aPacket initialFlipperPositions:(int32_t *)positions
 {
     if (self = [super init]) {
         lastLeftXValue = 0;
@@ -29,14 +29,13 @@ static const int SmallMaxPower = 38;
         
         NSMutableArray<ServoLimitter *> *mutableLimitters = [NSMutableArray new];
         for (RDTPPacketComponent i = Servo0; i <= Servo9; ++i) {
-            [mutableLimitters addObject:[[ServoLimitter alloc] initWithServo:i packet:packet]];
+            ServoLimitter *limitter = [[ServoLimitter alloc] initWithServo:i packet:packet];
+            [limitter presetToAngle:positions[i - Servo0]];
+            [mutableLimitters addObject:limitter];
         }
         limitters = mutableLimitters;
-        [limitters[3] presetToAngle:0.0];
-        [limitters[4] presetToAngle:0.0];
-        [limitters[5] presetToAngle:0.0];
-        [limitters[6] presetToAngle:0.0];
-        [limitters[8] presetToAngle:180.0];
+        limitters[4].shouldInvert = YES;
+        limitters[6].shouldInvert = YES;
     }
     return self;
 }
@@ -83,26 +82,27 @@ static const int SmallMaxPower = 38;
         case Pov:
             switch (value) {
                 case -1:
+                    for (RDTPPacketComponent c = Servo3; c <= Servo8; ++c) {
+                        if (servo & (1 << c)) {
+                            [limitters[c - Servo0] updateStep:0];
+                        }
+                    }
                     servo &= ~((1 << Servo3) | (1 << Servo4) | (1 << Servo5) | (1 << Servo6) | (1 << Servo7) | (1 << Servo8));
                     break;
                     
                 case 0:
-                    servo &= ~((1 << Servo5) | (1 << Servo6) | (1 << Servo7) | (1 << Servo8));
                     servo |= (1 << Servo3) | (1 << Servo4);
                     break;
                     
                 case 9000:
-                    servo &= ~((1 << Servo3) | (1 << Servo4) | (1 << Servo7) | (1 << Servo8));
                     servo |= (1 << Servo5) | (1 << Servo6);
                     break;
                     
                 case 18000:
-                    servo &= ~((1 << Servo3) | (1 << Servo4) | (1 << Servo5) | (1 << Servo6) | (1 << Servo8));
                     servo |= 1 << Servo7;
                     break;
                     
                 case 27000:
-                    servo &= ~((1 << Servo3) | (1 << Servo4) | (1 << Servo5) | (1 << Servo6) | (1 << Servo7));
                     servo |= 1 << Servo8;
                     break;
                     
@@ -113,10 +113,9 @@ static const int SmallMaxPower = 38;
             
         case LeftStickY:
         {
-            int8_t angle = scale(value, GAMEPAD_MAX, INT8_MAX);
             for (int i = Servo0; i <= Servo9; ++i) {
                 if (servo & (1 << i)) {
-                    [limitters[i - Servo0] updateStep:angle];
+                    [limitters[i - Servo0] updateStep:value];
                 }
             }
             return;
@@ -147,7 +146,6 @@ static const int SmallMaxPower = 38;
             break;
             
         case RightTriggerButton:
-//        case LeftTriggerButton:
             if (! self.shouldFlip) {
                 if (value) {
                     RDTPPacket_updateValue(packet, LeftMotor, maxPower);
@@ -156,17 +154,18 @@ static const int SmallMaxPower = 38;
                     RDTPPacket_updateValue(packet, LeftMotor, 0);
                     RDTPPacket_updateValue(packet, RightMotor, 0);
                 }
-            } else if (value) {
-                RDTPPacket_updateValue(packet, LeftMotor, -maxPower);
-                RDTPPacket_updateValue(packet, RightMotor, maxPower);
             } else {
-                RDTPPacket_updateValue(packet, LeftMotor, 0);
-                RDTPPacket_updateValue(packet, RightMotor, 0);
+                if (value) {
+                    RDTPPacket_updateValue(packet, LeftMotor, -maxPower);
+                    RDTPPacket_updateValue(packet, RightMotor, maxPower);
+                } else {
+                    RDTPPacket_updateValue(packet, LeftMotor, 0);
+                    RDTPPacket_updateValue(packet, RightMotor, 0);
+                }
             }
             return;
             
         case LeftTriggerButton:
-//        case RightTriggerButton:
             if (! self.shouldFlip) {
                 if (value) {
                     RDTPPacket_updateValue(packet, LeftMotor, -maxPower);
@@ -175,12 +174,14 @@ static const int SmallMaxPower = 38;
                     RDTPPacket_updateValue(packet, LeftMotor, 0);
                     RDTPPacket_updateValue(packet, RightMotor, 0);
                 }
-            } else if (value) {
-                RDTPPacket_updateValue(packet, LeftMotor, maxPower);
-                RDTPPacket_updateValue(packet, RightMotor, -maxPower);
             } else {
-                RDTPPacket_updateValue(packet, LeftMotor, 0);
-                RDTPPacket_updateValue(packet, RightMotor, 0);
+                if (value) {
+                    RDTPPacket_updateValue(packet, LeftMotor, maxPower);
+                    RDTPPacket_updateValue(packet, RightMotor, -maxPower);
+                } else {
+                    RDTPPacket_updateValue(packet, LeftMotor, 0);
+                    RDTPPacket_updateValue(packet, RightMotor, 0);
+                }
             }
             return;
             

@@ -95,6 +95,7 @@
 		CE7B581420C9FA5B00D75C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7B581520C9FA5B00D75C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE7B581720C9FA5B00D75C63 /* Controller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controller.entitlements; sourceTree = "<group>"; };
+		CE952B1720D374B900D2C212 /* ServoAssignment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServoAssignment.h; sourceTree = "<group>"; };
 		CEDFB00220D0F0F000E117EB /* body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body.png; sourceTree = "<group>"; };
 		CEDFB00320D0F0F000E117EB /* body2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body2.png; sourceTree = "<group>"; };
 		CEDFB00420D0F0F000E117EB /* flipper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipper.png; sourceTree = "<group>"; };
@@ -219,6 +220,7 @@
 				CEDFB00320D0F0F000E117EB /* body2.png */,
 				CEDFB00420D0F0F000E117EB /* flipper.png */,
 				CE7B581720C9FA5B00D75C63 /* Controller.entitlements */,
+				CE952B1720D374B900D2C212 /* ServoAssignment.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

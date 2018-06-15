@@ -9,7 +9,7 @@
 @required
 - (void)RDTP:(RDTP *)app videoFrameAvailable:(NSData *)jpg;
 - (void)RDTP:(RDTP *)app willSendPacket:(RDTPPacket *)packet;
-- (void)RDTPDidFoundRobot:(RDTP *)app;
+- (void)RDTPDidFoundRobot:(RDTP *)app withInitialServoPositions:(int32_t *)positions;
 
 @end
 

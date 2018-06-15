@@ -6,7 +6,7 @@
 
 @property BOOL shouldFlip;
 
-- (instancetype)initWithRDTPPacket:(RDTPPacket *)packet;
+- (instancetype)initWithRDTPPacket:(RDTPPacket *)packet initialFlipperPositions:(int32_t *)positions;
 - (void)updatePacket;
 
 @end

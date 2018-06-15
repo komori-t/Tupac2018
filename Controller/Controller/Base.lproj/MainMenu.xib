@@ -17,14 +17,28 @@
             <connections>
                 <outlet property="foundCheck" destination="fUd-gB-YfL" id="zVq-vp-If1"/>
                 <outlet property="imageView" destination="orz-SI-PrS" id="35Q-we-pT1"/>
+                <outlet property="leftBackFlipperImage" destination="cxj-4a-iNr" id="HOt-bJ-heB"/>
+                <outlet property="leftFrontFlipperImage" destination="aT9-nE-fld" id="df4-gJ-XgD"/>
                 <outlet property="leftMotorSlider" destination="Kg7-y7-eOn" id="BgZ-hP-Q9S"/>
                 <outlet property="leftTriggerSlider" destination="vQ5-9J-hQc" id="aad-bw-ODL"/>
                 <outlet property="leftXSlider" destination="1dF-7I-qo1" id="u6T-ZM-X1J"/>
                 <outlet property="leftYSlider" destination="XEI-pc-6bb" id="k9Q-Du-YZ1"/>
+                <outlet property="rightBackFlipperImage" destination="r2S-pa-Bhz" id="JUJ-uc-Ojn"/>
+                <outlet property="rightFrontFlipperImage" destination="Pdr-rT-hhh" id="hxQ-52-ZAt"/>
                 <outlet property="rightMotorSlider" destination="zOt-f7-MXq" id="WvL-aG-89h"/>
                 <outlet property="rightTriggerSlider" destination="UcG-tD-4zn" id="jf6-kG-94W"/>
                 <outlet property="rightXSlider" destination="fBw-KB-MfT" id="KXY-eE-EgT"/>
                 <outlet property="rightYSlider" destination="XuT-Nz-63K" id="eY2-YQ-ZH5"/>
+                <outlet property="testSlider0" destination="mpc-s6-EO8" id="h83-1Q-lWd"/>
+                <outlet property="testSlider1" destination="5hn-iv-tec" id="Szl-Cp-uuG"/>
+                <outlet property="testSlider2" destination="B9a-32-pAs" id="7PH-4I-FQC"/>
+                <outlet property="testSlider3" destination="0av-ev-gIY" id="6Gp-SS-ooY"/>
+                <outlet property="testSlider4" destination="ywA-Vh-5h9" id="paE-Re-24e"/>
+                <outlet property="testSlider5" destination="AjX-cl-fVE" id="xbZ-GZ-OxC"/>
+                <outlet property="testSlider6" destination="FFi-Rc-M71" id="JUb-1O-uhp"/>
+                <outlet property="testSlider7" destination="aog-um-YD1" id="Jfn-Ga-LaM"/>
+                <outlet property="testSlider8" destination="PcK-1E-hlm" id="jpe-VZ-kjs"/>
+                <outlet property="testSlider9" destination="18C-Ec-SHL" id="8Lb-le-azM"/>
                 <outlet property="timePopUp" destination="MHL-R1-goc" id="1CT-5c-3r1"/>
                 <outlet property="timerLabel" destination="wzJ-Dl-oyg" id="vYn-x4-t8S"/>
             </connections>
@@ -690,6 +704,7 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="55" y="-430"/>
         </menu>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="veK-AJ-SSa">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -983,12 +998,62 @@
                             </menu>
                         </popUpButtonCell>
                     </popUpButton>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpc-s6-EO8">
+                        <rect key="frame" x="18" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="N26-X9-m2B"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5hn-iv-tec">
+                        <rect key="frame" x="48" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="re4-tU-GdG"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9a-32-pAs">
+                        <rect key="frame" x="80" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="lcM-ad-W8L"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0av-ev-gIY">
+                        <rect key="frame" x="110" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="aks-RF-21F"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ywA-Vh-5h9">
+                        <rect key="frame" x="142" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="ndF-CP-Dls"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AjX-cl-fVE">
+                        <rect key="frame" x="172" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="TwG-F8-Yc6"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FFi-Rc-M71">
+                        <rect key="frame" x="204" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="3GH-JA-gjx"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aog-um-YD1">
+                        <rect key="frame" x="234" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="Z6U-lj-IIm"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PcK-1E-hlm">
+                        <rect key="frame" x="264" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="3eL-JB-mfm"/>
+                    </slider>
+                    <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18C-Ec-SHL">
+                        <rect key="frame" x="294" y="614" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" alignment="left" minValue="-1500" maxValue="1500" allowsTickMarkValuesOnly="YES" sliderType="circular" id="MFN-uR-ZsD"/>
+                    </slider>
                 </subviews>
                 <gestureRecognizers>
                     <rotationGestureRecognizer delaysRotationEvents="YES" id="pns-QP-339"/>
                 </gestureRecognizers>
             </view>
-            <point key="canvasLocation" x="302" y="409"/>
+            <point key="canvasLocation" x="302" y="408.5"/>
         </window>
     </objects>
     <resources>

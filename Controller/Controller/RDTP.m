@@ -5,7 +5,8 @@ const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNoti
 
 @implementation RDTP
 {
-    GCDAsyncUdpSocket *socket;
+    GCDAsyncUdpSocket *socketForActuatorAndCamera;
+    GCDAsyncUdpSocket *socketForFeedback;
     dispatch_queue_t socketDelegateQueue;
     NSData *greetingData;
     NSData *discoverResponse;
@@ -31,27 +32,31 @@ const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNoti
         
         greetingData = [NSData dataWithBytes:RDTP_SearchingMessage length:strlen(RDTP_SearchingMessage)];
         discoverResponse = [NSData dataWithBytes:RDTP_DiscoverResponse length:strlen(RDTP_DiscoverResponse)];
-        isSearching = YES;
         RDTPPacket_init(&packet);
+        isSearching = YES;
+        
+//        sendTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self
+//                                                   selector:@selector(debugBroadcast:)
+//                                                   userInfo:nil repeats:NO];
+//        return self;
         
         socketDelegateQueue = dispatch_queue_create("TransportSocketDelegateQUeue", DISPATCH_QUEUE_SERIAL);
-        socket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:socketDelegateQueue];
+        socketForActuatorAndCamera = [[GCDAsyncUdpSocket alloc] initWithDelegate:self
+                                                                   delegateQueue:socketDelegateQueue];
         tag = 0;
         
         NSError *error = nil;
-        [socket bindToPort:RDTP_PORT error:&error];
+        [socketForActuatorAndCamera bindToPort:RDTP_PORT error:&error];
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
             return nil;
         }
-        
-        [socket beginReceiving:&error];
+        [socketForActuatorAndCamera beginReceiving:&error];
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
             return nil;
         }
-        
-        [socket enableBroadcast:YES error:&error];
+        [socketForActuatorAndCamera enableBroadcast:YES error:&error];
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
             return nil;
@@ -66,19 +71,51 @@ const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNoti
     return self;
 }
 
-- (void)sendGreeting:(NSTimer *)timer
+- (void)debugBroadcast:(NSTimer *)timer
 {
-    [socket sendData:greetingData toHost:@"255.255.255.255" port:RDTP_PORT withTimeout:-1 tag:0];
+    int32_t positions[10];
+    memset(positions, 0, sizeof(int32_t) * 10);
+    [self.delegate RDTPDidFoundRobot:self withInitialServoPositions:positions];
+    sendTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self
+                                               selector:@selector(debugCycle:)
+                                               userInfo:nil repeats:YES];
 }
 
-- (void)sendData:(NSTimer *)timer
+- (void)debugCycle:(NSTimer *)timer
 {
     [self.delegate RDTP:self willSendPacket:&packet];
     RDTPPacketBuffer buf;
     int length;
     RDTPPacket_getSendData(&packet, &buf, &length);
-    NSData *data = [NSData dataWithBytes:buf.buffer length:length];
-    [socket sendData:data toAddress:remoteAddress withTimeout:-1 tag:tag];
+}
+
+- (void)sendGreeting:(NSTimer *)timer
+{
+    [socketForActuatorAndCamera sendData:greetingData toHost:@"255.255.255.255" port:RDTP_PORT withTimeout:-1 tag:0];
+}
+
+- (void)sendData:(NSTimer *)timer
+{
+    RDTPPacketBuffer buf;
+    int length;
+    if (timer.userInfo) {
+        RDTPPacket_setCommand(&packet, Ping);
+    } else {
+        [self.delegate RDTP:self willSendPacket:&packet];
+    }
+    RDTPPacket_getSendData(&packet, &buf, &length);
+    [sendTimer invalidate];
+    if (length) {
+        NSData *data = [NSData dataWithBytes:buf.buffer length:length];
+        [socketForActuatorAndCamera sendData:data toAddress:remoteAddress withTimeout:-1 tag:tag];
+        sendTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(sendData:)
+                                          userInfo:[NSNull null] repeats:NO];
+        [[NSRunLoop mainRunLoop] addTimer:sendTimer forMode:NSRunLoopCommonModes];
+    } else {
+        sendTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(sendData:)
+                                          userInfo:nil repeats:NO];
+        [[NSRunLoop mainRunLoop] addTimer:sendTimer forMode:NSRunLoopCommonModes];
+    }
 }
 
 - (RDTPPacket *)packet
@@ -99,7 +136,7 @@ const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNoti
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag
 {
-    if (tag) {
+    if (tag && sock == socketForActuatorAndCamera) {
         [[NSApplication sharedApplication] replyToApplicationShouldTerminate:YES];
     }
 }
@@ -107,27 +144,43 @@ const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNoti
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
       fromAddress:(NSData *)address withFilterContext:(id)filterContext
 {
-    if (isSearching) {
-        if ([data isEqualToData:discoverResponse]) {
-            isSearching = NO;
-            [sendTimer invalidate];
-            NSError *error;
-//            [socket connectToAddress:address error:&error];
-//            if (error) {
-//                NSLog(@"%@", [error localizedDescription]);
-//            }
-            remoteAddress = address;
-            [socket enableBroadcast:NO error:&error];
-            if (error) {
-                NSLog(@"%@", [error localizedDescription]);
+    if (sock == socketForActuatorAndCamera) {
+        if (isSearching) {
+            if ([data length] != [discoverResponse length] + sizeof(int32_t) * 10) {
+                return;
             }
-            [self.delegate RDTPDidFoundRobot:self];
-            sendTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(sendData:)
-                                              userInfo:nil repeats:YES];
-            [[NSRunLoop mainRunLoop] addTimer:sendTimer forMode:NSDefaultRunLoopMode];
-        }
-    } else {
-        [self.delegate RDTP:self videoFrameAvailable:data];
+            if ([[data subdataWithRange:NSMakeRange(0, [discoverResponse length])]
+                 isEqualToData:discoverResponse]) {
+                isSearching = NO;
+                [sendTimer invalidate];
+                remoteAddress = address;
+                
+                NSError *error;
+                [socketForActuatorAndCamera enableBroadcast:NO error:&error];
+                if (error) {
+                    NSLog(@"%@", [error localizedDescription]);
+                }
+                
+                socketForFeedback = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:socketDelegateQueue];
+                [socketForFeedback bindToPort:RDTP_FEEDBACK_PORT error:&error];
+                if (error) {
+                    NSLog(@"%@", [error localizedDescription]);
+                }
+                if (error) {
+                    NSLog(@"%@", [error localizedDescription]);
+                }
+                [socketForFeedback beginReceiving:&error];
+                if (error) {
+                    NSLog(@"%@", [error localizedDescription]);
+                }
+                
+                int32_t positions[10];
+                [data getBytes:positions range:NSMakeRange([discoverResponse length], sizeof(int32_t) * 10)];
+                [self.delegate RDTPDidFoundRobot:self withInitialServoPositions:positions];
+                [self sendData:nil];
+            }
+        } else {
+            [self.delegate RDTP:self videoFrameAvailable:data];
 //        if (frameData) {
 //            /* we have buffered data */
 //            NSRange terminal = [data rangeOfData:eoi options:0 range:NSMakeRange(0, data.length)];
@@ -157,6 +210,9 @@ const NSNotificationName RDTPRobotDidFoundNotification = @"RDTPRobotDidFoundNoti
 //                /* BUG: what if there is EOI ? */
 //            }
 //        }
+        }
+    } else {
+        [self sendData:nil];
     }
 }
 
