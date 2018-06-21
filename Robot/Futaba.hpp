@@ -5,7 +5,7 @@
 #include "ByteUnion.hpp"
 
 template <uint8_t id>
-class Futaba : public Servo<id> {
+class Futaba : public Servo {
     template<size_t length>
     static constexpr uint8_t calcChecksum(const std::array<uint8_t, length> data) {
         uint8_t ret = data[0];
@@ -88,14 +88,23 @@ class Futaba : public Servo<id> {
         };
         ReturnPacket rePacket;
         std::copy(response.begin(), response.end(), std::begin(rePacket.raw));
-        if (error) {
-            *error = ret;
+        checksum = identifier;
+        for (int i = 3; i < sizeof(rePacket) - 1; ++i) {
+            checksum ^= rePacket.raw[i];
         }
-        return rePacket.data;
+        if (checksum == rePacket.checksum) {
+            if (error) {
+                *error = ret;
+            }
+            return rePacket.data;
+        } else {
+            *error = Serial::Error::ReadFailed;
+            return 0;
+        }
     }
     
 public:
-    Futaba(Serial *_serial) : Servo<id>(_serial) {}
+    Futaba(Serial *_serial) : Servo(_serial) {}
     void setTorque(bool enable, Serial::Error *error = nullptr) {
         if (enable) {
             writeMemory<0x24, 1>(error);
@@ -106,14 +115,47 @@ public:
     void setPosition(double position, Serial::Error *error = nullptr) {
         writeMemory<0x1E>(static_cast<int16_t>(position * 10), error);
     }
-    void setPosition(int16_t position, Serial::Error *error = nullptr) {
-        writeMemory<0x1E>(position, error);
+    void setPosition(int32_t position, Serial::Error *error = nullptr) {
+        writeMemory<0x1E>(static_cast<int16_t>(position), error);
     }
-    int16_t intPosition(Serial::Error *error = nullptr) {
-        return readMemory<0x2A, int16_t>(error);
+    int32_t intPosition(Serial::Error *error = nullptr) {
+        return static_cast<int32_t>(readMemory<0x2A, int16_t>(error));
     }
     double position(Serial::Error *error = nullptr) {
         return readMemory<0x2A, int16_t>(error) / 10;
+    }
+    void reboot(Serial::Error *error = nullptr) {
+        constexpr std::array<uint8_t, 8> packet({
+            0xFA, 0xAF, /* Header */
+            id,
+            0x20, /* Flag */
+            0xFF,
+            0,
+            0, /* Count */
+            id ^ 0x20 ^ 0xFF /* Checksum */
+        });
+        *error = this->serial->transfer(packet);
+    }
+    void rebootIfNeeded(Serial::Error *error = nullptr) {
+        constexpr std::array<uint8_t, 8> packet({
+            0xFA, 0xAF, /* Header */
+            id,
+            0x0F, /* Flag */
+            0x04,
+            1,
+            0, /* Count */
+            id ^ 0x0F ^ 0x04 ^ 1 /* Checksum */
+        });
+        std::array<uint8_t, 9> response;
+        Serial::Error ret = this->serial->transfer(response, packet);
+        if (ret == Serial::Error::NoError && response[3]) {
+            reboot(error);
+        } else {
+            *error = ret;
+        }
+    }
+    uint16_t current(Serial::Error *error = nullptr) {
+        return readMemory<0x30, uint16_t>(error);
     }
 };
 

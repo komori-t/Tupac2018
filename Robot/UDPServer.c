@@ -1,6 +1,7 @@
 #include "UDPServer.h"
 #include <stdio.h>
 #include <sys/types.h>
+#include <sys/socket.h>
 #include <unistd.h>
 #include <errno.h>
 #include <stddef.h>
@@ -13,8 +14,10 @@ int udp_server_init(udp_server_ref server, uint16_t port)
 		perror("socket");
 		return errno;
 	}
-	const char flag = 1;
-	setsockopt(server->socket, SOL_SOCKET, SO_REUSEADDR, &flag, 1);
+	const int flag = 1;
+	if (setsockopt(server->socket, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(flag)) < 0) {
+		perror("setsockopt");
+	}
 	struct sockaddr_in addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(port);
@@ -48,4 +51,22 @@ int udp_server_connect(udp_server_ref server, const udp_address_t *destination)
 ssize_t udp_server_write(udp_server_ref server, const uint8_t *data, size_t length)
 {
 	return write(server->socket, data, length);
+}
+
+ssize_t udp_server_writeTo(udp_server_ref server, const uint8_t *data, size_t length, udp_address_t *dest)
+{
+	ssize_t ret = sendto(server->socket, data, length, 0, (struct sockaddr *)&dest->address, dest->addressLength);
+	if (ret < 0) {
+		perror("sendto");
+	}
+	return ret;
+}
+
+int udp_server_enable_broadcast(udp_server_ref server, int enable)
+{
+	if (setsockopt(server->socket, SOL_SOCKET, SO_BROADCAST, &enable, sizeof(enable)) < 0) {
+		perror("setsockopt");
+		return errno;
+	}
+	return 0;
 }

@@ -1,4 +1,4 @@
-INCLUDE_PATHS = -I.
+INCLUDE_PATHS = -I. -I../sysfs-mbed
 LIBRARY_PATHS =
 LIBRARIES =
 OBJECTS = $(shell find . -regextype gnu-awk -regex '^.*\.c(pp)?$$' | sed -E -e 's/\.c(pp)?$$/.o/g')
@@ -6,8 +6,8 @@ TARGET = robot
 
 CC = gcc
 CPP = g++
-LD = g++
-CC_FLAGS = -c -Wall -Wextra -MMD -MP
+LD = g++ -pthread
+CC_FLAGS = -c -Wall -Wextra -MMD -MP -pthread
 CXX_FLAGS = -std=gnu++14
 
 ifeq ($(DEBUG), 1)
@@ -19,7 +19,7 @@ endif
 all: $(TARGET)
 
 clean:
-	rm -f *.o *.d
+	rm -f *.o *.d $(TARGET)
 
 $(TARGET): $(OBJECTS)
 	$(LD) $(LIBRARY_PATHS) -o $@ $^ -Wl,--start-group $(LIBRARIES) -Wl,--end-group

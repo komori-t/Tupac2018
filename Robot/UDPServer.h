@@ -26,6 +26,8 @@ ssize_t udp_server_read(udp_server_ref server, uint8_t *buf, size_t bufSize);
 ssize_t udp_server_readFrom(udp_server_ref server, uint8_t *buf, size_t bufSize, udp_address_t *source);
 int udp_server_connect(udp_server_ref server, const udp_address_t *destination);
 ssize_t udp_server_write(udp_server_ref server, const uint8_t *data, size_t length);
+ssize_t udp_server_writeTo(udp_server_ref server, const uint8_t *data, size_t length, udp_address_t *dest);
+int udp_server_enable_broadcast(udp_server_ref server, int enable);
 
 #ifdef __cplusplus
 }

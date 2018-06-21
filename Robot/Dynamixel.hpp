@@ -74,7 +74,7 @@ public:
 };
 
 template <uint8_t id>
-class Dynamixel : public Servo<id> {
+class Dynamixel : public Servo {
     template <typename DataType>
     union StatusPacket {
         uint8_t raw[11 + sizeof(DataType)];
@@ -174,7 +174,7 @@ class Dynamixel : public Servo<id> {
     }
     
 public:
-    Dynamixel(Serial *_serial) : Servo<id>(_serial) {};
+    Dynamixel(Serial *_serial) : Servo(_serial) {};
     void setTorque(bool enable, Serial::Error *error = nullptr) {
         if (enable) {
             writeMemory<64, 1>(error);
@@ -200,6 +200,35 @@ public:
         } else {
             writeMemory<65, 0>(error);
         }
+    }
+    void reboot(Serial::Error *error = nullptr) {
+        constexpr std::array<uint8_t, 8> header({
+            0xFF, 0xFF, 0xFD, /* Header */
+            0x00, /* Reserved */
+            id,
+            3, 0, /* Length: data + checksum (little endian) */
+            8, /* Write Instruction */
+        });
+        constexpr uint16_t checksum = DynamixelCheckSumCalculator::calc(header);
+        constexpr std::array<uint8_t, 10> packet({
+            0xFF, 0xFF, 0xFD, 0x00, id, 3, 0, 8,
+            static_cast<uint8_t>(checksum & 0xFF), static_cast<uint8_t>(checksum >> 8)
+        });
+        if (error) {
+            *error = this->serial->transfer(packet);
+        } else {
+            this->serial->transfer(packet);
+        }
+        /* TODO: check response */
+    }
+    uint8_t hardwareStatus(Serial::Error *error = nullptr) {
+        return readMemory<70, uint8_t>(error);
+    }
+    void rebootIfNeeded(Serial::Error *error = nullptr) {
+        if (hardwareStatus(error)) reboot(error);
+    }
+    uint16_t current(Serial::Error *error = nullptr) {
+        return readMemory<126, uint16_t>(error);
     }
 };
 
