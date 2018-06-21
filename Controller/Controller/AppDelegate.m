@@ -26,17 +26,18 @@ static NSString * const ZRotationKeyPath = @"transform.rotation.z";
     CABasicAnimation *rightFrontFlipperAnimation;
     CABasicAnimation *leftBackFlipperAnimation;
     CABasicAnimation *rightBackFlipperAnimation;
+    BOOL shouldStartVideo;
 }
 
 - (void)changeAnchorPoint:(CALayer *)layer
 {
     CGPoint point = layer.anchorPoint;
-    point.x = 0.8;
+    point.x = 0.75;
     point.y = 0.5;
     layer.anchorPoint = point;
     NSSize size = layer.frame.size;
     point = layer.position;
-    point.x += 0.8 * size.width;
+    point.x += 0.75 * size.width;
     point.y += 0.5 * size.height;
     layer.position = point;
 }
@@ -65,8 +66,8 @@ static NSString * const ZRotationKeyPath = @"transform.rotation.z";
                           [CABasicAnimation animationWithKeyPath:ZRotationKeyPath],
                           [CABasicAnimation animationWithKeyPath:ZRotationKeyPath],
                           [CABasicAnimation animationWithKeyPath:ZRotationKeyPath]];
-    
     timer = nil;
+    shouldStartVideo = NO;
     videoIndex = 1;
     gamepad = [GamepadController controller];
     rdtp = [[RDTP alloc] init];
@@ -81,6 +82,15 @@ static NSString * const ZRotationKeyPath = @"transform.rotation.z";
 
 - (void)RDTP:(RDTP *)app willSendPacket:(RDTPPacket *)packet
 {
+    if (shouldStartVideo) {
+        shouldStartVideo = NO;
+        if (videoIndex == 0) {
+            RDTPPacket_setCommand(packet, StartVideo0);
+        } else {
+            RDTPPacket_setCommand(packet, StartVideo1);
+        }
+        return;
+    }
     [converter updatePacket];
     RDTPPacketBuffer buffer;
     RDTPPacket dummyPacket = *packet;
@@ -98,10 +108,18 @@ static NSString * const ZRotationKeyPath = @"transform.rotation.z";
             case DataAvailable:
                 switch (component) {
                     case LeftMotor:
-                        self.leftMotorSlider.intValue = value;
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.leftMotorSlider.intValue = value;
+                        });
+                    }
                         break;
                     case RightMotor:
-                        self.rightMotorSlider.intValue = value;
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.rightMotorSlider.intValue = value;
+                        });
+                    }
                         break;
                     case Servo0:
                     {
@@ -229,27 +247,33 @@ static NSString * const ZRotationKeyPath = @"transform.rotation.z";
                                 case LeftStickX:
                                     self.leftXSlider.integerValue = value;
                                     break;
-                                    
+
                                 case LeftStickY:
                                     self.leftYSlider.integerValue = value;
                                     break;
-                                    
+
                                 case RightStickX:
                                     self.rightXSlider.integerValue = value;
                                     break;
-                                    
+
                                 case RightStickY:
                                     self.rightYSlider.integerValue = value;
                                     break;
-                                    
+
                                 case LeftTrigger:
                                     self.leftTriggerSlider.integerValue = value;
                                     break;
-                                    
+
                                 case RightTrigger:
                                     self.rightTriggerSlider.integerValue = value;
                                     break;
                                     
+                                case Pov:
+                                    if (value == 9000) {
+                                        self.servo0Label.backgroundColor = [NSColor grayColor];
+                                    }
+                                    break;
+
                                 default:
                                     break;
                             }
@@ -260,6 +284,28 @@ static NSString * const ZRotationKeyPath = @"transform.rotation.z";
     });
 }
 
+- (void)RDTP:(RDTP *)app didReceivePositionInformation:(int32_t)position
+{
+    [converter resetPositionInformation:position forServo:Servo0];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.testSlider0.intValue = position;
+    });
+}
+
+- (void)RDTP:(RDTP *)app didUpdateBatteryVolatage:(float)percentage
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.voltageIndicator.floatValue = percentage * 10 + 0.5;
+    });
+}
+
+- (void)RDTPDidDisableServo:(RDTP *)app
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.servo0Label.backgroundColor = [NSColor redColor];
+    });
+}
+
 - (IBAction)flip:(NSButton *)sender
 {
 }
@@ -267,12 +313,17 @@ static NSString * const ZRotationKeyPath = @"transform.rotation.z";
 - (IBAction)nextCamera:(NSButton *)sender
 {
     if (videoIndex == 0) {
-        RDTPPacket_setCommand([rdtp packet], StartVideo0);
         videoIndex = 1;
+        sender.title = @"Front";
+        [converter backPreset];
+        converter.shouldFlip = YES;
     } else {
-        RDTPPacket_setCommand([rdtp packet], StartVideo1);
         videoIndex = 0;
+        sender.title = @"Back";
+        [converter frontPreset];
+        converter.shouldFlip = NO;
     }
+    shouldStartVideo = YES;
 }
 
 - (IBAction)stopCamera:(NSButton *)sender

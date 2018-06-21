@@ -29,6 +29,8 @@
 @property (weak) IBOutlet NSImageView *rightFrontFlipperImage;
 @property (weak) IBOutlet NSImageView *leftBackFlipperImage;
 @property (weak) IBOutlet NSImageView *rightBackFlipperImage;
+@property (weak) IBOutlet NSLevelIndicator *voltageIndicator;
+@property (weak) IBOutlet NSTextField *servo0Label;
 
 - (IBAction)flip:(NSButton *)sender;
 - (IBAction)nextCamera:(NSButton *)sender;

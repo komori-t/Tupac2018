@@ -8,5 +8,8 @@
 
 - (instancetype)initWithRDTPPacket:(RDTPPacket *)packet initialFlipperPositions:(int32_t *)positions;
 - (void)updatePacket;
+- (void)frontPreset;
+- (void)backPreset;
+- (void)resetPositionInformation:(int32_t)position forServo:(RDTPPacketComponent)servo;
 
 @end
