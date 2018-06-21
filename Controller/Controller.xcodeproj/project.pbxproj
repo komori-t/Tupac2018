@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		48ED2C476373CD17A322DB34 /* libPods-Controller.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A97CE45328F7E554712250 /* libPods-Controller.a */; };
+		CE1729FC20D5EDED007E4E50 /* manipulator3.PNG in Resources */ = {isa = PBXBuildFile; fileRef = CE1729EF20D5EDED007E4E50 /* manipulator3.PNG */; };
+		CE1729FD20D5EDED007E4E50 /* flipper3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F020D5EDED007E4E50 /* flipper3.png */; };
+		CE1729FE20D5EDED007E4E50 /* forearm.PNG in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F120D5EDED007E4E50 /* forearm.PNG */; };
+		CE1729FF20D5EDED007E4E50 /* upper.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F220D5EDED007E4E50 /* upper.png */; };
+		CE172A0020D5EDED007E4E50 /* flipper2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F320D5EDED007E4E50 /* flipper2.png */; };
+		CE172A0120D5EDED007E4E50 /* manipulator2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F420D5EDED007E4E50 /* manipulator2.PNG */; };
+		CE172A0220D5EDED007E4E50 /* ROBOTIS.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F520D5EDED007E4E50 /* ROBOTIS.png */; };
+		CE172A0320D5EDED007E4E50 /* flipper.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F620D5EDED007E4E50 /* flipper.png */; };
+		CE172A0420D5EDED007E4E50 /* NVLogo_2D.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F720D5EDED007E4E50 /* NVLogo_2D.png */; };
+		CE172A0520D5EDED007E4E50 /* nezi.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F820D5EDED007E4E50 /* nezi.png */; };
+		CE172A0620D5EDED007E4E50 /* NVLogo_2D_H.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1729F920D5EDED007E4E50 /* NVLogo_2D_H.png */; };
+		CE172A0720D5EDED007E4E50 /* body+yawbase.PNG in Resources */ = {isa = PBXBuildFile; fileRef = CE1729FA20D5EDED007E4E50 /* body+yawbase.PNG */; };
+		CE172A0820D5EDEE007E4E50 /* manipulator.PNG in Resources */ = {isa = PBXBuildFile; fileRef = CE1729FB20D5EDED007E4E50 /* manipulator.PNG */; };
 		CE1901F320C9FB6200634D11 /* DDHidStandardUsages.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1901D020C9FB6200634D11 /* DDHidStandardUsages.plist */; };
 		CE1901F420C9FB6200634D11 /* DDHidEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901D220C9FB6200634D11 /* DDHidEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE1901F520C9FB6200634D11 /* DDHidAppleRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1901D520C9FB6200634D11 /* DDHidAppleRemote.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -34,14 +47,24 @@
 		CE7B581020C9FA5B00D75C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7B580F20C9FA5B00D75C63 /* Assets.xcassets */; };
 		CE7B581320C9FA5B00D75C63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7B581120C9FA5B00D75C63 /* MainMenu.xib */; };
 		CE7B581620C9FA5B00D75C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7B581520C9FA5B00D75C63 /* main.m */; };
-		CEDFB00520D0F0F100E117EB /* body.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDFB00220D0F0F000E117EB /* body.png */; };
-		CEDFB00620D0F0F100E117EB /* body2.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDFB00320D0F0F000E117EB /* body2.png */; };
-		CEDFB00720D0F0F100E117EB /* flipper.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDFB00420D0F0F000E117EB /* flipper.png */; };
 		CEDFB00B20D0F5A800E117EB /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFB00A20D0F5A800E117EB /* Aspects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B3B24BDCAF9D032491A9320 /* Pods-Controller.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controller.release.xcconfig"; path = "Pods/Target Support Files/Pods-Controller/Pods-Controller.release.xcconfig"; sourceTree = "<group>"; };
+		CE1729EF20D5EDED007E4E50 /* manipulator3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manipulator3.PNG; sourceTree = "<group>"; };
+		CE1729F020D5EDED007E4E50 /* flipper3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipper3.png; sourceTree = "<group>"; };
+		CE1729F120D5EDED007E4E50 /* forearm.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forearm.PNG; sourceTree = "<group>"; };
+		CE1729F220D5EDED007E4E50 /* upper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upper.png; sourceTree = "<group>"; };
+		CE1729F320D5EDED007E4E50 /* flipper2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipper2.png; sourceTree = "<group>"; };
+		CE1729F420D5EDED007E4E50 /* manipulator2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manipulator2.PNG; sourceTree = "<group>"; };
+		CE1729F520D5EDED007E4E50 /* ROBOTIS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ROBOTIS.png; sourceTree = "<group>"; };
+		CE1729F620D5EDED007E4E50 /* flipper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipper.png; sourceTree = "<group>"; };
+		CE1729F720D5EDED007E4E50 /* NVLogo_2D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NVLogo_2D.png; sourceTree = "<group>"; };
+		CE1729F820D5EDED007E4E50 /* nezi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nezi.png; sourceTree = "<group>"; };
+		CE1729F920D5EDED007E4E50 /* NVLogo_2D_H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NVLogo_2D_H.png; sourceTree = "<group>"; };
+		CE1729FA20D5EDED007E4E50 /* body+yawbase.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "body+yawbase.PNG"; sourceTree = "<group>"; };
+		CE1729FB20D5EDED007E4E50 /* manipulator.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manipulator.PNG; sourceTree = "<group>"; };
 		CE1901CD20C9FB6200634D11 /* WirelessXBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessXBoxController.h; sourceTree = "<group>"; };
 		CE1901CF20C9FB6200634D11 /* DDHidMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidMouse.h; sourceTree = "<group>"; };
 		CE1901D020C9FB6200634D11 /* DDHidStandardUsages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DDHidStandardUsages.plist; sourceTree = "<group>"; };
@@ -96,9 +119,6 @@
 		CE7B581520C9FA5B00D75C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE7B581720C9FA5B00D75C63 /* Controller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controller.entitlements; sourceTree = "<group>"; };
 		CE952B1720D374B900D2C212 /* ServoAssignment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServoAssignment.h; sourceTree = "<group>"; };
-		CEDFB00220D0F0F000E117EB /* body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body.png; sourceTree = "<group>"; };
-		CEDFB00320D0F0F000E117EB /* body2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body2.png; sourceTree = "<group>"; };
-		CEDFB00420D0F0F000E117EB /* flipper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipper.png; sourceTree = "<group>"; };
 		CEDFB00920D0F5A800E117EB /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
 		CEDFB00A20D0F5A800E117EB /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		E02FFEDFB7C485CF02DB9249 /* Pods-Controller.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controller.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Controller/Pods-Controller.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +144,26 @@
 				1B3B24BDCAF9D032491A9320 /* Pods-Controller.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE1729EE20D5EDED007E4E50 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CE1729EF20D5EDED007E4E50 /* manipulator3.PNG */,
+				CE1729F020D5EDED007E4E50 /* flipper3.png */,
+				CE1729F120D5EDED007E4E50 /* forearm.PNG */,
+				CE1729F220D5EDED007E4E50 /* upper.png */,
+				CE1729F320D5EDED007E4E50 /* flipper2.png */,
+				CE1729F420D5EDED007E4E50 /* manipulator2.PNG */,
+				CE1729F520D5EDED007E4E50 /* ROBOTIS.png */,
+				CE1729F620D5EDED007E4E50 /* flipper.png */,
+				CE1729F720D5EDED007E4E50 /* NVLogo_2D.png */,
+				CE1729F820D5EDED007E4E50 /* nezi.png */,
+				CE1729F920D5EDED007E4E50 /* NVLogo_2D_H.png */,
+				CE1729FA20D5EDED007E4E50 /* body+yawbase.PNG */,
+				CE1729FB20D5EDED007E4E50 /* manipulator.PNG */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		CE1901CC20C9FB6200634D11 /* Gamepad */ = {
@@ -212,15 +252,13 @@
 				CE19021120C9FE3000634D11 /* RDTPPacket.c */,
 				CE19021420CA618B00634D11 /* ServoLimitter.h */,
 				CE19021520CA618B00634D11 /* ServoLimitter.m */,
+				CE952B1720D374B900D2C212 /* ServoAssignment.h */,
+				CE1729EE20D5EDED007E4E50 /* images */,
 				CE7B580F20C9FA5B00D75C63 /* Assets.xcassets */,
 				CE7B581120C9FA5B00D75C63 /* MainMenu.xib */,
 				CE7B581420C9FA5B00D75C63 /* Info.plist */,
 				CE7B581520C9FA5B00D75C63 /* main.m */,
-				CEDFB00220D0F0F000E117EB /* body.png */,
-				CEDFB00320D0F0F000E117EB /* body2.png */,
-				CEDFB00420D0F0F000E117EB /* flipper.png */,
 				CE7B581720C9FA5B00D75C63 /* Controller.entitlements */,
-				CE952B1720D374B900D2C212 /* ServoAssignment.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,10 +344,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1901F320C9FB6200634D11 /* DDHidStandardUsages.plist in Resources */,
-				CEDFB00520D0F0F100E117EB /* body.png in Resources */,
-				CEDFB00720D0F0F100E117EB /* flipper.png in Resources */,
+				CE172A0620D5EDED007E4E50 /* NVLogo_2D_H.png in Resources */,
+				CE172A0320D5EDED007E4E50 /* flipper.png in Resources */,
 				CE7B581020C9FA5B00D75C63 /* Assets.xcassets in Resources */,
-				CEDFB00620D0F0F100E117EB /* body2.png in Resources */,
+				CE172A0720D5EDED007E4E50 /* body+yawbase.PNG in Resources */,
+				CE1729FE20D5EDED007E4E50 /* forearm.PNG in Resources */,
+				CE172A0020D5EDED007E4E50 /* flipper2.png in Resources */,
+				CE172A0520D5EDED007E4E50 /* nezi.png in Resources */,
+				CE1729FF20D5EDED007E4E50 /* upper.png in Resources */,
+				CE172A0420D5EDED007E4E50 /* NVLogo_2D.png in Resources */,
+				CE1729FD20D5EDED007E4E50 /* flipper3.png in Resources */,
+				CE172A0220D5EDED007E4E50 /* ROBOTIS.png in Resources */,
+				CE1729FC20D5EDED007E4E50 /* manipulator3.PNG in Resources */,
+				CE172A0120D5EDED007E4E50 /* manipulator2.PNG in Resources */,
+				CE172A0820D5EDEE007E4E50 /* manipulator.PNG in Resources */,
 				CE7B581320C9FA5B00D75C63 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
