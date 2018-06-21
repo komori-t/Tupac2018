@@ -706,7 +706,7 @@
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dg-I4-YC7">
                         <rect key="frame" x="18" y="114" width="367" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="-180" maxValue="180" tickMarkPosition="above" sliderType="linear" id="oWh-lV-iQS"/>
+                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="-360" maxValue="360" tickMarkPosition="above" sliderType="linear" id="oWh-lV-iQS"/>
                         <connections>
                             <action selector="positionSliderDidChange:" target="Voe-Tx-rLC" id="QA0-ua-LNB"/>
                         </connections>

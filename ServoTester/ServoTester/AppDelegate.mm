@@ -90,11 +90,14 @@
         servo = new DynamicDynamixel(serial, self.idField.integerValue);
     }
     servo->setTorque(true);
+//    servo->setPosition(0.0);
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
         Serial::Error error;
-        double pos = self->servo->position(&error);
+//        double pos = self->servo->position(&error);
+        int32_t pos = ((DynamicFutaba *)self->servo)->intPosition(&error);
         if (error == Serial::Error::NoError) {
-            self.positionLabel.doubleValue = pos;
+//            self.positionLabel.doubleValue = pos;
+            self.positionLabel.intValue = pos;
         } else {
             self.positionLabel.stringValue = @"Failed";
         }

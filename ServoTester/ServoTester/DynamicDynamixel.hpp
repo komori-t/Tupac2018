@@ -74,6 +74,7 @@ public:
 };
 
 class DynamicDynamixel : public DynamicServo {
+public:
     template <typename DataType>
     union StatusPacket {
         uint8_t raw[11 + sizeof(DataType)];

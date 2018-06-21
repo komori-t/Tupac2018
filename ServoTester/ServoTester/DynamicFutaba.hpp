@@ -189,6 +189,27 @@ public:
         reboot();
         this->serial->changeBaud(baud);
     }
+    void rebootIfNeeded(Serial::Error *error = nullptr) {
+        const std::array<uint8_t, 8> packet({
+            0xFA, 0xAF, /* Header */
+            id,
+            0x0F, /* Flag */
+            0x04,
+            1,
+            0, /* Count */
+            static_cast<uint8_t>(id ^ 0x0F ^ 0x04 ^ 1) /* Checksum */
+        });
+        std::array<uint8_t, 9> response;
+        Serial::Error ret = this->serial->transfer(response, packet);
+        if (ret == Serial::Error::NoError) {
+            if (response[3]) reboot();
+        } else {
+            *error = ret;
+        }
+    }
+    uint16_t readCurrent(Serial::Error *error = nullptr) {
+        return readMemory<0x30, uint16_t>(error);
+    }
 };
 
 #endif

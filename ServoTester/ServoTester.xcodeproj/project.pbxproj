@@ -103,7 +103,7 @@
 				CEA071372060FF05005697AC /* ByteUnion.hpp */,
 			);
 			name = Servo;
-			path = ../../Servo/Servo;
+			path = ../../Robot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
