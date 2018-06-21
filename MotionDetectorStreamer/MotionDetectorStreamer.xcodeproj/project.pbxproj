@@ -1,0 +1,376 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CEB096FD20D902B100CF561E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB096FC20D902B100CF561E /* AppDelegate.m */; };
+		CEB096FF20D902B300CF561E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB096FE20D902B300CF561E /* Assets.xcassets */; };
+		CEB0970220D902B300CF561E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB0970020D902B300CF561E /* MainMenu.xib */; };
+		CEB0970520D902B300CF561E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB0970420D902B300CF561E /* main.m */; };
+		FA57FDF9F9852D0AB5EC965B /* libPods-MotionDetectorStreamer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 566721BE5FCDFC07CDB95D7F /* libPods-MotionDetectorStreamer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		35EA992F5873DB1675DBBEA6 /* Pods-MotionDetectorStreamer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotionDetectorStreamer.release.xcconfig"; path = "Pods/Target Support Files/Pods-MotionDetectorStreamer/Pods-MotionDetectorStreamer.release.xcconfig"; sourceTree = "<group>"; };
+		4DF1DF25BCFA4243312E4109 /* Pods-MotionDetectorStreamer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotionDetectorStreamer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MotionDetectorStreamer/Pods-MotionDetectorStreamer.debug.xcconfig"; sourceTree = "<group>"; };
+		566721BE5FCDFC07CDB95D7F /* libPods-MotionDetectorStreamer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MotionDetectorStreamer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB096F820D902B100CF561E /* MotionDetectorStreamer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionDetectorStreamer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB096FB20D902B100CF561E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CEB096FC20D902B100CF561E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CEB096FE20D902B300CF561E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEB0970120D902B300CF561E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CEB0970320D902B300CF561E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEB0970420D902B300CF561E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEB0970620D902B300CF561E /* MotionDetectorStreamer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MotionDetectorStreamer.entitlements; sourceTree = "<group>"; };
+		CEB0970C20D90D1800CF561E /* motiondetector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = motiondetector.h; path = ../../MotionDetector/motiondetector.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEB096F520D902B100CF561E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA57FDF9F9852D0AB5EC965B /* libPods-MotionDetectorStreamer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C6AB53E981FA8E4B2394AE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				566721BE5FCDFC07CDB95D7F /* libPods-MotionDetectorStreamer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEB096EF20D902B100CF561E = {
+			isa = PBXGroup;
+			children = (
+				CEB096FA20D902B100CF561E /* MotionDetectorStreamer */,
+				CEB096F920D902B100CF561E /* Products */,
+				E90DF233D852BD4F86FD9B31 /* Pods */,
+				0C6AB53E981FA8E4B2394AE6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CEB096F920D902B100CF561E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEB096F820D902B100CF561E /* MotionDetectorStreamer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEB096FA20D902B100CF561E /* MotionDetectorStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				CEB0970C20D90D1800CF561E /* motiondetector.h */,
+				CEB096FB20D902B100CF561E /* AppDelegate.h */,
+				CEB096FC20D902B100CF561E /* AppDelegate.m */,
+				CEB096FE20D902B300CF561E /* Assets.xcassets */,
+				CEB0970020D902B300CF561E /* MainMenu.xib */,
+				CEB0970320D902B300CF561E /* Info.plist */,
+				CEB0970420D902B300CF561E /* main.m */,
+				CEB0970620D902B300CF561E /* MotionDetectorStreamer.entitlements */,
+			);
+			path = MotionDetectorStreamer;
+			sourceTree = "<group>";
+		};
+		E90DF233D852BD4F86FD9B31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DF1DF25BCFA4243312E4109 /* Pods-MotionDetectorStreamer.debug.xcconfig */,
+				35EA992F5873DB1675DBBEA6 /* Pods-MotionDetectorStreamer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEB096F720D902B100CF561E /* MotionDetectorStreamer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEB0970920D902B300CF561E /* Build configuration list for PBXNativeTarget "MotionDetectorStreamer" */;
+			buildPhases = (
+				6862142BED9C08B525984A8D /* [CP] Check Pods Manifest.lock */,
+				CEB096F420D902B100CF561E /* Sources */,
+				CEB096F520D902B100CF561E /* Frameworks */,
+				CEB096F620D902B100CF561E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MotionDetectorStreamer;
+			productName = MotionDetectorStreamer;
+			productReference = CEB096F820D902B100CF561E /* MotionDetectorStreamer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEB096F020D902B100CF561E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = USER;
+				TargetAttributes = {
+					CEB096F720D902B100CF561E = {
+						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = CEB096F320D902B100CF561E /* Build configuration list for PBXProject "MotionDetectorStreamer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CEB096EF20D902B100CF561E;
+			productRefGroup = CEB096F920D902B100CF561E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEB096F720D902B100CF561E /* MotionDetectorStreamer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEB096F620D902B100CF561E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEB096FF20D902B300CF561E /* Assets.xcassets in Resources */,
+				CEB0970220D902B300CF561E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6862142BED9C08B525984A8D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MotionDetectorStreamer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEB096F420D902B100CF561E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEB0970520D902B300CF561E /* main.m in Sources */,
+				CEB096FD20D902B100CF561E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEB0970020D902B300CF561E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEB0970120D902B300CF561E /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CEB0970720D902B300CF561E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CEB0970820D902B300CF561E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CEB0970A20D902B300CF561E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DF1DF25BCFA4243312E4109 /* Pods-MotionDetectorStreamer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MotionDetectorStreamer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mtkrtk.MotionDetectorStreamer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CEB0970B20D902B300CF561E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35EA992F5873DB1675DBBEA6 /* Pods-MotionDetectorStreamer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MotionDetectorStreamer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mtkrtk.MotionDetectorStreamer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEB096F320D902B100CF561E /* Build configuration list for PBXProject "MotionDetectorStreamer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEB0970720D902B300CF561E /* Debug */,
+				CEB0970820D902B300CF561E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEB0970920D902B300CF561E /* Build configuration list for PBXNativeTarget "MotionDetectorStreamer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEB0970A20D902B300CF561E /* Debug */,
+				CEB0970B20D902B300CF561E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEB096F020D902B100CF561E /* Project object */;
+}
