@@ -2,10 +2,11 @@
 
 @implementation ServoLimitter
 {
-    int stepValue;
+    int32_t stepValue;
     RDTPPacket *packet;
     RDTPPacketComponent servo;
     BOOL shouldPreset;
+    int32_t presetGoal;
 }
 
 - (instancetype)initWithServo:(RDTPPacketComponent)aServo packet:(RDTPPacket *)aPacket
@@ -17,8 +18,11 @@
         self.currentValue = 0;
         stepValue = 0;
         self.shouldInvert = NO;
-        self.upperLimit = 60;
-        self.lowerLimit = -60;
+//        self.upperLimit = 60;
+//        self.lowerLimit = -60;
+        self.upperLimit = INT_MAX;
+        self.lowerLimit = INT_MIN;
+        self.divScale = 1;
     }
     
     return self;
@@ -26,15 +30,15 @@
 
 - (void)updateStep:(int)step
 {
-    stepValue = (self.shouldInvert ? -step : step) / 50;
+    stepValue = (self.shouldInvert ? -step : step) / 5000 / self.divScale;
 }
 
 - (BOOL)update
 {
     BOOL ret = YES;
     if (shouldPreset) {
-        if (abs(self.currentValue) < abs(stepValue)) {
-            self.currentValue = 0;
+        if (abs(self.currentValue - presetGoal) < abs(stepValue)) {
+            self.currentValue = presetGoal;
             stepValue = 0;
             shouldPreset = NO;
             ret = NO;
@@ -56,17 +60,20 @@
             ret = NO;
         }
         RDTPPacket_updateValue(packet, servo, self.currentValue);
+    } else {
+        ret = NO;
     }
     return ret;
 }
 
-- (void)preset
+- (void)presetToAngle:(int32_t)angle
 {
     shouldPreset = YES;
-    if (self.currentValue > 0) {
-        stepValue = -5;
+    presetGoal = angle;
+    if (self.currentValue > angle) {
+        stepValue = -20 / self.divScale;
     } else {
-        stepValue = 5;
+        stepValue = 20 / self.divScale;
     }
 }
 

@@ -8,6 +8,11 @@ extern "C" {
 #endif
     
 #define RDTP_PORT (49153)
+#define RDTP_FEEDBACK_PORT (59603)
+#define RDTP_ACK (0xAA)
+#define RDTP_SHUTDOWN_ACK (0xD5)
+#define RDTP_POS_INFO (0x9A)
+#define RDTP_TORQUE_DISABLED (0x55)
 extern const char *RDTP_SearchingMessage;
 extern const char *RDTP_DiscoverResponse;
 
@@ -15,7 +20,7 @@ typedef struct {
     int count;
     int valueCount;
     int16_t header;
-    int8_t values[12];
+    int32_t values[12];
 } RDTPPacket;
 
 typedef enum {
@@ -40,6 +45,8 @@ typedef enum {
     StartVideo1 = 'v',
     StopVideo = 's',
     Shutdown = 'S',
+    Ping = 'P',
+    RebootServo = 'R',
 } RDTPPacketCommand;
     
 typedef enum {
@@ -49,19 +56,19 @@ typedef enum {
 } RDTPPacketResult;
     
 typedef union {
-    struct {
+    struct __attribute__((packed)) {
         int16_t header;
-        int8_t  values[12];
+        int32_t values[12];
     };
-    int8_t buffer[14];
+    int8_t buffer[50];
 } RDTPPacketBuffer;
 
 void RDTPPacket_init(RDTPPacket *packet);
-void RDTPPacket_initWithBytes(RDTPPacket *packet, int8_t *bytes, int length);
-void RDTPPacket_updateValue(RDTPPacket *packet, RDTPPacketComponent component, int8_t value);
+void RDTPPacket_initWithBytes(RDTPPacket *packet, RDTPPacketBuffer *bytes, int length);
+void RDTPPacket_updateValue(RDTPPacket *packet, RDTPPacketComponent component, int32_t value);
 void RDTPPacket_setCommand(RDTPPacket *packet, RDTPPacketCommand command);
 void RDTPPacket_getSendData(RDTPPacket *packet, RDTPPacketBuffer *buf, int *length);
-RDTPPacketResult RDTPPacket_getReceiveData(RDTPPacket *packet, int8_t *value, RDTPPacketComponent *component);
+RDTPPacketResult RDTPPacket_getReceiveData(RDTPPacket *packet, int32_t *value, RDTPPacketComponent *component);
 RDTPPacketCommand RDTPPacket_getReceiveCommand(RDTPPacket *packet);
 
 #ifdef __cplusplus

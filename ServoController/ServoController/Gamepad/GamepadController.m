@@ -24,7 +24,7 @@ const static GamepadStickAxis ButtonTable[] = {
     XBoxButton,
 };
 
-static const int stickThreshold = 5000;
+//static const int stickThreshold = 5000;
 
 @implementation GamepadController
 {
@@ -57,7 +57,7 @@ static const int stickThreshold = 5000;
 {
     if (self = [super init]) {
         gamepad = joystick;
-        [gamepad setDelegate: self];
+        [gamepad setDelegate:self];
         [gamepad startListening];
     }
     return self;
@@ -99,17 +99,17 @@ static const int stickThreshold = 5000;
 
 - (void)ddhidJoystick:(DDHidJoystick *)joystick stick:(unsigned int)stick xChanged:(int)value
 {
-    if (abs(value) < stickThreshold) {
-        value = 0;
-    }
+//    if (abs(value) < stickThreshold) {
+//        value = 0;
+//    }
     [self.delegate gamepad:self updateValue:value forStickAxis:LeftStickX];
 }
 
 - (void)ddhidJoystick:(DDHidJoystick *)joystick stick:(unsigned int)stick yChanged:(int)value
 {
-    if (abs(value) < stickThreshold) {
-        value = 0;
-    }
+//    if (abs(value) < stickThreshold) {
+//        value = 0;
+//    }
     [self.delegate gamepad:self updateValue:-value forStickAxis:LeftStickY];
 }
 
@@ -118,9 +118,9 @@ static const int stickThreshold = 5000;
 {
     switch (stick) {
         case RightStick:
-            if (abs(value) < stickThreshold) {
-                value = 0;
-            }
+//            if (abs(value) < stickThreshold) {
+//                value = 0;
+//            }
             switch (otherAxis) {
                 case RightX:
                     [self.delegate gamepad:self updateValue:value forStickAxis:RightStickX];

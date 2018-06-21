@@ -10,14 +10,17 @@ void RDTPPacket_init(RDTPPacket *packet)
     memset(packet, 0, sizeof(RDTPPacket));
 }
 
-void RDTPPacket_initWithBytes(RDTPPacket *packet, int8_t *bytes, int length)
+void RDTPPacket_initWithBytes(RDTPPacket *packet, RDTPPacketBuffer *bytes, int length)
 {
     packet->count = 0;
     packet->valueCount = 0;
-    memcpy(&packet->header, bytes, length);
+    packet->header = bytes->header;
+    for (size_t i = 0; i < (length - sizeof(packet->header)) / sizeof(packet->values[0]); ++i) {
+        packet->values[i] = bytes->values[i];
+    }
 }
 
-void RDTPPacket_updateValue(RDTPPacket *packet, RDTPPacketComponent component, int8_t value)
+void RDTPPacket_updateValue(RDTPPacket *packet, RDTPPacketComponent component, int32_t value)
 {
     packet->header |= 1 << component;
     packet->values[component] = value;
@@ -36,7 +39,7 @@ void RDTPPacket_getSendData(RDTPPacket *packet, RDTPPacketBuffer *buf, int *leng
     buf->header = packet->header;
     if (packet->header == 0 && packet->values[1] == COMMAND_AVAILABLE_MAGIC) {
         buf->values[0] = packet->values[0];
-        *length = 3;
+        *length = sizeof(buf->header) + sizeof(buf->values[0]);
     } else {
         for (int i = 0; packet->header; packet->header >>= 1, ++i) {
             if (packet->header & 1) {
@@ -45,7 +48,7 @@ void RDTPPacket_getSendData(RDTPPacket *packet, RDTPPacketBuffer *buf, int *leng
             }
         }
         if (valueCount) {
-            *length = valueCount + 2 /* header */;
+            *length = valueCount * sizeof(buf->values[0]) + sizeof(buf->header);
         } else {
             *length = 0;
         }
@@ -53,7 +56,7 @@ void RDTPPacket_getSendData(RDTPPacket *packet, RDTPPacketBuffer *buf, int *leng
     packet->values[1] = 0; /* Clear the magic */
 }
 
-RDTPPacketResult RDTPPacket_getReceiveData(RDTPPacket *packet, int8_t *value, RDTPPacketComponent *component)
+RDTPPacketResult RDTPPacket_getReceiveData(RDTPPacket *packet, int32_t *value, RDTPPacketComponent *component)
 {
     if (packet->valueCount > 20) {
         return EndOfPacket;
